@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'regular';
+    /* 重命名字体名 */
+    src: url('SHST_regular.otf');
+}
+@font-face {
+    font-family: 'title';
+    /* 重命名字体名 */
+    src: url('SHST_title.otf');
+}
+@font-face {
+    font-family: 'heavy';
+    /* 重命名字体名 */
+    src: url('SHST_Heavy.otf');
+}
