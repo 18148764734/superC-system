@@ -64,9 +64,9 @@
 
     <p>
     <span>臀部特征（和自己身材比较）：</span>  <br>
-    <input type="radio"  name="tbtz" value="瘦弱"  v-model="data.tbtz"/> 瘦弱
-    <input type="radio" name="tbtz" value="标准"  v-model="data.tbtz" />标准
-    <input type="radio" name="tbtz" value="发达" v-model="data.tbtz" />发达
+    <input type="radio"  name="tbtz" value="小"  v-model="data.tbtz"/> 瘦弱
+    <input type="radio" name="tbtz" value="中"  v-model="data.tbtz" />标准
+    <input type="radio" name="tbtz" value="大" v-model="data.tbtz" />发达
 
 </p>
 
@@ -259,8 +259,8 @@ const data = ref(
     yue:"1",
     ri:"1",
     shi:"1",
-    tbtz:"标准",
-    eartz:"中",
+    tbtz:"小",
+    eartz:"小",
     qiqi_direction:"甲",
     haha_direction:"甲",
     qiqi_direction_home:"甲",

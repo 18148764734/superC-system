@@ -104,7 +104,7 @@
                     </template>
 
                     <div class="qianyan">{{ store.state.result.partFour.qianYan }}</div>
-                    <div>{{ store.state.result.partFour.endMessage }}</div>
+                    <div class="qianyan">{{ store.state.result.partFour.endMessage }}</div>
 
                     <MyItem v-for="messageList in store.state.result.partFour.messageList" :data="messageList"></MyItem>
                     <br><br>
