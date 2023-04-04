@@ -194,7 +194,7 @@ const info2 = ref(store.state.result)
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @import '../assets/font/font.css';
 
 .layout {
@@ -257,7 +257,10 @@ const info2 = ref(store.state.result)
 .result {
     font-size: 18px;
     line-height: 30px;
-    width: 480px;
+    width: 70%;
+    @media only screen and (max-width: 1030px) {
+        width: 480px;
+    }
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 50px;
@@ -294,7 +297,7 @@ const info2 = ref(store.state.result)
 }
 
 .qianyan {
-    font-size: 14px;
+    font-size: 15px;
     color: #9ba399;
     padding-bottom: 10px;
 }

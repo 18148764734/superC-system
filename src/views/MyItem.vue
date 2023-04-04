@@ -23,6 +23,6 @@ export default {
   
 <style scoped>
 .dayun-card-unit{
-	font-size: 18px;
+	font-size: 17px;
 }
 </style>
