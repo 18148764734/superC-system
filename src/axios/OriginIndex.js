@@ -2,8 +2,8 @@ import axios from 'axios'
 import { ElMessage,ElLoading,ElNotification  } from 'element-plus'
 import Cookies from 'js-cookie'
 const service = axios.create({
-    // baseURL:'http://supervue3.5gzvip.91tunnel.com'
-    baseURL:' http://127.0.0.1:8088'
+    baseURL:'http://supervue3.5gzvip.91tunnel.com'
+    // baseURL:' http://127.0.0.1:8088'
 
 })
 
@@ -11,8 +11,8 @@ let loading ;
 // 添加请求拦截器
 service.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
-    let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IjEyMzQ1NiIsImV4cCI6MTY4MDUxODQzNywidXNlcm5hbWUiOiIxMjM0In0.ZZIX5u9i_7lpGaeyt8liy53cxbzKPQVn9MsH527LT5U'
-    // let token = Cookies.get('token')
+    // let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IjEyMzQ1NiIsImV4cCI6MTY4MDUxODQzNywidXNlcm5hbWUiOiIxMjM0In0.ZZIX5u9i_7lpGaeyt8liy53cxbzKPQVn9MsH527LT5U'
+    let token = Cookies.get('token')
 
     if(token){
       config.headers['token'] = token
