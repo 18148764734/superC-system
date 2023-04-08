@@ -73,7 +73,7 @@
 
 	</div>
 	
-	<footer class="footer is-rounded has-background-info-light">
+	<footer class="footer is-rounded has-background-info-light" :hidden="store.state.pdf">
 			<div class="content has-text-centered">
 				<p>
 					<strong>Shandobako</strong> Designed by <a href="www.sunsonic2515.com">SDBK Lab.</a>
@@ -90,6 +90,8 @@
 	import {ref} from 'vue'
 	import {GetCode,signup} from '../axios/api.js'
 	import {useRouter} from 'vue-router'
+	import store from "../store/index.js";
+
 	const router = useRouter()
 	let userdata = ref({
 		phone:"",

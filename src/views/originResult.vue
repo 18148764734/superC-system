@@ -1,16 +1,18 @@
 <template>
     <br><br><br>
-    <div class="result" ref="pdf">
+    <div class="result"  :hidden="store.state.pdf">
         <div class="demo-collapse">
             <el-collapse v-model="activeNames" @change="handleChange">
                 <el-collapse-item class='item' name="0">
                     <template #title>
                         <div class="title" style="color: black;"> 时空坐标原命局决策系统 &nbsp 先天命运分析报告</div>
                     </template>
+                    
+
                     <div class="layout_title_top">时空坐标原命局决策系统</div>
                     <div class="layout_title">先天命运分析报告</div>
 
-                    <div class="layout" style="margin-top: 35%;margin-bottom: 30%;font-size: 21px;">预测专家: {{
+                    <div class="layout_creator">预测专家: {{
                         store.state.user_name }}</div>
                     <div class="layout_time">
                         公元
@@ -26,6 +28,8 @@
                     <template #title>
                         <div class="title">{{ store.state.result.partOne.title }}</div>
                     </template>
+                    
+
                     <div class="div1">
                         <span class="key">您的姓名：</span>
                         {{ store.state.name }}
@@ -71,6 +75,8 @@
                     <template #title>
                         <div class="title">{{ store.state.result.partTwo.title }}</div>
                     </template>
+                    
+
                     <div class="div1">
                         <span class="key">
                             您的时间坐标：
@@ -93,6 +99,8 @@
                     <template #title>
                         <div class="title">{{ store.state.result.partThree.title }}</div>
                     </template>
+                    
+
 
 
                     <MyItem v-for="messageList in store.state.result.partThree.messageList" :data="messageList"></MyItem>
@@ -102,6 +110,8 @@
                     <template #title>
                         <div class="title">{{ store.state.result.partFour.title }}</div>
                     </template>
+                    
+
 
                     <div class="qianyan">{{ store.state.result.partFour.qianYan }}</div>
                     <div class="qianyan">{{ store.state.result.partFour.endMessage }}</div>
@@ -113,6 +123,8 @@
                     <template #title>
                         <div class="title">{{ store.state.result.partFive.title }}</div>
                     </template>
+                    
+
 
                     <div class="qianyan">{{ store.state.result.partFive.qianYan }}</div>
                     <MyItem v-for="messageList in store.state.result.partFive.messageList" :data="messageList"></MyItem>
@@ -122,6 +134,8 @@
                     <template #title>
                         <div class="title">{{ store.state.result.partSix.title }}</div>
                     </template>
+                    
+
 
                     <div class="qianyan">{{ store.state.result.partSix.qianYan }}</div>
                     <MyItem v-for="messageList in store.state.result.partSix.messageList" :data="messageList"></MyItem>
@@ -131,6 +145,8 @@
                     <template #title>
                         <div class="title">{{ store.state.result.partSeven.title }}</div>
                     </template>
+                    
+
 
                     <div class="qianyan">{{ store.state.result.partSeven.qianYan }}</div>
                     <MyItem v-for="messageList in store.state.result.partSeven.messageList" :data="messageList"></MyItem>
@@ -140,46 +156,187 @@
                     <template #title>
                         <div class="title">{{ store.state.result.partEight.title }}</div>
                     </template>
+                    
+
 
                     <div class="qianyan">{{ store.state.result.partEight.qianYan }}</div>
                     <MyItem v-for="messageList in store.state.result.partEight.messageList" :data="messageList"></MyItem>
                     <br><br>
                 </el-collapse-item>
             </el-collapse>
-        
-
-        </div>
-
-
-        <div class="result-button">
-            <button
-                class="b1"
-                @click="pdfExport"
-                >
-                生成PDF
+            <div class="result-button">
+            <button class="b1" @click="pdfExport(this)">
+                导出
             </button>
         </div>
-        <!-- <div  @click="pdfExport(this)"> 
-            这是待转换的页面，点击 
-            <button >
-                导出
-            </button> 
-            点击导出PDF
-        </div> -->
+        </div>
     </div>
-</template> 
+    <div class="result" ref="tableRef" :hidden="!store.state.pdf" id="resultPage">
+        <div class="layout_title_top">时空坐标原命局决策系统</div>
+        <div class="layout_title">先天命运分析报告</div>
 
-<script setup>
+        <div class="layout_creator">预测专家: {{
+            store.state.user_name }}</div>
+        <div class="layout_time">
+            公元
+            {{ new Date().getFullYear() }}年
+            {{ new Date().getMonth() }}月
+            {{ new Date().getDate() }}日
+        </div>
+        <br><br><br><br>
+        <div class="title">{{ store.state.result.partOne.title }}</div>
+
+        <div class="div1">
+            <span class="key">您的姓名：</span>
+            {{ store.state.name }}
+        </div>
+        <div class="div1">
+            <span class="key">
+                您的性别：
+            </span>
+            {{ store.state.sex == 0 ? '女' : '男' }}
+        </div>
+        <div class="div1">
+            <span class="key">
+                您的出生时间：
+            </span>
+            <span class="rili">公历</span>
+            {{ store.state.yangli }}
+        </div>
+        <div class="div1">
+            <span class="rili" style="padding-left:138px ;">农历</span>
+            {{ store.state.yingli }}
+        </div>
+
+        <div class="div1">
+            <span class="key">
+                您的时间坐标：
+            </span>
+            <span class="bazi_value">
+                {{ store.state.bazi.nianZhu }} &nbsp;&nbsp; {{ store.state.bazi.yueZhu }}&nbsp;&nbsp; {{
+                    store.state.bazi.riZhu }}&nbsp;&nbsp; {{ store.state.bazi.shiZhu }}
+            </span>
+
+        </div>
+
+        <MyItem v-for="messageList in store.state.result.partOne.messageList" :data="messageList"></MyItem>
+
+        <div class="shensha_title">{{ store.state.result.partOne.shenSha.title }}</div>
+        <div class="qianyan">{{ store.state.result.partOne.shenSha.qianYan }}</div>
+        <MyItem v-for="messageList in store.state.result.partOne.shenSha.messageList" :data="messageList">
+        </MyItem>
+        <br><br>
+
+        <div class="title">{{ store.state.result.partTwo.title }}</div>
+
+        <div class="div1">
+            <span class="key">
+                您的时间坐标：
+            </span>
+            <span class="bazi_value">
+                {{ store.state.bazi.nianZhu }} &nbsp;&nbsp; {{ store.state.bazi.yueZhu }}
+                &nbsp;&nbsp;
+                {{ store.state.bazi.riZhu }}&nbsp;&nbsp; {{ store.state.bazi.shiZhu }}
+            </span>
+
+        </div>
+        <div class="div1">
+            <span class="key">
+                您“时间坐标”里隐藏的六亲命运信息：
+            </span>
+        </div>
+        <MyItem v-for="messageList in store.state.result.partTwo.messageList" :data="messageList"></MyItem>
+
+        <div class="title">{{ store.state.result.partThree.title }}</div>
+
+
+
+        <MyItem v-for="messageList in store.state.result.partThree.messageList" :data="messageList"></MyItem>
+        <br><br>
+
+        <div class="title">{{ store.state.result.partFour.title }}</div>
+
+
+        <div class="qianyan">{{ store.state.result.partFour.qianYan }}</div>
+        <div class="qianyan">{{ store.state.result.partFour.endMessage }}</div>
+
+        <MyItem v-for="messageList in store.state.result.partFour.messageList" :data="messageList"></MyItem>
+        <br><br>
+
+        <div class="title">{{ store.state.result.partFive.title }}</div>
+
+
+        <div class="qianyan">{{ store.state.result.partFive.qianYan }}</div>
+        <MyItem v-for="messageList in store.state.result.partFive.messageList" :data="messageList"></MyItem>
+        <br><br>
+
+        <div class="title">{{ store.state.result.partSix.title }}</div>
+
+
+        <div class="qianyan">{{ store.state.result.partSix.qianYan }}</div>
+        <MyItem v-for="messageList in store.state.result.partSix.messageList" :data="messageList"></MyItem>
+        <br><br>
+
+        <div class="title">{{ store.state.result.partSeven.title }}</div>
+
+
+        <div class="qianyan">{{ store.state.result.partSeven.qianYan }}</div>
+        <MyItem v-for="messageList in store.state.result.partSeven.messageList" :data="messageList"></MyItem>
+        <br><br>
+
+        <div class="title">{{ store.state.result.partEight.title }}</div>
+
+        <div class="qianyan">{{ store.state.result.partEight.qianYan }}</div>
+        <MyItem v-for="messageList in store.state.result.partEight.messageList" :data="messageList"></MyItem>
+        <br><br><br><br>
+        
+    </div>
+</template>
+
+<script  setup lang="ts">
 import { computed, ref, watch, reactive } from 'vue'
 import MyItem from './MyItem.vue'
 import { toRefs } from 'vue'
 import store from "../store/index.js";
-import {downloadPDF} from "../util/pdf.js"
+import router from "../router/index.js";
+import { getmark } from "../util/watermark";
+import { onMounted } from 'vue';
+
+const { watermark,removeWater } = getmark();
+onMounted(() => {
+    store.state.user_name = store.state.user_name.split('').join(' ');
+    store.state.phone = store.state.phone.split('').join(' ');
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    const hour = now.getHours().toString().padStart(2, '0');
+    const minute = now.getMinutes().toString().padStart(2, '0');
+    const second = now.getSeconds().toString().padStart(2, '0');
+
+    // 将年月日时分秒按照指定格式拼接为字符串
+    const currentDate = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+    watermark(store.state.user_name,store.state.phone,currentDate);//水印名
+    });
 const pdfExport = (this1) => {
-    downloadPDF(this1.$refs.pdf)
+    store.state.pdf=true;
+    
+    
+    // let newstr = this1.$refs.tableRef.innerHTML  // 获取需要打印的内容
+	// let oldstr = document.body.innerHTML  // 获取别打印页面的内容
+	// document.body.innerHTML = newstr  
+    // alert("开始打印。。。。")
+    setTimeout(() => {
+        window.print()
+	    // document.body.innerHTML = oldstr
+    watermark('111',store.state.phone,"2022-3-4 11:00:00");//水印名
+        removeWater();
+        store.state.pdf = false;
+    }, 500); // 设置1秒的延迟
+	
 }
 let date = new Date(); //Date() 方法可返回当天的日期和时间
-const activeNames = ref(['0','1','2','3','4','5','6','7','8','9'])
+const activeNames = ref(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
 const handleChange = (val) => {
     console.log(val)
 }
@@ -197,11 +354,15 @@ const info2 = ref(store.state.result)
 <style lang="scss" scoped>
 @import '../assets/font/font.css';
 
-.layout {
+.layout_creator {
     text-align: center;
     font-family: 'title';
     color: black;
+    margin-top: 35%;
+    margin-bottom: 30%;
+    font-size: 21px;
 }
+
 .result-button {
     text-align: center;
     font-family: 'title';
@@ -216,6 +377,7 @@ const info2 = ref(store.state.result)
     font-family: 'title';
     color: black;
     padding-bottom: 20%;
+    font-size: 20px;
 }
 
 .layout_title_top {
@@ -232,7 +394,7 @@ const info2 = ref(store.state.result)
     text-align: center;
     font-size: 48px;
     padding-top: 20px;
-    font-family: 'heavy';
+    font-family: 'title';
     color: black;
 }
 
@@ -257,14 +419,16 @@ const info2 = ref(store.state.result)
 .result {
     font-size: 18px;
     line-height: 30px;
-    width: 70%;
+    width: 720px;
+    background-image: url("https://example.com/watermark.png");
     @media only screen and (max-width: 1030px) {
-        width: 480px;
+        width: 500px;
     }
+
     padding-top: 20px;
-    padding-left: 20px;
+    padding-left: 50px;
     padding-right: 50px;
-    margin: auto;
+    margin:0 auto;
     padding-bottom: 5%;
     background: rgb(255, 255, 255);
     border-radius: 0.4em;
@@ -305,7 +469,7 @@ const info2 = ref(store.state.result)
 .div1 {
     font-size: 18px;
 }
-.item{
+
+.item {
     margin-top: 30px;
-}
-</style>
+}</style>

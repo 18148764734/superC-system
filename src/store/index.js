@@ -2,7 +2,9 @@ import { createStore } from "vuex";
 const store = createStore({
     state() {
         return {
+            pdf: false,
             user_name: '测试用户1',
+            phone: '18148764734',
             name:'',
             sex:'',
             yangli:'',

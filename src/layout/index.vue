@@ -9,8 +9,7 @@
 -->
 <template>
 	<div>
-	<div class="content is-normal">
-		
+	<div class="content is-normal" :hidden="store.state.pdf">
 		<nav class="navbar is-transparent mt-4">
 				<div class="navbar-brand">
 
@@ -189,17 +188,14 @@
 				</div>
 
 			</nav>
-
 		</div>
-
-
 	</div>
 	<router-view v-slot="{ Component }">
 		<keep-alive>
 			<component :is="Component" />
 		</keep-alive>
 	</router-view>
-	<footer class="footer is-rounded has-background-info-light">
+	<footer class="footer is-rounded has-background-info-light" :hidden="store.state.pdf">
 		<div class="content has-text-centered">
 			<p>
 				<strong>Shandobako</strong> Designed by <a href="www.sunsonic2515.com">SDBK Lab.</a>

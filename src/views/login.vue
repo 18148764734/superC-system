@@ -187,11 +187,10 @@ const submint = () => {
 					Cookies.set('token', res.data.data)
 					Cookies.set('username', res.data.username)
 					// Cookies.set('userdata',JSON.stringify(res.data.data))
-
 					store.dispatch('loginok', res.data.data)
 					auths({ "newPassword": res.data.data, "phone": "15119380977" })
 					router.push('/main')
-					open(res.data.username);
+					
 				} else {
 					alert(res.data.msg)
 				}
@@ -212,7 +211,7 @@ const submint = () => {
 					Cookies.set('token', res.data.data)
 					Cookies.set('username', res.data.username)
 					// Cookies.set('userdata',JSON.stringify(res.data.data))
-
+					open(res.data.username);
 					store.dispatch('loginok', res.data.data)
 					console.log(store.state)
 					router.push('/main')
