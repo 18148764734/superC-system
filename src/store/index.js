@@ -3,6 +3,7 @@ const store = createStore({
     state() {
         return {
             pdf: false,
+            watermark: false,
             user_name: '测试用户1',
             phone: '18148764734',
             name:'',

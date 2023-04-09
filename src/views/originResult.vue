@@ -329,7 +329,9 @@ const pdfExport = (this1) => {
     setTimeout(() => {
         window.print()
 	    // document.body.innerHTML = oldstr
-    // watermark('111',store.state.phone,"2022-3-4 11:00:00");//水印名
+    // document.getElementById('1.23452384164.123412416').hidden = true;//打印完成去除水印
+    store.state.watermark = true;//打印完成去除水印
+
         // removeWater();
         store.state.pdf = false;
     }, 500); // 设置1秒的延迟

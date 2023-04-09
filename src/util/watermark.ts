@@ -1,3 +1,6 @@
+import store from "../store/index.js";
+
+
 export const getmark = () => {
     
     const setWatermark = (userName: any,phone:any,time:any) => {
@@ -78,16 +81,13 @@ export const getmark = () => {
 
         div.style.height = document.documentElement.clientHeight + "px";
 
+        div.hidden = store.state.watermark;
+
         div.style.background =
 
             "url(" + can.toDataURL("image/png") + ") left top repeat";
 
-            if(userName=="111"){
-                const div1 = document.createElement("div");
-                document.body.appendChild(div1);
-            }else{
-                document.body.appendChild(div);
-            }
+            document.body.appendChild(div);
 
         return id;
 
@@ -103,13 +103,7 @@ export const getmark = () => {
         let id = setWatermark(userName,phone,time);
 
         setInterval(() => {
-
-            if (document.getElementById(id) === null) {
-
-                id = setWatermark(userName,phone,time);
-
-            }
-
+            id = setWatermark(userName,phone,time);
         }, 500);
 
         window.onresize = () => {
