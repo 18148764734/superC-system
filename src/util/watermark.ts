@@ -1,15 +1,5 @@
 export const getmark = () => {
-    const removeWater = () => {
-
-        const id = "1.23452384164.123412416";
-        if (document.getElementById(id) !== null) {
-            console.log(document.getElementById(id))
-            var element = document.getElementById(id);
-            element?.remove();
-            document.body.removeChild(document.getElementById(id)!);
-
-        }
-    }
+    
     const setWatermark = (userName: any,phone:any,time:any) => {
 
         const id = "1.23452384164.123412416";
@@ -122,14 +112,14 @@ export const getmark = () => {
 
         }, 500);
 
-        // window.onresize = () => {
+        window.onresize = () => {
 
-        //     setWatermark(userName,phone,time);
+            setWatermark(userName,phone,time);
 
-        // };
+        };
 
     };
 
-    return { watermark,removeWater };
+    return { watermark };
 
 };

@@ -1,7 +1,7 @@
 <template>
   	<!--全屏显示-->
 	 
-	 <div class="index-center-wrap" style="    height: 610px !important;">
+	 <div class="index-center-wrap" style="    height: 610px !important;" >
 		    <div style="margin-bottom:24px" class="
 			  column
 			  is-half-mobile

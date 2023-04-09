@@ -302,7 +302,7 @@ import router from "../router/index.js";
 import { getmark } from "../util/watermark";
 import { onMounted } from 'vue';
 
-const { watermark,removeWater } = getmark();
+const { watermark } = getmark();
 onMounted(() => {
     store.state.user_name = store.state.user_name.split('').join(' ');
     store.state.phone = store.state.phone.split('').join(' ');
@@ -329,8 +329,8 @@ const pdfExport = (this1) => {
     setTimeout(() => {
         window.print()
 	    // document.body.innerHTML = oldstr
-    watermark('111',store.state.phone,"2022-3-4 11:00:00");//水印名
-        removeWater();
+    // watermark('111',store.state.phone,"2022-3-4 11:00:00");//水印名
+        // removeWater();
         store.state.pdf = false;
     }, 500); // 设置1秒的延迟
 	
