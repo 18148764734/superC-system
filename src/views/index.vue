@@ -73,7 +73,7 @@
 
 	</div>
 	
-	<footer class="footer is-rounded has-background-info-light" :hidden="store.state.pdf">
+	<footer class="footer is-rounded has-background-info-light">
 			<div class="content has-text-centered">
 				<p>
 					<strong>Shandobako</strong> Designed by <a href="www.sunsonic2515.com">SDBK Lab.</a>
