@@ -367,16 +367,16 @@ onMounted(() => {
 
     // 将年月日时分秒按照指定格式拼接为字符串
     const currentDate = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
-    // watermark(store.state.user_name, store.state.phone, currentDate);//水印名
-    // store.state.watermark = false;
+    watermark(store.state.user_name, store.state.phone, currentDate);//水印名
+    store.state.watermark = false;
 });
 const pdfExport = (this1) => {
     store.state.pdf = true;
-    // store.state.watermark = false;
+    store.state.watermark = false;
     setTimeout(() => {
-        window.print()
-        store.state.pdf = false;
-        // store.state.watermark = false;
+        // window.print()
+        // store.state.pdf = false;
+        store.state.watermark = false;
     }, 500); // 设置0.5秒的延迟
 
 }

@@ -102,15 +102,15 @@ export const getmark = () => {
 
         let id = setWatermark(userName,phone,time);
 
-        setInterval(() => {
-            id = setWatermark(userName,phone,time);
-        }, 500);
+        // setInterval(() => {
+        //     id = setWatermark(userName,phone,time);
+        // }, 500);
 
-        window.onresize = () => {
+        // window.onresize = () => {
 
-            setWatermark(userName,phone,time);
+        //     setWatermark(userName,phone,time);
 
-        };
+        // };
 
     };
 

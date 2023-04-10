@@ -315,10 +315,10 @@ onMounted(() => {
 
     // 将年月日时分秒按照指定格式拼接为字符串
     const currentDate = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
-    // watermark(store.state.user_name,store.state.phone,currentDate);//水印名
+    watermark(store.state.user_name,store.state.phone,currentDate);//水印名
     });
 const pdfExport = (this1) => {
-    // store.state.pdf=true;
+    store.state.pdf=true;
     
     
     // let newstr = this1.$refs.tableRef.innerHTML  // 获取需要打印的内容
@@ -328,7 +328,7 @@ const pdfExport = (this1) => {
     setTimeout(() => {
         window.print()
 	    // document.body.innerHTML = oldstr
-        // store.state.pdf = false;
+        store.state.pdf = false;
     }, 500); // 设置1秒的延迟
 	
 }
@@ -416,7 +416,7 @@ const info2 = ref(store.state.result)
 .result {
     font-size: 18px;
     line-height: 30px;
-    width: 70%;
+        width: 70%;
 
     background-image: url("https://example.com/watermark.png");
     @media only screen and (max-width: 1030px) {
