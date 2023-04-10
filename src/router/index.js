@@ -108,15 +108,6 @@ const routes = [{
               }
         },
         {
-            path: 'originPdf',
-            name: 'originPdf',
-            component: () => import( /* webpackChunkName: "quotation" */ "../views/originPdf.vue"),
-            beforeEnter: (to, from, next) => {
-                window.scrollTo(0,0);
-                next();
-              }
-        },
-        {
             path: 'dayunResult',
             name: 'dayunResult',
             component: () => import( /* webpackChunkName: "quotation" */ "../views/dayunResult.vue"),
