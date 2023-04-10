@@ -54,7 +54,7 @@
   <br>
   
 </p>
-<div :hidden="false">
+<div :hidden="hidden">
 
 <dayuncard @getValue="getDayunCardIndex" :dayunArr="dayunArr"></dayuncard>
 
@@ -120,6 +120,7 @@ import dayuncard from './dayuncard.vue'
 import YYL from './YYL.vue'
 import {getdayun} from '../axios/api.js'
 import {dayunAll} from '../axios/dayunApi.js'
+import {getbazi} from '../axios/OriginApi.js'
 import router from "../router/index.js";
 import store from "../store/index.js";
 const hidden = ref(true);
@@ -155,6 +156,12 @@ const getDayunCardIndex = async (value) => {
 }
 const data = ref({
 		gender:"0",
+		nian:"",
+    yue:"",
+    ri:"",
+    shi:"",
+	})
+  const bazi_data = ref({
 		nian:"",
     yue:"",
     ri:"",
@@ -198,6 +205,15 @@ const submit = ()  =>{
     boku_direction_home:'',
     boku_direction_wan:'',
     boku_direction_ancestors:''
+    // daYunIndex: 9,
+    // sex: '0',
+		// nian: '2001',
+    // yue:'2',
+    // ri:'2',
+    // shi:'2',
+    // boku_direction_home:'甲',
+    // boku_direction_wan:'甲',
+    // boku_direction_ancestors:'甲'
   }
 
   )
@@ -220,6 +236,24 @@ const submit2 = ()  =>{
 			dayunAll(data2.value).then((res)=>{
 				if(res.data.code == '0'){
           store.state.dayunresult=res.data.data;
+          bazi_data.value.nian= data2.value.nian;
+        bazi_data.value.yue= data2.value.yue;
+        bazi_data.value.ri= data2.value.ri;
+        bazi_data.value.shi= data2.value.shi;
+        getbazi(bazi_data.value).then((res)=>{
+		
+				if(res.data.code == '0'){
+          store.state.bazi.nianZhu = res.data.data.nianZhu
+          store.state.bazi.yueZhu = res.data.data.yueZhu
+          store.state.bazi.riZhu = res.data.data.riZhu
+          store.state.bazi.shiZhu = res.data.data.shiZhu
+
+				}else{
+					alert(res.data.msg)
+
+				}
+				
+			})
           router.push({name:"dayunResult",params:{}});
 				}else{
 					alert(res.data.msg)

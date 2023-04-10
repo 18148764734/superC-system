@@ -298,7 +298,6 @@ import { computed, ref, watch, reactive } from 'vue'
 import MyItem from './MyItem.vue'
 import { toRefs } from 'vue'
 import store from "../store/index.js";
-import router from "../router/index.js";
 import { getmark } from "../util/watermark";
 import { onMounted } from 'vue';
 
@@ -329,10 +328,6 @@ const pdfExport = (this1) => {
     setTimeout(() => {
         window.print()
 	    // document.body.innerHTML = oldstr
-    // document.getElementById('1.23452384164.123412416').hidden = true;//打印完成去除水印
-    store.state.watermark = true;//打印完成去除水印
-
-        // removeWater();
         store.state.pdf = false;
     }, 500); // 设置1秒的延迟
 	

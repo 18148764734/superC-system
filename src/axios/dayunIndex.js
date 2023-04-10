@@ -39,7 +39,7 @@ service.interceptors.response.use(function (response) {
     // 对响应错误做点什么
     ElNotification({
       title: 'Error',
-      message: error.response.statusText,
+      message: error,
       type: 'error',
     })
     return Promise.reject(error);

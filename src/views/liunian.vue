@@ -49,7 +49,7 @@
         <br>
         </p>
       <p class="center1">
-      <dayuncard @getValue="getDayunCardIndex"></dayuncard>
+        <dayuncard @getValue="getDayunCardIndex" :dayunArr="dayunArr"></dayuncard>
       </p>
       
       <br>
@@ -162,7 +162,20 @@ import liuniancard from './liuniancard.vue'
 import YYL from './YYL.vue'
 import {getdayun} from '../axios/api.js'
 const currentIndex = ref(10);
-
+const dayunArr=ref(
+    {
+      one: "19岁~28岁  [2001年-2010年]  丁巳",
+      two: "19岁~28岁  [2001年-2010年]  丁巳",
+      three: "29岁~38岁  [2011年-2020年]  戊午",
+      four: "39岁~48岁  [2021年-2030年]  己未",
+      five: "49岁~58岁  [2031年-2040年]  庚申",
+      six: "59岁~68岁  [2041年-2050年]  辛酉",
+      seven: "69岁~78岁  [2051年-2060年]  壬戌",
+      eight: "79岁~88岁  [2061年-2070年]  癸亥",
+      nine: "89岁~98岁  [2071年-2080年]  甲子",
+      ten: "99岁~108岁  [2081年-2090年]  乙丑",
+    }
+);
 const getSonValue = async (value) => {
   data.value.nian=value.year;
   data.value.yue=value.month;

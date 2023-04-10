@@ -227,7 +227,8 @@ const getYearBetween = (start, end) => {
     }
     return result;
 }
-let yeararr = getYearBetween('1900-1-1', new Date().getFullYear() + '-' + parseFloat(new Date().getMonth() + 1) + '-' + new Date().getDate())
+let yeararr = getYearBetween('1900-1-1', new Date().getFullYear() + '-' + parseFloat(new Date().getMonth() + 1) + '-' + new Date().getDate()).reverse();
+
 let montharr = [
     '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'
 ]

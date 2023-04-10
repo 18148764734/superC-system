@@ -147,8 +147,9 @@ const bazi10 = ref(arr10[1])
     font-size: 20px;
     background-color: #defff2;
     border-radius: 50px;
-    margin-top: 1px;
+    margin-bottom: 1px;
     margin-right: 5px;
+    padding-bottom: 2px;
 }
 .liunian-card-unit:hover {
     background-color: #ffffff;

@@ -308,20 +308,12 @@ const submit = async ()  =>{
           store.state.name=data.value.name;
           store.state.sex=data.value.sex;
           store.state.name=name.value;
-          
-          console.log(store.state);
 
-				}else{
-					alert(res.data.msg)
-
-				}
-				
-			})
-      bazi_data.value.nian= data.value.nian;
-      bazi_data.value.yue= data.value.yue;
-      bazi_data.value.ri= data.value.ri;
-      bazi_data.value.shi= data.value.shi;
-			getbazi(bazi_data.value).then((res)=>{
+          bazi_data.value.nian= data.value.nian;
+        bazi_data.value.yue= data.value.yue;
+        bazi_data.value.ri= data.value.ri;
+        bazi_data.value.shi= data.value.shi;
+        getbazi(bazi_data.value).then((res)=>{
 		
 				if(res.data.code == '0'){
           store.state.bazi.nianZhu = res.data.data.nianZhu
@@ -335,6 +327,16 @@ const submit = async ()  =>{
 				}
 				
 			})
+          
+          console.log(store.state);
+
+				}else{
+					alert(res.data.msg)
+
+				}
+				
+			})
+      
 		}
 
 	}

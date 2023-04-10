@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+
 const store = createStore({
     state() {
         return {
@@ -6,7 +7,7 @@ const store = createStore({
             watermark: false,
             user_name: '测试用户1',
             phone: '18148764734',
-            name:'',
+            name:'阿白',
             sex:'',
             yangli:'',
             yingli:'',

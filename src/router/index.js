@@ -64,6 +64,7 @@ const routes = [{
             component: () => import( /* webpackChunkName: "quotation" */ "../views/origin.vue"),
             beforeEnter: (to, from, next) => {
                 if(store.state.token){
+                    store.state.watermark = true;//打印完成去除水印
                     next()
                 }else{
                     alert("您还未登录，请先登录！")
@@ -78,6 +79,7 @@ const routes = [{
             component: () => import( /* webpackChunkName: "quotation" */ "../views/dayun.vue"),
             beforeEnter: (to, from, next) => {
                 if(store.state.token){
+                    store.state.watermark = true;//打印完成去除水印
                     next()
                 }else{
                     alert("您还未登录，请先登录！")
@@ -91,6 +93,7 @@ const routes = [{
             component: () => import( /* webpackChunkName: "quotation" */ "../views/liunian.vue"),
             beforeEnter: (to, from, next) => {
                 if(store.state.token){
+                    store.state.watermark = true;//打印完成去除水印
                     next()
                 }else{
                     alert("您还未登录，请先登录！")
