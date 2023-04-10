@@ -16,9 +16,7 @@
                         store.state.user_name }}</div>
                     <div class="layout_time">
                         公元
-                        {{ new Date().getFullYear() }}年
-                        {{ new Date().getMonth() }}月
-                        {{ new Date().getDate() }}日
+                        {{ new Date().getFullYear()+"年"+new Date().getMonth()+"月"+new Date().getDate()+"日" }}
                     </div>
                     <br><br>
 
@@ -201,9 +199,8 @@
             store.state.user_name }}</div>
         <div class="layout_time">
             公元
-            {{ new Date().getFullYear() }}年
-            {{ new Date().getMonth() }}月
-            {{ new Date().getDate() }}日
+            {{ new Date().getFullYear()+"年"+new Date().getMonth()+"月"+new Date().getDate()+"日" }}
+
         </div>
         <br><br><br><br>
         <div class="title">基础信息</div>
@@ -370,16 +367,16 @@ onMounted(() => {
 
     // 将年月日时分秒按照指定格式拼接为字符串
     const currentDate = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
-    watermark(store.state.user_name, store.state.phone, currentDate);//水印名
-    store.state.watermark = false;
+    // watermark(store.state.user_name, store.state.phone, currentDate);//水印名
+    // store.state.watermark = false;
 });
 const pdfExport = (this1) => {
     store.state.pdf = true;
-    store.state.watermark = false;
+    // store.state.watermark = false;
     setTimeout(() => {
         window.print()
         store.state.pdf = false;
-        store.state.watermark = false;
+        // store.state.watermark = false;
     }, 500); // 设置0.5秒的延迟
 
 }
@@ -467,7 +464,7 @@ const info2 = ref(store.state.dayunresult)
 .dayunresult {
     font-size: 18px;
     line-height: 30px;
-    width: 720px;
+    width: 70%;
     background-image: url("https://example.com/watermark.png");
 
     @media only screen and (max-width: 1030px) {
