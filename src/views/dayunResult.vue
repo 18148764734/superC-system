@@ -1,13 +1,13 @@
 <template>
     <br><br><br>
-    <div class="dayunresult"  :hidden="store.state.pdf">
+    <div class="dayunresult" :hidden="store.state.pdf">
         <div class="demo-collapse">
             <el-collapse v-model="activeNames" @change="handleChange">
                 <el-collapse-item class='item' name="0">
                     <template #title>
                         <div class="title" style="color: black;"> {{ store.state.dayunresult.partOne.bigTitle }}</div>
                     </template>
-                    
+
 
                     <div class="layout_title_top">时空坐标大运决策系统</div>
                     <div class="layout_title">“10年周期命运变化” <br> 预测报告</div>
@@ -24,12 +24,14 @@
 
                 </el-collapse-item>
                 <el-collapse-item class='item' name="1">
-                    
 
-        <br><br>
+
+                    <br><br>
                     <template #title>
-                    <div class="title"><div class="title">{{ store.state.dayunresult.partOne.bigTitle1 }}&nbsp {{ store.state.dayunresult.partOne.b2Title }}</div>
-                    </div>
+                        <div class="title">
+                            <div class="title">{{ store.state.dayunresult.partOne.bigTitle1 }}&nbsp {{
+                                store.state.dayunresult.partOne.b2Title }}</div>
+                        </div>
                     </template>
                     <div class="title">基础信息</div>
 
@@ -65,22 +67,35 @@
                         </span>
 
                     </div>
+                    <div class="div1">
+                        <span class="key">
+                            您的大运坐标：
+                        </span>
+                        <span class="bazi_value">
+                            {{ store.state.dayunTime }}
+                        </span>
 
-                    
+                    </div>
+
+
                     <div class="qianyan">{{ store.state.dayunresult.partOne.preFace }}</div>
                     <div class="qianyan">{{ store.state.dayunresult.partOne.tip }}</div>
                     <div class="qianyan">{{ store.state.dayunresult.partOne.endMessage }}</div>
-                    <MyItem v-for="messageList in store.state.dayunresult.partOne.messageList1" :data="messageList"></MyItem>
-                    <MyItem v-for="messageList in store.state.dayunresult.partOne.messageList2" :data="messageList"></MyItem>
-                    <MyItem v-for="messageList in store.state.dayunresult.partOne.messageList3" :data="messageList"></MyItem>
-                    <MyItem v-for="messageList in store.state.dayunresult.partOne.messageList4" :data="messageList"></MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partOne.messageList1" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partOne.messageList2" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partOne.messageList3" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partOne.messageList4" :data="messageList">
+                    </MyItem>
                     <br><br>
                 </el-collapse-item>
                 <el-collapse-item class='item' title="第二部分" name="2">
                     <template #title>
                         <div class="title">{{ store.state.dayunresult.partTwo.bigTitle }}</div>
                     </template>
-                    
+
 
                     <!-- <div class="div1">
                         <span class="key">
@@ -95,31 +110,39 @@
                     </div> -->
                     <div class="div1">
                     </div>
-        <div class="title">{{ store.state.dayunresult.partTwo.bigTitle1 }}</div>
-        <div class="title">{{ store.state.dayunresult.partTwo.b2Title }}</div>
-        <div class="qianyan"> {{ store.state.dayunresult.partTwo.preFace }}</div>
-        <div class="qianyan">{{ store.state.dayunresult.partTwo.tip }}</div>
-        <div class="qianyan">{{ store.state.dayunresult.partTwo.endMessage }}</div>
-        <MyItem v-for="messageList in store.state.dayunresult.partTwo.messageList1" :data="messageList"></MyItem>
-        <MyItem v-for="messageList in store.state.dayunresult.partTwo.messageList2" :data="messageList"></MyItem>
-        <MyItem v-for="messageList in store.state.dayunresult.partTwo.messageList3" :data="messageList"></MyItem>
-        <MyItem v-for="messageList in store.state.dayunresult.partTwo.messageList4" :data="messageList"></MyItem>
-        <br><br>
+                    <div class="title">{{ store.state.dayunresult.partTwo.bigTitle1 }}</div>
+                    <div class="title">{{ store.state.dayunresult.partTwo.b2Title }}</div>
+                    <div class="qianyan"> {{ store.state.dayunresult.partTwo.preFace }}</div>
+                    <div class="qianyan">{{ store.state.dayunresult.partTwo.tip }}</div>
+                    <div class="qianyan">{{ store.state.dayunresult.partTwo.endMessage }}</div>
+                    <MyItem v-for="messageList in store.state.dayunresult.partTwo.messageList1" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partTwo.messageList2" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partTwo.messageList3" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partTwo.messageList4" :data="messageList">
+                    </MyItem>
+                    <br><br>
                 </el-collapse-item>
                 <el-collapse-item class='item' title="第三部分" name="3">
                     <template #title>
                         <div class="title">{{ store.state.dayunresult.partThree.bigTitle }}</div>
                     </template>
                     <!-- <div class="title">{{ store.state.dayunresult.partThree.bigTitle }}</div> -->
-        <div class="title">{{ store.state.dayunresult.partThree.bigTitle1 }}</div>
-        <div class="title">{{ store.state.dayunresult.partThree.b2Title }}</div>
-        <div class="qianyan">{{ store.state.dayunresult.partThree.preFace }}</div>
-        <div class="qianyan">{{ store.state.dayunresult.partThree.tip }}</div>
-        <div class="qianyan">{{ store.state.dayunresult.partThree.endMessage }}</div>
-        <MyItem v-for="messageList in store.state.dayunresult.partThree.messageList1" :data="messageList"></MyItem>
-        <MyItem v-for="messageList in store.state.dayunresult.partThree.messageList2" :data="messageList"></MyItem>
-        <MyItem v-for="messageList in store.state.dayunresult.partThree.messageList3" :data="messageList"></MyItem>
-        <MyItem v-for="messageList in store.state.dayunresult.partThree.messageList4" :data="messageList"></MyItem>
+                    <div class="title">{{ store.state.dayunresult.partThree.bigTitle1 }}</div>
+                    <div class="title">{{ store.state.dayunresult.partThree.b2Title }}</div>
+                    <div class="qianyan">{{ store.state.dayunresult.partThree.preFace }}</div>
+                    <div class="qianyan">{{ store.state.dayunresult.partThree.tip }}</div>
+                    <div class="qianyan">{{ store.state.dayunresult.partThree.endMessage }}</div>
+                    <MyItem v-for="messageList in store.state.dayunresult.partThree.messageList1" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partThree.messageList2" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partThree.messageList3" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partThree.messageList4" :data="messageList">
+                    </MyItem>
                     <br><br>
                 </el-collapse-item>
                 <el-collapse-item class='item' title="第四部分" name="4">
@@ -131,10 +154,14 @@
                     <div class="qianyan">{{ store.state.dayunresult.partFour.preFace }}</div>
                     <div class="qianyan">{{ store.state.dayunresult.partFour.tip }}</div>
                     <div class="qianyan">{{ store.state.dayunresult.partFour.endMessage }}</div>
-                    <MyItem v-for="messageList in store.state.dayunresult.partFour.messageList1" :data="messageList"></MyItem>
-                    <MyItem v-for="messageList in store.state.dayunresult.partFour.messageList2" :data="messageList"></MyItem>
-                    <MyItem v-for="messageList in store.state.dayunresult.partFour.messageList3" :data="messageList"></MyItem>
-                    <MyItem v-for="messageList in store.state.dayunresult.partFour.messageList4" :data="messageList"></MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partFour.messageList1" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partFour.messageList2" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partFour.messageList3" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partFour.messageList4" :data="messageList">
+                    </MyItem>
                     <br><br>
                 </el-collapse-item>
                 <el-collapse-item class='item' title="第五部分" name="5">
@@ -147,25 +174,29 @@
                     <div class="qianyan">{{ store.state.dayunresult.partFive.preFace }}</div>
                     <div class="qianyan">{{ store.state.dayunresult.partFive.tip }}</div>
                     <div class="qianyan">{{ store.state.dayunresult.partFive.endMessage }}</div>
-                    <MyItem v-for="messageList in store.state.dayunresult.partFive.messageList1" :data="messageList"></MyItem>
-                    <MyItem v-for="messageList in store.state.dayunresult.partFive.messageList2" :data="messageList"></MyItem>
-                    <MyItem v-for="messageList in store.state.dayunresult.partFive.messageList3" :data="messageList"></MyItem>
-                    <MyItem v-for="messageList in store.state.dayunresult.partFive.messageList4" :data="messageList"></MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partFive.messageList1" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partFive.messageList2" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partFive.messageList3" :data="messageList">
+                    </MyItem>
+                    <MyItem v-for="messageList in store.state.dayunresult.partFive.messageList4" :data="messageList">
+                    </MyItem>
                     <br><br>
                 </el-collapse-item>
-                
+
             </el-collapse>
             <div class="dayunresult-button">
-            <button class="b1" @click="pdfExport(this)">
-                导出
-            </button>
-        </div>
+                <button class="b1" @click="pdfExport(this)">
+                    导出
+                </button>
+            </div>
         </div>
     </div>
     <div class="dayunresult" ref="tableRef" :hidden="!store.state.pdf" id="dayunresultPage">
-        <div class="layout_title_top">时空坐标大运决策系统</div>
-        <div class="layout_title">先天命运分析报告</div>
 
+        <div class="layout_title_top">时空坐标大运决策系统</div>
+        <div class="layout_title">“10年周期命运变化” <br><br> 预测报告</div>
         <div class="layout_creator">预测专家: {{
             store.state.user_name }}</div>
         <div class="layout_time">
@@ -175,7 +206,7 @@
             {{ new Date().getDate() }}日
         </div>
         <br><br><br><br>
-        <div class="title">{{ store.state.dayunresult.partOne.title }}</div>
+        <div class="title">基础信息</div>
 
         <div class="div1">
             <span class="key">您的姓名：</span>
@@ -209,8 +240,18 @@
             </span>
 
         </div>
+        <div class="div1">
+            <span class="key">
+                您的大运坐标：
+            </span>
+            <span class="bazi_value">
+                {{ store.state.dayunTime }}
+            </span>
 
-        <div class="title">{{ store.state.dayunresult.partOne.bigTitle }}</div>
+        </div>
+
+        <br><br>
+
         <div class="title">{{ store.state.dayunresult.partOne.bigTitle1 }}</div>
         <div class="title">{{ store.state.dayunresult.partOne.b2Title }}</div>
         <div class="qianyan">{{ store.state.dayunresult.partOne.preFace }}</div>
@@ -225,7 +266,7 @@
 
         <div class="title">{{ store.state.dayunresult.partTwo.title }}</div>
 
-        <div class="div1">
+        <!-- <div class="div1">
             <span class="key">
                 您的时间坐标：
             </span>
@@ -235,12 +276,12 @@
                 {{ store.state.bazi.riZhu }}&nbsp;&nbsp; {{ store.state.bazi.shiZhu }}
             </span>
 
-        </div>
-        <div class="div1">
+        </div> -->
+        <!-- <div class="div1">
             <span class="key">
                 您“时间坐标”里隐藏的六亲命运信息：
             </span>
-        </div>
+        </div> -->
         <div class="title">{{ store.state.dayunresult.partTwo.bigTitle }}</div>
         <div class="title">{{ store.state.dayunresult.partTwo.bigTitle1 }}</div>
         <div class="title">{{ store.state.dayunresult.partTwo.b2Title }}</div>
@@ -268,7 +309,7 @@
         <MyItem v-for="messageList in store.state.dayunresult.partThree.messageList4" :data="messageList"></MyItem>
 
         <br><br>
-        
+
         <br><br>
 
         <div class="title">{{ store.state.dayunresult.partFour.title }}</div>
@@ -303,7 +344,7 @@
         <br><br>
 
         <br><br><br><br>
-        
+
     </div>
 </template>
 
@@ -329,18 +370,18 @@ onMounted(() => {
 
     // 将年月日时分秒按照指定格式拼接为字符串
     const currentDate = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
-    watermark(store.state.user_name,store.state.phone,currentDate);//水印名
-    store.state.watermark=false;
-    });
+    watermark(store.state.user_name, store.state.phone, currentDate);//水印名
+    store.state.watermark = false;
+});
 const pdfExport = (this1) => {
-    store.state.pdf=true;
-    store.state.watermark=false;
+    store.state.pdf = true;
+    store.state.watermark = false;
     setTimeout(() => {
         window.print()
         store.state.pdf = false;
-    store.state.watermark=false;
+        store.state.watermark = false;
     }, 500); // 设置0.5秒的延迟
-	
+
 }
 let date = new Date(); //Date() 方法可返回当天的日期和时间
 const activeNames = ref(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
@@ -428,6 +469,7 @@ const info2 = ref(store.state.dayunresult)
     line-height: 30px;
     width: 720px;
     background-image: url("https://example.com/watermark.png");
+
     @media only screen and (max-width: 1030px) {
         width: 500px;
     }

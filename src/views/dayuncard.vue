@@ -60,20 +60,21 @@
 <script setup>
 import { computed, ref, watch, reactive } from 'vue'
 import MyItem from './MyItem.vue'
+import store from "../store/index.js";
 
 const currentIndex = ref(10);
 const dayunArr=ref(
     {
-      one: "1岁~18岁  [1991年-2000年]  丙辰",
-      two: "19岁~28岁  [2001年-2010年]  丁巳",
-      three: "29岁~38岁  [2011年-2020年]  戊午",
-      four: "39岁~48岁  [2021年-2030年]  己未",
-      five: "49岁~58岁  [2031年-2040年]  庚申",
-      six: "59岁~68岁  [2041年-2050年]  辛酉",
-      seven: "69岁~78岁  [2051年-2060年]  壬戌",
-      eight: "79岁~88岁  [2061年-2070年]  癸亥",
-      nine: "89岁~98岁  [2071年-2080年]  甲子",
-      ten: "99岁~108岁  [2081年-2090年]  乙丑",
+      one: "",
+      two: "",
+      three: "",
+      four: "",
+      five: "",
+      six: "",
+      seven: "",
+      eight: "",
+      nine: "",
+      ten: "",
     }
 );
 const props = defineProps({
@@ -82,6 +83,17 @@ const props = defineProps({
 })
 const select = (index) => {
     currentIndex.value=index;
+    if(index==0){store.state.dayunTime=props.dayunArr.one.substr(-2)}
+    if(index==1){store.state.dayunTime=props.dayunArr.two.substr(-2)}
+    if(index==2){store.state.dayunTime=props.dayunArr.three.substr(-2)}
+    if(index==3){store.state.dayunTime=props.dayunArr.four.substr(-2)}
+    if(index==4){store.state.dayunTime=props.dayunArr.five.substr(-2)}
+    if(index==5){store.state.dayunTime=props.dayunArr.six.substr(-2)}
+    if(index==6){store.state.dayunTime=props.dayunArr.seven.substr(-2)}
+    if(index==7){store.state.dayunTime=props.dayunArr.eight.substr(-2)}
+    if(index==8){store.state.dayunTime=props.dayunArr.nine.substr(-2)}
+    if(index==9){store.state.dayunTime=props.dayunArr.ten.substr(-2)}
+    console.log(store.state.dayunTime);
     emit("getValue", currentIndex);
 }
 const emit = defineEmits(["getValue"])

@@ -181,8 +181,9 @@ const submit = ()  =>{
 		}else{
 			getdayun(data.value).then((res)=>{
 				if(res.data.code == '0'){
-          console.log(res.data.data);
           dayunArr.value=res.data.data;
+          console.log(dayunArr.value);
+
           hidden.value=false;
 				}else{
 					alert(res.data.msg)
@@ -254,7 +255,9 @@ const submit2 = ()  =>{
 				}
 				
 			})
+
           router.push({name:"dayunResult",params:{}});
+
 				}else{
 					alert(res.data.msg)
 				}
