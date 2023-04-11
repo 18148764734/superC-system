@@ -378,6 +378,8 @@ const pdfExport = (this1) => {
         window.print()
         store.state.pdf = false;
         store.state.watermark = false;
+    watermark(tempUN, tempP, currentDate);//水印名
+
     }, 500); // 设置0.5秒的延迟
 
 }
