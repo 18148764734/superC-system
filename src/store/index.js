@@ -5,7 +5,7 @@ const store = createStore({
         return {
             pdf: false,
             
-            watermark: false,
+            watermark: true,
             user_name: '测试用户1',
             phone: '18148764734',
             name:'阿白',

@@ -352,11 +352,10 @@ import { toRefs } from 'vue'
 import store from "../store/index.js";
 import { getmark } from "../util/watermark";
 import { onMounted } from 'vue';
-
+const tempUN = store.state.user_name.split('').join(' ');
+    
 const { watermark } = getmark();
-onMounted(() => {
-    store.state.user_name = store.state.user_name.split('').join(' ');
-    store.state.phone = store.state.phone.split('').join(' ');
+const tempP = store.state.phone.split('').join(' ');
     const now = new Date();
     const year = now.getFullYear();
     const month = (now.getMonth() + 1).toString().padStart(2, '0');
@@ -367,15 +366,17 @@ onMounted(() => {
 
     // 将年月日时分秒按照指定格式拼接为字符串
     const currentDate = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
-    watermark(store.state.user_name, store.state.phone, currentDate);//水印名
+onMounted(() => {
+    
     store.state.watermark = false;
+    watermark(tempUN, tempP, currentDate);//水印名
 });
 const pdfExport = (this1) => {
     store.state.pdf = true;
     store.state.watermark = false;
     setTimeout(() => {
-        // window.print()
-        // store.state.pdf = false;
+        window.print()
+        store.state.pdf = false;
         store.state.watermark = false;
     }, 500); // 设置0.5秒的延迟
 
@@ -398,7 +399,21 @@ const info2 = ref(store.state.dayunresult)
 
 <style lang="scss" scoped>
 @import '../assets/font/font.css';
-
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    background-image: none !important;
+  }
+  @page {
+    margin: 0;
+    size: auto;
+    /* landscape or portrait */
+    -webkit-print-color-adjust: exact;
+    background-image: none !important;
+    footer {
+      display: none;
+   }
+}}
 .layout_creator {
     text-align: center;
     font-family: 'title';
@@ -464,7 +479,7 @@ const info2 = ref(store.state.dayunresult)
 .dayunresult {
     font-size: 18px;
     line-height: 30px;
-    width: 70%;
+    width: 800px;
     background-image: url("https://example.com/watermark.png");
 
     @media only screen and (max-width: 1030px) {

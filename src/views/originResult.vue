@@ -302,9 +302,8 @@ import { getmark } from "../util/watermark";
 import { onMounted } from 'vue';
 
 const { watermark } = getmark();
-onMounted(() => {
-    store.state.user_name = store.state.user_name.split('').join(' ');
-    store.state.phone = store.state.phone.split('').join(' ');
+const tempUN = store.state.user_name.split('').join(' ');
+    const tempP = store.state.phone.split('').join(' ');
     const now = new Date();
     const year = now.getFullYear();
     const month = (now.getMonth() + 1).toString().padStart(2, '0');
@@ -312,11 +311,17 @@ onMounted(() => {
     const hour = now.getHours().toString().padStart(2, '0');
     const minute = now.getMinutes().toString().padStart(2, '0');
     const second = now.getSeconds().toString().padStart(2, '0');
+    const currentDate = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+
+onMounted(() => {
+    
 
     // 将年月日时分秒按照指定格式拼接为字符串
-    const currentDate = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
-    watermark(store.state.user_name,store.state.phone,currentDate);//水印名
-    });
+    store.state.watermark = false;
+    watermark(tempUN, tempP, currentDate);//水印名
+
+});
+
 const pdfExport = (this1) => {
     store.state.pdf=true;
     
@@ -329,6 +334,8 @@ const pdfExport = (this1) => {
         window.print()
 	    // document.body.innerHTML = oldstr
         store.state.pdf = false;
+
+    watermark(tempUN, tempP, currentDate);//水印名
     }, 500); // 设置1秒的延迟
 	
 }
@@ -416,7 +423,7 @@ const info2 = ref(store.state.result)
 .result {
     font-size: 18px;
     line-height: 30px;
-        width: 70%;
+        width: 800px;
 
     background-image: url("https://example.com/watermark.png");
     @media only screen and (max-width: 1030px) {

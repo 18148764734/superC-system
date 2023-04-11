@@ -3,7 +3,10 @@ import {
     createWebHashHistory,
 } from 'vue-router';
 import layOut from "../layout/index.vue";
+import { getmark } from "../util/watermark";
 import store from "../store/index.js";
+const { watermark } = getmark();
+
 const routes = [{
     path: '/',
     redirect: '/main',
@@ -65,6 +68,8 @@ const routes = [{
             beforeEnter: (to, from, next) => {
                 if(store.state.token){
                     store.state.watermark = true;//打印完成去除水印
+    watermark("", "", "");//水印名
+
                     next()
                 }else{
                     alert("您还未登录，请先登录！")
@@ -80,6 +85,9 @@ const routes = [{
             beforeEnter: (to, from, next) => {
                 if(store.state.token){
                     store.state.watermark = true;//打印完成去除水印
+                    watermark("", "", "");//水印名
+
+
                     next()
                 }else{
                     alert("您还未登录，请先登录！")
@@ -94,6 +102,9 @@ const routes = [{
             beforeEnter: (to, from, next) => {
                 if(store.state.token){
                     store.state.watermark = true;//打印完成去除水印
+                    watermark("", "", "");//水印名
+
+
                     next()
                 }else{
                     alert("您还未登录，请先登录！")
