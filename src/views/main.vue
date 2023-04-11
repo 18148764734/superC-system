@@ -61,7 +61,7 @@
 </template>
 
 <script setup>
-import router from "../router/index.ts";
+import router from "../router/index.js";
 function goto(value) {
   router.push({path: '/'+value})
 }

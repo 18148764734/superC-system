@@ -3,9 +3,7 @@ import {
     createWebHashHistory,
 } from 'vue-router';
 import layOut from "../layout/index.vue";
-import { getmark } from "../util/watermark";
 import store from "../store/index.js";
-const { watermark } = getmark();
 
 const routes = [{
     path: '/',
@@ -67,9 +65,6 @@ const routes = [{
             component: () => import( /* webpackChunkName: "quotation" */ "../views/origin.vue"),
             beforeEnter: (to, from, next) => {
                 if(store.state.token){
-                    store.state.watermark = true;//打印完成去除水印
-    watermark("", "", "");//水印名
-
                     next()
                 }else{
                     alert("您还未登录，请先登录！")
@@ -84,10 +79,6 @@ const routes = [{
             component: () => import( /* webpackChunkName: "quotation" */ "../views/dayun.vue"),
             beforeEnter: (to, from, next) => {
                 if(store.state.token){
-                    store.state.watermark = true;//打印完成去除水印
-                    watermark("", "", "");//水印名
-
-
                     next()
                 }else{
                     alert("您还未登录，请先登录！")
@@ -101,10 +92,6 @@ const routes = [{
             component: () => import( /* webpackChunkName: "quotation" */ "../views/liunian.vue"),
             beforeEnter: (to, from, next) => {
                 if(store.state.token){
-                    store.state.watermark = true;//打印完成去除水印
-                    watermark("", "", "");//水印名
-
-
                     next()
                 }else{
                     alert("您还未登录，请先登录！")

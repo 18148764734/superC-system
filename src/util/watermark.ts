@@ -3,21 +3,23 @@ import store from "../store/index.js";
 
 export const getmark = () => {
     
-    const setWatermark = (userName: any,phone:any,time:any) => {
+    const watermark = (type:any,target:any,level:any) => {
 
-        const id = "1.23452384164.123412416";
-
-
+        // const id = "1.23452384164.123412416";
 
 
-        if (document.getElementById(id) !== null) {
+        const tempUN = store.state.user_name.split('').join(' ');
+        const tempP = store.state.phone.split('').join(' ');
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = (now.getMonth() + 1).toString().padStart(2, '0');
+        const day = now.getDate().toString().padStart(2, '0');
+        const hour = now.getHours().toString().padStart(2, '0');
+        const minute = now.getMinutes().toString().padStart(2, '0');
+        const second = now.getSeconds().toString().padStart(2, '0');
+        const currentDate = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 
-            document.body.removeChild(document.getElementById(id)!);
-
-        }
-
-
-
+        // if (document.getElementById(id) !== null) {document.body.removeChild(document.getElementById(id)!);}
 
         //创建一个画布
 
@@ -28,9 +30,6 @@ export const getmark = () => {
         can.width = 300;
 
         can.height = 220;
-
-
-
 
         const cans = can.getContext("2d")!;
 
@@ -54,42 +53,45 @@ export const getmark = () => {
 
         //在画布上绘制填色的文本（输出的文本，开始绘制文本的X坐标位置，开始绘制文本的Y坐标位置）
 
-        cans.fillText(userName, 20, 100);
-        cans.fillText(phone, 20, 120);
-        cans.fillText("时 空 坐 标 原 命 局 决 策 系 统 出 品", 20, 140);
+        cans.fillText(tempUN, 20, 100);
+        cans.fillText(tempP, 20, 120);
+        cans.fillText(type, 20, 140);
         cans.fillText("版 权 归 时 空 坐 标 所 有", 20, 160);
-        cans.fillText(time, 20, 180);
+        cans.fillText(currentDate, 20, 180);
+        const div = document.createElement(target);
 
-
-
-
-        const div = document.createElement("div");
-
-        div.id = id;
+        // div.id = id;
 
         div.style.pointerEvents = "none";
 
-        div.style.top = "30px";
+        div.style.position = "absolute";
+
+        div.style.display= "flex";
+
+        // div.style.overflow = "aotu";
+
+        div.style.top = "150px";
 
         div.style.left = "0px";
 
-        div.style.position = "fixed";
+        div.style.margin = "0 auto"
 
-        div.style.zIndex = "100000";
+        // div.style.position = "fixed";
 
-        div.style.width = document.documentElement.clientWidth + "px";
+        div.style.zIndex = level;
 
-        div.style.height = document.documentElement.clientHeight + "px";
+        div.style.width =  "100%";
+
+        div.style.height = "100%";
 
         div.hidden = store.state.watermark;
 
         div.style.background =
 
-            "url(" + can.toDataURL("image/png") + ") left top repeat";
+        "url(" + can.toDataURL("image/png") + ") left top repeat";
 
-            document.body.appendChild(div);
+        document.getElementById(target)?.appendChild(div);
 
-        return id;
 
     };
 
@@ -98,21 +100,21 @@ export const getmark = () => {
 
     // 该方法只允许调用一次
 
-    const watermark = (userName: string,phone:string,time:string) => {
+    // const watermark = (userName: string,phone:string,time:string,type:string) => {
 
-        let id = setWatermark(userName,phone,time);
+    //     setWatermark(userName,phone,time,type);
 
-        // setInterval(() => {
-        //     id = setWatermark(userName,phone,time);
-        // }, 500);
+    //     // setInterval(() => {
+    //     //     id = setWatermark(userName,phone,time);
+    //     // }, 500);
 
-        // window.onresize = () => {
+    //     // window.onresize = () => {
 
-        //     setWatermark(userName,phone,time);
+    //     //     setWatermark(userName,phone,time);
 
-        // };
+    //     // };
 
-    };
+    // };
 
     return { watermark };
 

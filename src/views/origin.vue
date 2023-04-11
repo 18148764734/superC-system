@@ -208,7 +208,7 @@ import {ref,watch,reactive} from 'vue'
 import calendarFormatter from '../assets/js/dateChange.js'
 import {originall,getbazi} from '../axios/OriginApi.js'
 import YYL from './YYL.vue'
-import router from "../router/index.ts";
+import router from "../router/index.js";
 import store from "../store/index.js";
 const tiemarr = [
     { id: 0, title: "甲" },

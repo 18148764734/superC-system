@@ -1,6 +1,6 @@
 <template>
     <br><br><br>
-    <div class="result"  :hidden="store.state.pdf">
+    <div class="result" :hidden="store.state.pdf" id="originresultPage1">
         <div class="demo-collapse">
             <el-collapse v-model="activeNames" @change="handleChange">
                 <el-collapse-item class='item' name="0">
@@ -165,13 +165,13 @@
                 </el-collapse-item>
             </el-collapse>
             <div class="result-button">
-            <button class="b1" @click="pdfExport(this)">
+            <button class="b1" @click="pdfExport()">
                 导出
             </button>
         </div>
         </div>
     </div>
-    <div class="result" ref="tableRef" :hidden="!store.state.pdf" id="resultPage">
+    <div class="result" :hidden="!store.state.pdf" id="originresultPage2">
         <div class="layout_title_top">时空坐标原命局决策系统</div>
         <div class="layout_title">先天命运分析报告</div>
 
@@ -290,7 +290,9 @@
         <MyItem v-for="messageList in store.state.result.partEight.messageList" :data="messageList"></MyItem>
         <br><br><br><br>
         
+    
     </div>
+    
 </template>
 
 <script  setup lang="ts">
@@ -302,41 +304,23 @@ import { getmark } from "../util/watermark";
 import { onMounted } from 'vue';
 
 const { watermark } = getmark();
-const tempUN = store.state.user_name.split('').join(' ');
-    const tempP = store.state.phone.split('').join(' ');
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = (now.getMonth() + 1).toString().padStart(2, '0');
-    const day = now.getDate().toString().padStart(2, '0');
-    const hour = now.getHours().toString().padStart(2, '0');
-    const minute = now.getMinutes().toString().padStart(2, '0');
-    const second = now.getSeconds().toString().padStart(2, '0');
-    const currentDate = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+    
 
 onMounted(() => {
     
-
+    
     // 将年月日时分秒按照指定格式拼接为字符串
     store.state.watermark = false;
-    watermark(tempUN, tempP, currentDate);//水印名
+    watermark( "时 空 坐 标 原 命 局 决 策 系 统 出 品" ,"originresultPage1",1 );//水印名
+    watermark( "时 空 坐 标 原 命 局 决 策 系 统 出 品" ,"originresultPage2",-1 );//水印名
 
 });
 
-const pdfExport = (this1) => {
+const pdfExport = () => {
     store.state.pdf=true;
-    
-    
-    // let newstr = this1.$refs.tableRef.innerHTML  // 获取需要打印的内容
-	// let oldstr = document.body.innerHTML  // 获取别打印页面的内容
-	// document.body.innerHTML = newstr  
-    // alert("开始打印。。。。")
     setTimeout(() => {
-        window.print()
-	    // document.body.innerHTML = oldstr
+        window.print();
         store.state.pdf = false;
-        store.state.watermark = false;
-
-    watermark(tempUN, tempP, currentDate);//水印名
     }, 500); // 设置1秒的延迟
 	
 }
@@ -358,7 +342,33 @@ const info2 = ref(store.state.result)
 
 <style lang="scss" scoped>
 @import '../assets/font/font.css';
-
+@media print {
+    .dayunresult{
+        -webkit-print-color-adjust: exact; // 打印页面背景图像
+    }
+    @page {
+    /* 添加页眉边距 */
+    margin-top: 50px;
+    /* 定义页眉的内容和样式 */
+    @top-center {
+      font-size: 18px;
+      content: "这里是页眉";
+      display: running(headfoot);
+    }
+  }
+ 
+  /* 设置页脚 */
+  @page {
+    /* 添加页脚边距 */
+    margin-bottom: 50px;
+    /* 定义页脚的内容和样式 */
+    @bottom-center {
+      font-size: 16px;
+      content: "这里是页脚";
+      display: running(headfoot);
+    }
+}
+}
 .layout_creator {
     text-align: center;
     font-family: 'title';
@@ -367,7 +377,36 @@ const info2 = ref(store.state.result)
     margin-bottom: 30%;
     font-size: 21px;
 }
+.b1 {
+    position: relative;
+    display: inline-block;
+    margin:0 auto;/*水平居中*/
+    padding: 15px 30px;
+    text-align: center;
+    font-family: SYHT;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #fefefe;
+    background: #6694e1;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid #6694e1;
+    border-radius: 25px;
+    box-shadow: inset 0 0 0 0 #5bdee3;
+}
 
+.b1:hover {
+    color: white;
+    box-shadow: inset 0 -100px 0 0 #5bdee3;
+    
+    border: 2px solid #5bdee3;
+    border-radius: 25px;
+}
+
+.b1:active {
+    transform: scale(0.9);
+}
 .result-button {
     text-align: center;
     font-family: 'title';
@@ -420,13 +459,39 @@ const info2 = ref(store.state.result)
     font-weight: 600;
 
 }
-
+@media print {
+    .result{
+        -webkit-print-color-adjust: exact; // 打印页面背景图像
+    }
+    @page {
+    /* 添加页眉边距 */
+    margin-top: 50px;
+    /* 定义页眉的内容和样式 */
+    @top-center {
+      font-size: 18px;
+      content: "这里是页眉";
+      display: running(headfoot);
+    }
+  }
+ 
+  /* 设置页脚 */
+  @page {
+    /* 添加页脚边距 */
+    margin-bottom: 50px;
+    /* 定义页脚的内容和样式 */
+    @bottom-center {
+      font-size: 16px;
+      content: "这里是页脚";
+      display: running(headfoot);
+    }
+}
+}
 .result {
     font-size: 18px;
     line-height: 30px;
-        width: 800px;
-
-    background-image: url("https://example.com/watermark.png");
+    width: 800px;
+    position: relative;
+    overflow: visible;
     @media only screen and (max-width: 1030px) {
         width: 500px;
     }
@@ -436,7 +501,6 @@ const info2 = ref(store.state.result)
     padding-right: 50px;
     margin:0 auto;
     padding-bottom: 5%;
-    background: rgb(255, 255, 255);
     border-radius: 0.4em;
     box-shadow: 0.3em 0.3em 0.7em #00000015;
     transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);

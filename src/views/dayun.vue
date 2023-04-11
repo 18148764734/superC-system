@@ -121,7 +121,7 @@ import YYL from './YYL.vue'
 import {getdayun} from '../axios/api.js'
 import {dayunAll} from '../axios/dayunApi.js'
 import {getbazi} from '../axios/OriginApi.js'
-import router from "../router/index.ts";
+import router from "../router/index.js";
 import store from "../store/index.js";
 const hidden = ref(true);
 const currentIndex = ref(10);

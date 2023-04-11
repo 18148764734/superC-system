@@ -1,6 +1,6 @@
 <template>
     <br><br><br>
-    <div class="dayunresult" :hidden="store.state.pdf">
+    <div class="dayunresult" :hidden="store.state.pdf" id="dayunresultPage1">
         <div class="demo-collapse">
             <el-collapse v-model="activeNames" @change="handleChange">
                 <el-collapse-item class='item' name="0">
@@ -16,7 +16,7 @@
                         store.state.user_name }}</div>
                     <div class="layout_time">
                         公元
-                        {{ new Date().getFullYear()+"年"+new Date().getMonth()+"月"+new Date().getDate()+"日" }}
+                        {{ new Date().getFullYear() + "年" + new Date().getMonth() + "月" + new Date().getDate() + "日" }}
                     </div>
                     <br><br>
 
@@ -185,13 +185,13 @@
 
             </el-collapse>
             <div class="dayunresult-button">
-                <button class="b1" @click="pdfExport(this)">
+                <button class="b1" @click="pdfExport()">
                     导出
                 </button>
             </div>
         </div>
     </div>
-    <div class="dayunresult" ref="tableRef" :hidden="!store.state.pdf" id="dayunresultPage">
+    <div class="dayunresult" :hidden="!store.state.pdf" id="dayunresultPage2">
 
         <div class="layout_title_top">时空坐标大运决策系统</div>
         <div class="layout_title">“10年周期命运变化” <br><br> 预测报告</div>
@@ -199,7 +199,7 @@
             store.state.user_name }}</div>
         <div class="layout_time">
             公元
-            {{ new Date().getFullYear()+"年"+new Date().getMonth()+"月"+new Date().getDate()+"日" }}
+            {{ new Date().getFullYear() + "年" + new Date().getMonth() + "月" + new Date().getDate() + "日" }}
 
         </div>
         <br><br><br><br>
@@ -352,34 +352,20 @@ import { toRefs } from 'vue'
 import store from "../store/index.js";
 import { getmark } from "../util/watermark";
 import { onMounted } from 'vue';
-const tempUN = store.state.user_name.split('').join(' ');
-    
+
 const { watermark } = getmark();
-const tempP = store.state.phone.split('').join(' ');
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = (now.getMonth() + 1).toString().padStart(2, '0');
-    const day = now.getDate().toString().padStart(2, '0');
-    const hour = now.getHours().toString().padStart(2, '0');
-    const minute = now.getMinutes().toString().padStart(2, '0');
-    const second = now.getSeconds().toString().padStart(2, '0');
-
-    // 将年月日时分秒按照指定格式拼接为字符串
-    const currentDate = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 onMounted(() => {
-    
-    store.state.watermark = false;
-    watermark(tempUN, tempP, currentDate);//水印名
-});
-const pdfExport = (this1) => {
-    store.state.pdf = true;
-    store.state.watermark = false;
-    setTimeout(() => {
-        window.print()
-        store.state.pdf = false;
-        store.state.watermark = false;
-    watermark(tempUN, tempP, currentDate);//水印名
 
+    store.state.watermark = false;
+    watermark( "时 空 坐 标 大 运 决 策 系 统 出 品" ,"dayunresultPage1",1 );//水印名
+    watermark( "时 空 坐 标 大 运 决 策 系 统 出 品" ,"dayunresultPage2",-1 );//水印名
+
+});
+const pdfExport = () => {
+    store.state.pdf = true;
+    setTimeout(() => {
+        store.state.pdf = false;
+         window.print()
     }, 500); // 设置0.5秒的延迟
 
 }
@@ -401,21 +387,65 @@ const info2 = ref(store.state.dayunresult)
 
 <style lang="scss" scoped>
 @import '../assets/font/font.css';
+@import '../assets/font/font.css';
+.b1 {
+    position: relative;
+    display: inline-block;
+    margin:0 auto;/*水平居中*/
+    padding: 15px 30px;
+    text-align: center;
+    font-family: SYHT;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #fefefe;
+    background: #6694e1;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid #6694e1;
+    border-radius: 25px;
+    box-shadow: inset 0 0 0 0 #5bdee3;
+}
+
+.b1:hover {
+    color: white;
+    box-shadow: inset 0 -100px 0 0 #5bdee3;
+    
+    border: 2px solid #5bdee3;
+    border-radius: 25px;
+}
+
+.b1:active {
+    transform: scale(0.9);
+}
 @media print {
-  body {
-    -webkit-print-color-adjust: exact;
-    background-image: none !important;
+    .dayunresult{
+        -webkit-print-color-adjust: exact; // 打印页面背景图像
+    }
+    @page {
+    /* 添加页眉边距 */
+    margin-top: 50px;
+    /* 定义页眉的内容和样式 */
+    @top-center {
+      font-size: 18px;
+      content: "这里是页眉";
+      display: running(headfoot);
+    }
   }
+ 
+  /* 设置页脚 */
   @page {
-    margin: 0;
-    size: auto;
-    /* landscape or portrait */
-    -webkit-print-color-adjust: exact;
-    background-image: none !important;
-    footer {
-      display: none;
-   }
-}}
+    /* 添加页脚边距 */
+    margin-bottom: 50px;
+    /* 定义页脚的内容和样式 */
+    @bottom-center {
+      font-size: 16px;
+      content: "这里是页脚";
+      display: running(headfoot);
+    }
+}
+}
+
 .layout_creator {
     text-align: center;
     font-family: 'title';
@@ -449,7 +479,6 @@ const info2 = ref(store.state.dayunresult)
     padding-top: 30%;
     font-family: 'title';
     color: black;
-
 }
 
 .layout_title {
@@ -482,8 +511,8 @@ const info2 = ref(store.state.dayunresult)
     font-size: 18px;
     line-height: 30px;
     width: 800px;
-    background-image: url("https://example.com/watermark.png");
-
+    position: relative;
+    overflow: visible;
     @media only screen and (max-width: 1030px) {
         width: 500px;
     }
@@ -493,7 +522,6 @@ const info2 = ref(store.state.dayunresult)
     padding-right: 50px;
     margin:0 auto;
     padding-bottom: 5%;
-    background: rgb(255, 255, 255);
     border-radius: 0.4em;
     box-shadow: 0.3em 0.3em 0.7em #00000015;
     transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
