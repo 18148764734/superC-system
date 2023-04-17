@@ -9,8 +9,8 @@ const routes = [{
     path: '/',
     redirect: '/main',
     name: 'index',
-    component:layOut,
-    children:[
+    component: layOut,
+    children: [
         {
             path: 'main',
             name: 'main',
@@ -64,13 +64,13 @@ const routes = [{
             name: 'origin',
             component: () => import( /* webpackChunkName: "quotation" */ "../views/origin.vue"),
             beforeEnter: (to, from, next) => {
-                if(store.state.token){
+                if (store.state.token) {
                     next()
-                }else{
+                } else {
                     alert("您还未登录，请先登录！")
                     next("/login")
                 }
-              }
+            }
 
         },
         {
@@ -78,47 +78,61 @@ const routes = [{
             name: 'dayun',
             component: () => import( /* webpackChunkName: "quotation" */ "../views/dayun.vue"),
             beforeEnter: (to, from, next) => {
-                if(store.state.token){
+                if (store.state.token) {
                     next()
-                }else{
+                } else {
                     alert("您还未登录，请先登录！")
                     next("/login")
                 }
-              }
+            }
         },
         {
             path: 'liunian',
             name: 'liunian',
             component: () => import( /* webpackChunkName: "quotation" */ "../views/liunian.vue"),
             beforeEnter: (to, from, next) => {
-                if(store.state.token){
+                if (store.state.token) {
                     next()
-                }else{
+                } else {
                     alert("您还未登录，请先登录！")
                     next("/login")
                 }
-              }
+            }
         },
         {
             path: 'result',
             name: 'result',
-            component: () => import( /* webpackChunkName: "quotation" */ "../views/originResult.vue"),
+            component: () => import("../views/originResult.vue"),
             beforeEnter: (to, from, next) => {
-                window.scrollTo(0,0);
-                next();
-              }
+                if (store.state.token) {
+                    window.scrollTo(0, 0);
+                    next()
+                } else {
+                    alert("您还未登录，请先登录！")
+                    next("/login")
+                }
+            }
         },
         {
             path: 'dayunResult',
             name: 'dayunResult',
-            component: () => import( /* webpackChunkName: "quotation" */ "../views/dayunResult.vue"),
+            component: () => import("../views/dayunResult.vue"),
             beforeEnter: (to, from, next) => {
-                window.scrollTo(0,0);
+                window.scrollTo(0, 0);
                 next();
-              }
+            }
         },
-       
-        
+        {
+            path: 'juecheye',
+            name: 'juecheye',
+            component: () => import("../views/juecheye.vue"),
+            beforeEnter: (to, from, next) => {
+                window.scrollTo(0, 0);
+                next();
+            }
+        },
+
+
     ]
 },
 {

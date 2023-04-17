@@ -43,7 +43,7 @@
 								</el-dropdown-item>
 								<el-dropdown-item command="c">
 									<router-link to="/origin">
-									<a class="navbar-item" href="https://www.baidu.com">
+									<a class="navbar-item" href="">
 										原命决策系统
 									</a>
 								</router-link>
@@ -51,26 +51,33 @@
 								</el-dropdown-item>
 								<el-dropdown-item command="d" disabled>
 									<router-link to="/dayun">
-									<a class="navbar-item" href="https://www.baidu.com">
+									<a class="navbar-item" href="">
 										大运决策系统
 									</a>
 								</router-link>
 								</el-dropdown-item>
 							<el-dropdown-item>
 								<router-link to="/liunian">
-									<a class="navbar-item" href="https://www.baidu.com">
+									<a class="navbar-item" href="">
 										流年决策系统
 									</a>
 								</router-link>
 							</el-dropdown-item>
 							<el-dropdown-item>
-								<a class="navbar-item" href="https://www.baidu.com">
+								<router-link to="/juecheye">
+									<a class="navbar-item" href="">
+										决策页
+									</a>
+								</router-link>
+							</el-dropdown-item>
+							<el-dropdown-item>
+								<a class="navbar-item" href="">
 									联系我们
 								</a>
 							</el-dropdown-item>
 							<hr class="navbar-divider">
 							<el-dropdown-item>
-								<a class="navbar-item" href="https://www.baidu.com">
+								<a class="navbar-item" href="">
 									企业规划咨询
 								</a>
 							</el-dropdown-item>
@@ -125,6 +132,12 @@
 									</a>
 								</router-link>
 
+								
+								<router-link to="/juecheye">
+									<a class="navbar-item" href="">
+										决策页
+									</a>
+								</router-link>
 
 								<a class="navbar-item" href="https://www.baidu.com">
 									联系我们
@@ -151,9 +164,11 @@
 							</a>
 
 							<div class="navbar-dropdown is-right">
-								<a class="navbar-item" href="https://www.baidu.com">
-									决策结果
-								</a>
+								<router-link to="/juecheye">
+									<a class="navbar-item" href="">
+										决策结果
+									</a>
+								</router-link>
 								<a class="navbar-item " href="https://www.baidu.com">
 									个人档案
 								</a>

@@ -19,7 +19,7 @@ const store = createStore({
                 shiZhu:'',
             },
             dayunTime:'',
-            token : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IjEyMzQ1NiIsImV4cCI6MTY4MDUxODQzNywidXNlcm5hbWUiOiIxMjM0In0.ZZIX5u9i_7lpGaeyt8liy53cxbzKPQVn9MsH527LT5U',
+            token : '',
             result: {
 
                 partOne: {

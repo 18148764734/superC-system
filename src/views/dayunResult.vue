@@ -341,7 +341,7 @@
         <br><br>
 
         <br><br><br><br>
-        <div id="footer">第<span id="page-num"></span>页</div>
+        <div id="footer">第<span id="page-num">1</span>页</div>
     </div>
     
 </template>
@@ -355,6 +355,7 @@ import { getmark } from "../util/watermark";
 import { onMounted } from 'vue';
 
 const { watermark } = getmark();
+const page = ref(1);
 onMounted(() => {
 
     store.state.watermark = false;
@@ -420,18 +421,18 @@ const info2 = ref(store.state.dayunresult)
     transform: scale(0.9);
 }
 @media print {
-    #footer {
-    content: "asdasdasdsa";
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 50px; /* 设置页脚高度 */
-    font-size: 14px; /* 设置字体大小 */
-    text-align: center; /* 居中显示 */
-    border-top: 1px solid #ddd; /* 添加一个分割线 */
-    line-height: 50px; /* 设置行高 */
-  }
+//     #footer {
+//     content: "asdasdasdsa";
+//     position: fixed;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     height: 50px; /* 设置页脚高度 */
+//     font-size: 14px; /* 设置字体大小 */
+//     text-align: center; /* 居中显示 */
+//     border-top: 1px solid #ddd; /* 添加一个分割线 */
+//     line-height: 50px; /* 设置行高 */
+//   }
     .dayunresult{
         -webkit-print-color-adjust: exact; // 打印页面背景图像
     }

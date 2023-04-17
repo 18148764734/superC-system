@@ -1,0 +1,197 @@
+<template>
+    <br>
+    <div class="divider">
+        <span class="left-line"></span>
+        <span class="text">决策结果</span>
+        <span class="right-line"></span>
+    </div>
+    <div class="gif">
+        <img src="../assets/img/juecheye/flower.gif" alt="Example GIF">
+    </div>
+    <br>
+    <div class="search">
+        <span class="date-select">
+            <img 
+            src="../assets/img/juecheye/calender.png" class="search-calender-img"
+            >
+            <span class="search-calender-font"> 
+                请选择决策日期
+            </span>
+
+            <span class="search-calender-search-img">
+                <img 
+                src="../assets/img/juecheye/search.png" 
+                style="width: 30px;height: 30px;"
+                >
+            </span>
+        </span>
+        <span class="search-search-byname">
+            <span class="search-byname-font"> 
+                请输入被预测者姓名查询报告&nbsp;例:周星驰
+            </span>
+            <img 
+                src="../assets/img/juecheye/x.png" 
+                style="width: 20px;height: 20px;"
+                >
+            <span class="search-byname-right">
+                查询
+            </span>
+        </span>
+    </div>
+    <div class="result-Page">
+        <unit></unit>
+    </div>
+    <br>
+</template>
+
+<script setup>
+import unit from './juecheye-unit.vue'
+
+</script>
+
+<style>
+
+.result-Page{
+    padding-top: 10px;
+    padding-left: 15px;
+    background-color: #fbfcff;
+    position: relative;
+    width: 1520px;
+    height: 360px;
+    margin: 0 auto;
+    outline: 1px solid rgb(206, 206, 206);
+    border-radius: 20px;
+    @media only screen and (min-width: 1200px) and (max-width: 1580px) {
+        width: 1020px;
+    }
+    @media only screen and (max-width: 1200px) {
+        height: 980px;
+        width: 480px;
+    }
+}
+.search-byname-right{
+    padding-top: 3px;
+    outline: 1px solid rgb(206, 206, 206);
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    font-size: 19px;
+    color: white;
+    width: 90px;
+    height: 38px;
+    margin-left: 20px;
+    padding-left: 23px;
+    background-color: #4dfac9;
+}
+.search-byname-font{
+    color: rgb(165, 160, 160);
+    margin-left: 15px;
+    width: 420px;
+}
+.search-search-byname{
+    margin-left: 20px;
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    width: 586px;
+    font-size: 20px;
+    font-weight:500;
+    color: rgb(98, 97, 97);
+    background-color: #ffffff;
+    height: 40px;
+    padding-left: 25px;
+    border-radius: 100px;
+    outline: 1px solid rgb(206, 206, 206);
+    margin-bottom: 20px;
+
+}
+.search-calender-search-img {
+    
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    outline: 1px solid rgb(206, 206, 206);
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    width: 52px;
+    height: 38px;
+    margin-left: 20px;
+    padding-left: 8px;
+    background-color: white;
+}
+.search-calender-img {
+    width: 30px;
+    height: 30px;
+}
+.search-calender-font {
+    margin-left: 45px;
+}
+
+.search{
+    width: 920px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    @media only screen and (max-width: 1200px) {
+        flex-direction: column;
+    }
+}
+.date-select{
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center; /* 垂直居中 */
+    width: 313px;
+    font-size: 20px;
+    font-weight:500;
+    color: rgb(98, 97, 97);
+    background-color: #defff7;
+    height: 40px;
+    padding-left: 25px;
+    border-radius: 100px;
+}
+.divider {
+    width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+.gif {
+    width: 240px;
+    margin: 0 auto;
+}
+
+.text {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 80px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #495bb5;
+}
+
+.left-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 2px;
+    width: 30%;
+    background-color: #97a1d4;
+    z-index: 0;
+}
+
+.right-line {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 2px;
+    width: 30%;
+    background-color: #97a1d4;
+    z-index: 0;
+}
+</style>
+  
