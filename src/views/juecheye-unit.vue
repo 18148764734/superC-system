@@ -79,6 +79,9 @@
     display: flex;
     align-items: center;
     /* 垂直居中 */
+    @media only screen and (max-width: 1200px) {
+        margin-left: 100px;
+    }
 }
 
 .time {
