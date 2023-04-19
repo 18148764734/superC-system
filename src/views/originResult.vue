@@ -542,5 +542,7 @@ const info2 = ref(store.state.result)
 
 .item {
     margin-top: 30px;
+
+    
 }
 </style>

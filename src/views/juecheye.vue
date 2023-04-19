@@ -21,7 +21,7 @@
             <span class="search-calender-search-img">
                 <img 
                 src="../assets/img/juecheye/search.png" 
-                style="width: 30px;height: 30px;"
+                style="width: 22px;height: 22px;"
                 >
             </span>
         </span>
@@ -31,7 +31,7 @@
             </span>
             <img 
                 src="../assets/img/juecheye/x.png" 
-                style="width: 20px;height: 20px;"
+                style="width: 16px;height: 16px;"
                 >
             <span class="search-byname-right">
                 查询
@@ -49,39 +49,39 @@ import unit from './juecheye-unit.vue'
 
 </script>
 
-<style>
-
+<style scoped>
 .result-Page{
     padding-top: 10px;
     padding-left: 15px;
     background-color: #fbfcff;
     position: relative;
-    width: 1520px;
-    height: 360px;
+    width: 1080px;
+    height: 650px;
     margin: 0 auto;
     outline: 1px solid rgb(206, 206, 206);
     border-radius: 20px;
     @media only screen and (min-width: 1200px) and (max-width: 1580px) {
-        width: 1020px;
+        width: 750px;
     }
     @media only screen and (max-width: 1200px) {
-        height: 980px;
+        height: 2700px;
         width: 480px;
     }
 }
 .search-byname-right{
-    padding-top: 3px;
+    display: flex;
+    align-items: center; /* 垂直居中 */
     outline: 1px solid rgb(206, 206, 206);
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
-    font-size: 19px;
+    font-size: 15px;
     color: white;
-    width: 90px;
-    height: 38px;
+    width: 65px;
+    height: 28px;
     margin-left: 20px;
-    padding-left: 23px;
+    padding-left: 18px;
     background-color: #4dfac9;
 }
 .search-byname-font{
@@ -93,15 +93,14 @@ import unit from './juecheye-unit.vue'
     margin-left: 20px;
     display: flex;
     align-items: center; /* 垂直居中 */
-    width: 586px;
-    font-size: 20px;
-    font-weight:500;
+    width: 536px;
+    font-size: 15px;
     color: rgb(98, 97, 97);
     background-color: #ffffff;
-    height: 40px;
-    padding-left: 25px;
+    height: 30px;
+    padding-left: 5px;
     border-radius: 100px;
-    outline: 1px solid rgb(206, 206, 206);
+    outline: 1px solid rgb(231, 231, 231);
     margin-bottom: 20px;
 
 }
@@ -109,45 +108,46 @@ import unit from './juecheye-unit.vue'
     
     display: flex;
     align-items: center; /* 垂直居中 */
-    outline: 1px solid rgb(206, 206, 206);
+    outline: 1px solid rgb(226, 226, 226);
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
-    width: 52px;
-    height: 38px;
-    margin-left: 20px;
+    width: 40px;
+    height: 26px;
+    margin-left: 10px;
     padding-left: 8px;
     background-color: white;
 }
 .search-calender-img {
-    width: 30px;
-    height: 30px;
+    width: 22px;
+    height: 22px;
 }
 .search-calender-font {
     margin-left: 45px;
 }
 
 .search{
-    width: 920px;
+    width: 770px;
     margin: 0 auto;
     display: flex;
     align-items: center; /* 垂直居中 */
     @media only screen and (max-width: 1200px) {
         flex-direction: column;
+        width: 360px;
     }
 }
 .date-select{
     display: flex;
     margin-bottom: 20px;
     align-items: center; /* 垂直居中 */
-    width: 313px;
-    font-size: 20px;
+    width: 215px;
+    font-size: 11px;
     font-weight:500;
     color: rgb(98, 97, 97);
     background-color: #defff7;
-    height: 40px;
-    padding-left: 25px;
+    height: 30px;
+    padding-left: 20px;
     border-radius: 100px;
 }
 .divider {

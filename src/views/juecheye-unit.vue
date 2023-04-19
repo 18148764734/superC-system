@@ -38,6 +38,84 @@
             预知时间:公元2023年4月7日 23:35
         </span>
     </div>
+    <div class="result-Page-unit" style="background-color: #defff7;" @click="handleCheck(data)">
+        <span class="unit-title">时空坐标 流年报告 &nbsp&nbsp</span>
+        <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="time-location">
+            <img src="../assets/img/juecheye/location.png" class="time-location-img">
+            <span class="time-location-font">
+                乙卯 癸未 壬午 乙已
+            </span>
+        </span>
+        <span class="time">
+            预知时间:公元2023年4月7日 23:35
+        </span>
+    </div>
+    <div class="result-Page-unit" style="background-color: #defff7;" @click="handleCheck(data)">
+        <span class="unit-title">时空坐标 流年报告 &nbsp&nbsp</span>
+        <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="time-location">
+            <img src="../assets/img/juecheye/location.png" class="time-location-img">
+            <span class="time-location-font">
+                乙卯 癸未 壬午 乙已
+            </span>
+        </span>
+        <span class="time">
+            预知时间:公元2023年4月7日 23:35
+        </span>
+    </div>
+    <div class="result-Page-unit" style="background-color: #defff7;" @click="handleCheck(data)">
+        <span class="unit-title">时空坐标 流年报告 &nbsp&nbsp</span>
+        <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="time-location">
+            <img src="../assets/img/juecheye/location.png" class="time-location-img">
+            <span class="time-location-font">
+                乙卯 癸未 壬午 乙已
+            </span>
+        </span>
+        <span class="time">
+            预知时间:公元2023年4月7日 23:35
+        </span>
+    </div>
+    <div class="result-Page-unit" style="background-color: #defff7;" @click="handleCheck(data)">
+        <span class="unit-title">时空坐标 流年报告 &nbsp&nbsp</span>
+        <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="time-location">
+            <img src="../assets/img/juecheye/location.png" class="time-location-img">
+            <span class="time-location-font">
+                乙卯 癸未 壬午 乙已
+            </span>
+        </span>
+        <span class="time">
+            预知时间:公元2023年4月7日 23:35
+        </span>
+    </div>
+    <div class="result-Page-unit" style="background-color: #defff7;" @click="handleCheck(data)">
+        <span class="unit-title">时空坐标 流年报告 &nbsp&nbsp</span>
+        <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="time-location">
+            <img src="../assets/img/juecheye/location.png" class="time-location-img">
+            <span class="time-location-font">
+                乙卯 癸未 壬午 乙已
+            </span>
+        </span>
+        <span class="time">
+            预知时间:公元2023年4月7日 23:35
+        </span>
+    </div>
+    <div class="result-Page-unit" style="background-color: #defff7;" @click="handleCheck(data)">
+        <span class="unit-title">时空坐标 流年报告 &nbsp&nbsp</span>
+        <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="time-location">
+            <img src="../assets/img/juecheye/location.png" class="time-location-img">
+            <span class="time-location-font">
+                乙卯 癸未 壬午 乙已
+            </span>
+        </span>
+        <span class="time">
+            预知时间:公元2023年4月7日 23:35
+        </span>
+    </div>
 
     <div class="page">
         <img src="../assets/img/juecheye/left.png" class="time-location-img">
@@ -85,8 +163,8 @@
 }
 
 .time {
-    font-size: 13px;
-    padding-left: 40px;
+    font-size: 10px;
+    padding-left: 30px;
     @media only screen and (max-width: 1200px) {
         padding-left: 0px;
         padding-top: 10px;
@@ -97,7 +175,7 @@
 .time-location-font {
     padding-left: 10px;
     color: #f8ce5b;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     @media only screen and (max-width: 1200px) {
         padding-left: 5px;
@@ -106,8 +184,8 @@
 }
 
 .time-location-img {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     @media only screen and (max-width: 1200px) {
         margin-left: 15px;
         width: 40px;
@@ -118,11 +196,11 @@
 
 .time-location {
     padding-left: 10px;
-    width: 210px;
-    height: 36px;
+    width: 180px;
+    height: 24px;
     background-color: white;
     border-radius: 16px;
-    margin-left: 580px;
+    margin-left: 390px;
     display: flex;
     align-items: center;
     /* 垂直居中 */
@@ -141,8 +219,8 @@
 }
 
 .unit-name {
-    padding-left: 40px;
-    font-size: 15px;
+    padding-left: 30px;
+    font-size: 10px;
     @media only screen and (max-width: 1200px) {
         margin-top:5px;
         padding-left:0px;
@@ -152,7 +230,7 @@
 
 .unit-title {
     color: #495bb5;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 600;
     @media only screen and (max-width: 1200px) {
         padding-top: 20px;
@@ -161,16 +239,16 @@
 }
 
 .result-Page-unit {
-    padding-left: 60px;
+    padding-left: 40px;
     color: rgb(98, 97, 97);
     background-color: #dee2ff;
-    height: 60px;
-    border-radius: 20px;
+    height: 40px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     /* 垂直居中 */
-    margin-left: 30px;
-    margin-right: 40px;
+    margin-left: 10px;
+    margin-right: 20px;
     margin-top: 20px;
     box-shadow:
         0.1px 0.5px 0.9px rgba(0, 0, 0, 0.05),
