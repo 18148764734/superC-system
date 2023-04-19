@@ -116,7 +116,7 @@
             预知时间:公元2023年4月7日 23:35
         </span>
     </div>
-
+    <br><br>
     <div class="page">
         <img src="../assets/img/juecheye/left.png" class="time-location-img">
         <span class='page-num'>
@@ -150,15 +150,12 @@
 }
 
 .page {
-    position: relative;
-    bottom: -50px;
-    width: 150px;
+    width: 220px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     /* 垂直居中 */
     @media only screen and (max-width: 900px) {
-        margin-left: 100px;
     }
 }
 

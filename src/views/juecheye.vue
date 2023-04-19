@@ -64,7 +64,7 @@ import unit from './juecheye-unit.vue'
         width: 850px;
     }
     @media only screen and (max-width: 900px) {
-        height: 2700px;
+        height: 2000px;
         width: 380px;
     }
 }
