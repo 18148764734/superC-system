@@ -55,23 +55,22 @@ import unit from './juecheye-unit.vue'
     padding-left: 15px;
     background-color: #fbfcff;
     position: relative;
-    width: 1080px;
+    width: 1100px;
     height: 650px;
     margin: 0 auto;
     outline: 1px solid rgb(206, 206, 206);
     border-radius: 20px;
-    @media only screen and (min-width: 1200px) and (max-width: 1580px) {
-        width: 750px;
+    @media only screen and (min-width: 900px) and (max-width: 1580px) {
+        width: 850px;
     }
-    @media only screen and (max-width: 1200px) {
+    @media only screen and (max-width: 900px) {
         height: 2700px;
-        width: 480px;
+        width: 380px;
     }
 }
 .search-byname-right{
     display: flex;
     align-items: center; /* 垂直居中 */
-    outline: 1px solid rgb(206, 206, 206);
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-top-right-radius: 100px;
@@ -79,7 +78,7 @@ import unit from './juecheye-unit.vue'
     font-size: 15px;
     color: white;
     width: 65px;
-    height: 28px;
+    height: 30px;
     margin-left: 20px;
     padding-left: 18px;
     background-color: #4dfac9;
@@ -87,13 +86,13 @@ import unit from './juecheye-unit.vue'
 .search-byname-font{
     color: rgb(165, 160, 160);
     margin-left: 15px;
-    width: 420px;
+    width: 320px;
 }
 .search-search-byname{
     margin-left: 20px;
     display: flex;
     align-items: center; /* 垂直居中 */
-    width: 536px;
+    width: 436px;
     font-size: 15px;
     color: rgb(98, 97, 97);
     background-color: #ffffff;
@@ -124,15 +123,15 @@ import unit from './juecheye-unit.vue'
     height: 22px;
 }
 .search-calender-font {
-    margin-left: 45px;
+    margin-left: 35px;
 }
 
 .search{
-    width: 770px;
+    width: 690px;
     margin: 0 auto;
     display: flex;
     align-items: center; /* 垂直居中 */
-    @media only screen and (max-width: 1200px) {
+    @media only screen and (max-width: 900px) {
         flex-direction: column;
         width: 360px;
     }
@@ -141,7 +140,7 @@ import unit from './juecheye-unit.vue'
     display: flex;
     margin-bottom: 20px;
     align-items: center; /* 垂直居中 */
-    width: 215px;
+    width: 225px;
     font-size: 11px;
     font-weight:500;
     color: rgb(98, 97, 97);
@@ -194,4 +193,3 @@ import unit from './juecheye-unit.vue'
     z-index: 0;
 }
 </style>
-  
