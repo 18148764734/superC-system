@@ -120,7 +120,7 @@ import unit from './juecheye-unit.vue'
     height: 22px;
 }
 .search-calender-font {
-    margin-left: 35px;
+    margin-left: 48px;
 }
 
 .search{
@@ -137,7 +137,7 @@ import unit from './juecheye-unit.vue'
     display: flex;
     margin-bottom: 20px;
     align-items: center; /* 垂直居中 */
-    width: 212px;
+    width: 225px;
     font-size: 11px;
     font-weight:500;
     color: rgb(98, 97, 97);
