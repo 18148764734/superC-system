@@ -137,7 +137,7 @@ import unit from './juecheye-unit.vue'
     display: flex;
     margin-bottom: 20px;
     align-items: center; /* 垂直居中 */
-    width: 225px;
+    width: 212px;
     font-size: 11px;
     font-weight:500;
     color: rgb(98, 97, 97);
