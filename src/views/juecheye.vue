@@ -109,10 +109,10 @@ import unit from './juecheye-unit.vue'
     border-bottom-left-radius: 0px;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
-    width: 40px;
+    width: 50px;
     height: 26px;
     margin-left: 10px;
-    padding-left: 8px;
+    padding-left: 5px;
     background-color: white;
 }
 .search-calender-img {
@@ -120,7 +120,8 @@ import unit from './juecheye-unit.vue'
     height: 22px;
 }
 .search-calender-font {
-    margin-left: 48px;
+    margin-left: 38px;
+    width: 150px;
 }
 
 .search{
