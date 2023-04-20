@@ -55,15 +55,12 @@ import unit from './juecheye-unit.vue'
     padding-left: 15px;
     background-color: #fbfcff;
     position: relative;
-    width: 1100px;
+    width: 80%;
     height: 650px;
     margin: 0 auto;
     outline: 1px solid rgb(206, 206, 206);
     border-radius: 20px;
-    @media only screen and (min-width: 900px) and (max-width: 1580px) {
-        width: 850px;
-    }
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1080px) {
         height: 2000px;
         width: 380px;
     }
@@ -131,7 +128,7 @@ import unit from './juecheye-unit.vue'
     margin: 0 auto;
     display: flex;
     align-items: center; /* 垂直居中 */
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1080px) {
         flex-direction: column;
         width: 360px;
     }

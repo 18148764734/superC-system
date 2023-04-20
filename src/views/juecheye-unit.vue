@@ -2,6 +2,7 @@
     <div class="result-Page-unit" @click="handleCheck(data)">
         <span class="unit-ym-title">时空坐标 原命局报告</span>
         <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="center"></span>
         <span class="time-location">
             <img src="../assets/img/juecheye/location.png" class="time-location-img">
             <span class="time-location-font">
@@ -15,6 +16,7 @@
     <div class="result-Page-unit" style="background-color: #ffe6de;" @click="handleCheck(data)">
         <span class="unit-title">时空坐标 大运报告 </span>
         <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="center"></span>
         <span class="time-location">
             <img src="../assets/img/juecheye/location.png" class="time-location-img">
             <span class="time-location-font">
@@ -28,6 +30,7 @@
     <div class="result-Page-unit" style="background-color: #defff7;" @click="handleCheck(data)">
         <span class="unit-title">时空坐标 流年报告 </span>
         <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="center"></span>
         <span class="time-location">
             <img src="../assets/img/juecheye/location.png" class="time-location-img">
             <span class="time-location-font">
@@ -41,6 +44,7 @@
     <div class="result-Page-unit" style="background-color: #defff7;" @click="handleCheck(data)">
         <span class="unit-title">时空坐标 流年报告 </span>
         <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="center"></span>
         <span class="time-location">
             <img src="../assets/img/juecheye/location.png" class="time-location-img">
             <span class="time-location-font">
@@ -54,6 +58,7 @@
     <div class="result-Page-unit" style="background-color: #defff7;" @click="handleCheck(data)">
         <span class="unit-title">时空坐标 流年报告 </span>
         <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="center"></span>
         <span class="time-location">
             <img src="../assets/img/juecheye/location.png" class="time-location-img">
             <span class="time-location-font">
@@ -67,6 +72,7 @@
     <div class="result-Page-unit" style="background-color: #defff7;" @click="handleCheck(data)">
         <span class="unit-title">时空坐标 流年报告 </span>
         <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="center"></span>
         <span class="time-location">
             <img src="../assets/img/juecheye/location.png" class="time-location-img">
             <span class="time-location-font">
@@ -80,6 +86,7 @@
     <div class="result-Page-unit" style="background-color: #defff7;" @click="handleCheck(data)">
         <span class="unit-title">时空坐标 流年报告 </span>
         <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="center"></span>
         <span class="time-location">
             <img src="../assets/img/juecheye/location.png" class="time-location-img">
             <span class="time-location-font">
@@ -93,6 +100,7 @@
     <div class="result-Page-unit" style="background-color: #defff7;" @click="handleCheck(data)">
         <span class="unit-title">时空坐标 流年报告 </span>
         <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="center"></span>
         <span class="time-location">
             <img src="../assets/img/juecheye/location.png" class="time-location-img">
             <span class="time-location-font">
@@ -106,6 +114,7 @@
     <div class="result-Page-unit" style="background-color: #defff7;" @click="handleCheck(data)">
         <span class="unit-title">时空坐标 流年报告 </span>
         <span class="unit-name"> 姓名:曾林俊</span>
+        <span class="center"></span>
         <span class="time-location">
             <img src="../assets/img/juecheye/location.png" class="time-location-img">
             <span class="time-location-font">
@@ -116,6 +125,7 @@
             预知时间:公元2023年4月7日 23:35
         </span>
     </div>
+    
     <br><br>
     <div class="page">
         <img src="../assets/img/juecheye/left.png" class="time-location-img">
@@ -155,14 +165,14 @@
     display: flex;
     align-items: center;
     /* 垂直居中 */
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1080px) {
     }
 }
 
 .time {
     font-size: 12px;
     padding-left: 30px;
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1080px) {
         padding-left: 0px;
         padding-top: 10px;
         font-size: 18px;
@@ -174,7 +184,7 @@
     color: #f8ce5b;
     font-size: 16px;
     font-weight: 500;
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1080px) {
         padding-left: 5px;
         font-size: 17px;
     }
@@ -183,7 +193,7 @@
 .time-location-img {
     width: 20px;
     height: 20px;
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1080px) {
         margin-left: 5px;
         width: 30px;
         height: 30px;
@@ -197,16 +207,15 @@
     height: 24px;
     background-color: white;
     border-radius: 16px;
-    margin-left: 300px;
     display: flex;
     align-items: center;
     /* 垂直居中 */
 
-    @media only screen and (min-width: 900px) and (max-width: 1580px) {
+    @media only screen and (min-width: 1080px) and (max-width: 1580px) {
         margin-left: 60px;
     }
 
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1080px) {
         margin-top:10px;
         margin-left: 0px;
         width: 220px;
@@ -214,12 +223,17 @@
         border-radius: 12px;
     }
 }
-
+.center {
+  flex: 1;
+  @media only screen and (max-width: 1080px) {
+        display: none;
+    }
+}
 .unit-name {
     padding-left: 30px;
     font-size: 12px;
     color: black;
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1080px) {
         margin-top:5px;
         padding-left:0px;
         font-size:16px
@@ -231,7 +245,7 @@
     margin-right: 15px;
     font-size: 15px;
     font-weight: 600;
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1080px) {
         padding-top: 20px;
         font-size:20px
     }
@@ -240,13 +254,15 @@
     color: #495bb5;
     font-size: 15px;
     font-weight: 600;
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1080px) {
         padding-top: 20px;
-        font-size:20px
+        font-size:20px;
+        margin:0 auto;
     }
 }
 
 .result-Page-unit {
+    padding-right: 20px;
     padding-left: 40px;
     color: rgb(98, 97, 97);
     background-color: #dee2ff;
@@ -263,11 +279,12 @@
         1px 4px 7px rgba(0, 0, 0, 0.1);
     ;
 
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1080px) {
         flex-direction: column;
-        padding-left:0px;
+        padding-left:20px;
         height: 170px;
         margin-top:40px
     }
 }
+
 </style>
