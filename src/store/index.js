@@ -7,7 +7,7 @@ const store = createStore({
             
             watermark: true,
             user_name: '测试用户1',
-            phone: '18148764734',
+            phone: '',
             name:'阿白',
             sex:'',
             yangli:'',

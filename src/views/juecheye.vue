@@ -84,7 +84,7 @@ const conditions = ref(
         historyType: '',
         page: '1',
         pageSize: '9',
-        phone: '18148764734',
+        phone: '',
         userName: '',
     }
 );
@@ -96,6 +96,7 @@ const search = () => {
     if(!conditions.value.historyTime.startsWith('公元')){
         conditions.value.historyTime='公元'+conditions.value.historyTime
     }
+    conditions.value.phone=store.state.phone;
     getpage(conditions.value).then((res) => {
             if (res.data.code == '0') {
                 res.data.data.records.forEach(element => {

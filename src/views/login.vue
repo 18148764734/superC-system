@@ -116,6 +116,7 @@ const open = (data) => {
 	})
 	store.state.user_name = data.username;
 	store.state.phone = data.phone;
+	console.log(store.state.phone)
 }
 const fail = (data) => {
 	ElNotification.warning({
