@@ -20,7 +20,8 @@
                       <br>
 
                       <input class="input is-info" type="text" id="OriName" name="OriName" 
-                      placeholder="请输入您的姓名" maxlength="6" v-model="name" size="20">
+                      placeholder="请输入您的姓名" v-model="data.oriName"
+                      maxlength="6" size="20">
                 </p>
                 
                  <p>
@@ -252,6 +253,8 @@ const data = ref(
   //   boku_direction_wan:"请选择",
   //   boku_direction_home:"请选择",
   //   boku_direction_work:"请选择",
+    // oriName:store.state.user_name,
+    // phone:store.state.phone,
 	// }
   {
 		sex:"1",
@@ -268,6 +271,8 @@ const data = ref(
     boku_direction_wan:"甲",
     boku_direction_home:"甲",
     boku_direction_work:"甲",
+    oriName:'',
+    phone:store.state.phone,
 	}
   )
 const bazi_data = ref({

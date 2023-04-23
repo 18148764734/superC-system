@@ -205,7 +205,7 @@ const submit = ()  =>{
     shi:'',
     boku_direction_home:'',
     boku_direction_wan:'',
-    boku_direction_ancestors:''
+    boku_direction_ancestors:'',
     // daYunIndex: 9,
     // sex: '0',
 		// nian: '2001',
@@ -215,6 +215,8 @@ const submit = ()  =>{
     // boku_direction_home:'甲',
     // boku_direction_wan:'甲',
     // boku_direction_ancestors:'甲'
+    oriName:store.state.user_name,
+    phone:store.state.phone,
   }
 
   )

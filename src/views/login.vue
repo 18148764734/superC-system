@@ -109,12 +109,13 @@ import store from "../store/index.js";
 const open = (data) => {
 	ElNotification.success({
 		title: '登录成功！',
-		message: data + '，你好，欢迎回来',
+		message: data.username + '，你好，欢迎回来',
 		showClose: false,
 		duration: 5000,
 		type: 'success',
 	})
-	store.state.user_name = data;
+	store.state.user_name = data.username;
+	store.state.phone = data.phone;
 }
 const fail = (data) => {
 	ElNotification.warning({
@@ -211,7 +212,7 @@ const submint = () => {
 					Cookies.set('token', res.data.data)
 					Cookies.set('username', res.data.username)
 					// Cookies.set('userdata',JSON.stringify(res.data.data))
-					open(res.data.username);
+					open(res.data);
 					store.dispatch('loginok', res.data.data)
 					console.log(store.state)
 					router.push('/main')
