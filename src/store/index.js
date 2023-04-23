@@ -12,6 +12,7 @@ const store = createStore({
             sex:'',
             yangli:'',
             yingli:'',
+            time:'',
             bazi:{
                 nianZhu:'',
                 yueZhu:'',

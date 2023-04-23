@@ -40,6 +40,7 @@ const handleCheck = () => {
                 
                 store.state.result=res.data.data;
                 console.log(store.state.result);
+                store.state.name=props.data.userName;
                 router.push({name:"result",params:{}});
                 
             }
