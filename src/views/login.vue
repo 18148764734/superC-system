@@ -1,4 +1,5 @@
 <template>
+	
 	<div class="login-center-wrap">
 		<div style="margin-bottom:24px" class="
 				  column

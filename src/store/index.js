@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-
+const now = new Date();
 const store = createStore({
     state() {
         return {
@@ -22,7 +22,7 @@ const store = createStore({
             dayunTime:'',
             token : '',
             result: {
-
+                decisionTime:'',
                 partOne: {
                     title: "第一部分：基础信息",
                     qianYan: "",

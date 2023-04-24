@@ -310,26 +310,25 @@ const submit = async ()  =>{
 					alert('决策成功');
           router.push({name:"result",params:{}});
           store.state.result=res.data.data;
-          store.state.name=data.value.name;
+          store.state.name=data.value.oriName;
           store.state.sex=data.value.sex;
-          store.state.name=name.value;
 
           bazi_data.value.nian= data.value.nian;
-        bazi_data.value.yue= data.value.yue;
-        bazi_data.value.ri= data.value.ri;
-        bazi_data.value.shi= data.value.shi;
-        getbazi(bazi_data.value).then((res)=>{
-		
-				if(res.data.code == '0'){
-          store.state.bazi.nianZhu = res.data.data.nianZhu
-          store.state.bazi.yueZhu = res.data.data.yueZhu
-          store.state.bazi.riZhu = res.data.data.riZhu
-          store.state.bazi.shiZhu = res.data.data.shiZhu
+          bazi_data.value.yue= data.value.yue;
+          bazi_data.value.ri= data.value.ri;
+          bazi_data.value.shi= data.value.shi;
+          getbazi(bazi_data.value).then((res)=>{
+      
+          if(res.data.code == '0'){
+            store.state.bazi.nianZhu = res.data.data.nianZhu
+            store.state.bazi.yueZhu = res.data.data.yueZhu
+            store.state.bazi.riZhu = res.data.data.riZhu
+            store.state.bazi.shiZhu = res.data.data.shiZhu
 
-				}else{
-					alert(res.data.msg)
+          }else{
+            alert(res.data.msg)
 
-				}
+          }
 				
 			})
           

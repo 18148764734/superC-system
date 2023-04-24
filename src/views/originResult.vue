@@ -15,10 +15,7 @@
                     <div class="layout_creator">预测专家: {{
                         store.state.user_name }}</div>
                     <div class="layout_time">
-                        公元
-                        {{ new Date().getFullYear() }}年
-                        {{ new Date().getMonth() }}月
-                        {{ new Date().getDate() }}日
+                        {{store.state.result.decisionTime}}
                     </div>
                     <br><br>
 
@@ -307,8 +304,6 @@ const { watermark } = getmark();
     
 
 onMounted(() => {
-    
-    
     // 将年月日时分秒按照指定格式拼接为字符串
     store.state.watermark = false;
     watermark( "时 空 坐 标 原 命 局 决 策 系 统 出 品" ,"originresultPage1",1 );//水印名

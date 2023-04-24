@@ -143,12 +143,9 @@ let g_time = reactive({
 // 点击事件触发emit，去调用我们注册的自定义事件getValue,并传递value参数至父组件
 const transValue = () => {
     emit("getValue", y_time);
-    console.log(y_time);
-    console.log('--------------------------------------------------------');
-    console.log(g_time);
 
-    store.state.yingli=y_time.year+'年' + y_time.month + '月' + y_time.day + '日'+ y_time.time + '时'
-    store.state.yangli=g_time.year+'年' + g_time.month + '月' + g_time.day + '日'+ y_time.time + '时'
+    store.state.yingli=y_time.year+'年' + y_time.month + '月' + y_time.day + '日'
+    store.state.yangli=g_time.year+'年' + g_time.month + '月' + g_time.day + '日'
 }
 let y_time = reactive({
     year: "请选择",

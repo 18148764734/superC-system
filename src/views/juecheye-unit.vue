@@ -35,12 +35,13 @@ props.data.historyType=='大运报告'?'#ffe6de':
 '#defff7';
 
 const handleCheck = () => {
-    console.log(props.data.historyId);
     getId(props.data.historyId).then((res) => {
                 
                 store.state.result=res.data.data;
-                console.log(store.state.result);
+                store.state.time = res.data.data.decisionTime;
+                
                 store.state.name=props.data.userName;
+                console.log(store.state.name);
                 router.push({name:"result",params:{}});
                 
             }

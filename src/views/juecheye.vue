@@ -10,10 +10,17 @@
     </div>
     <br>
     <div class="search">
+        <img src="../assets/img/juecheye/left.png" class="clear" @click="clearSearch" v-bind:title="'显示所有'">
         
         <span class="date-select">
             <el-config-provider :locale="locale">
-                <el-date-picker v-model="conditions.historyTime" type="date" format="YYYY年MM月DD日" value-format="YYYY年MM月DD日" placeholder="请选择决策日期" />
+                <el-date-picker v-model="conditions.historyTime" type="date" format="YYYY年MM月DD日" value-format="YYYY年MM月DD日" placeholder="请选择决策日期" >
+                    <template #default="cell">
+                        <div class="cell" :class="{ current: cell.isCurrent }">
+                        <span class="text1">{{ cell.text }}</span>
+                        </div>
+                    </template>
+                </el-date-picker>
             </el-config-provider>
 
             <span class="search-calender-search-img">
@@ -34,14 +41,16 @@
     </div>
     <div class="result-Page">
         <unit v-for="item in data.records" :data="item"></unit>
-
-        <div class="page">
-            <img src="../assets/img/juecheye/left.png" class="time-location-img" @click="currentPage>1?searchPage(--currentPage):0">
-            <span class='page-num' v-for="page in pagearr" @click="searchPage(page)">
-                {{ page }}
-            </span>
-            <img src="../assets/img/juecheye/right.png" class="time-location-img" style="margin-left: 15px;" @click="currentPage<pagearr.length?searchPage(++currentPage):0">
+        <div class="page-container">
+            <div class="page">
+                <img src="../assets/img/juecheye/left.png" class="time-location-img" @click="currentPage>1?searchPage(--currentPage):0">
+                <span class='page-num' v-for="page in pagearr" @click="searchPage(page)">
+                    {{ page }}
+                </span>
+                <img src="../assets/img/juecheye/right.png" class="time-location-img" style="margin-left: 15px;" @click="currentPage<pagearr.length?searchPage(++currentPage):0">
+            </div>
         </div>
+        
     </div>
     <br>
 </template>
@@ -126,10 +135,36 @@ const searchPage = (num) => {
     search();
   };
 
+const clearSearch = () => {
+    conditions.value.historyTime='';
+    conditions.value.userName='';
+    conditions.value.historyType='';
+    conditions.value.page='1';
+    conditions.value.historyType='';
+    search();
+  };
+
 
 </script>
 
 <style scoped>
+.clear{
+    height: 30px;
+}
+.page-container{
+    display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+}
+.page {
+    padding-top: 40px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+
+    /* 垂直居中 */
+    @media only screen and (max-width: 1110px) {}
+}
 .time-location-img {
     width: 20px;
     height: 20px;
@@ -148,17 +183,7 @@ const searchPage = (num) => {
     color: #848484;
 }
 
-.page {
-    padding-top: 40px;
-    width: 60px;
-    height: 30px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
 
-    /* 垂直居中 */
-    @media only screen and (max-width: 1110px) {}
-}
 
 .result-Page {
     padding-top: 10px;
@@ -252,7 +277,6 @@ const searchPage = (num) => {
     width: 690px;
     margin: 0 auto;
     display: flex;
-    align-items: center;
 
     /* 垂直居中 */
     @media only screen and (max-width: 1110px) {
