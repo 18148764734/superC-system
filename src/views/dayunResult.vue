@@ -340,8 +340,6 @@
         <br><br>
         <br><br>
 
-        <br><br><br><br>
-        <div id="footer">第<span id="page-num">1</span>页</div>
     </div>
     
 </template>

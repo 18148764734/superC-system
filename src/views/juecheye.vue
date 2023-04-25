@@ -10,23 +10,27 @@
     </div>
     <br>
     <div class="search">
-        <img src="../assets/img/juecheye/left.png" class="clear" @click="clearSearch" v-bind:title="'显示所有'">
+        <span class="back-and-date">
+            <img src="../assets/img/juecheye/left.png" class="clear" @click="clearSearch" v-bind:title="'显示所有'">
         
-        <span class="date-select">
-            <el-config-provider :locale="locale">
-                <el-date-picker v-model="conditions.historyTime" type="date" format="YYYY年MM月DD日" value-format="YYYY年MM月DD日" placeholder="请选择决策日期" >
-                    <template #default="cell">
-                        <div class="cell" :class="{ current: cell.isCurrent }">
-                        <span class="text1">{{ cell.text }}</span>
-                        </div>
-                    </template>
-                </el-date-picker>
-            </el-config-provider>
+            <span class="date-select">
+                <el-config-provider :locale="locale">
+                    <el-date-picker popper-class="elDatePicker" v-model="conditions.historyTime" type="date" format="YYYY年MM月DD日" value-format="YYYY年MM月DD日" placeholder="请选择决策日期" >
+                        <template #default="cell">
+                            <div class="cell" :class="{ current: cell.isCurrent }">
+                            <span class="text1">{{ cell.text }}</span>
+                            </div>
+                        </template>
+                    </el-date-picker>
+                </el-config-provider>
 
-            <span class="search-calender-search-img">
-                <img src="../assets/img/juecheye/search.png" style="width: 22px;height: 22px;" @click="search">
+                <span class="search-calender-search-img">
+                    <img src="../assets/img/juecheye/search.png" style="width: 22px;height: 22px;" @click="search">
+                </span>
             </span>
         </span>
+            
+        
         <span class="search-search-byname">
             
             <input class="search-byname-font" type="text" placeholder="请输入被预测者姓名查询报告&nbsp;例:周星驰" v-model="conditions.userName">
@@ -53,6 +57,9 @@
         
     </div>
     <br>
+    <a-locale-provider :locale="zhCN">
+    <a-date-picker/>
+    </a-locale-provider>
 </template>
 
 <script setup lang="ts">
@@ -61,6 +68,17 @@ import unit from './juecheye-unit.vue'
 import zhCn from "element-plus/lib/locale/lang/zh-cn";
 import { getpage } from '../axios/OriginApi.js'
 import store from "../store/index.js";
+import { DatePicker } from 'ant-design-vue';
+import zhCN from 'ant-design-vue/es/locale/zh_CN'; // 导入中文语言包
+import 'ant-design-vue/dist/antd.css'
+
+// 将 DatePicker 组件定义为局部组件
+const components = {
+  'a-date-picker': DatePicker
+};
+
+
+
 const pagearr = ref([1]);
 let locale = zhCn;
 const currentPage = ref(1);
@@ -89,7 +107,7 @@ const data = ref({
 });
 const conditions = ref(
     {
-        historyTime: '公元2023年04月21日',
+        historyTime: '',
         historyType: '',
         page: '1',
         pageSize: '9',
@@ -148,6 +166,38 @@ const clearSearch = () => {
 </script>
 
 <style scoped>
+:deep(.el-date-table th) {
+    padding-left: 13px;
+    color: var(--el-datepicker-header-text-color);
+    font-weight: 400;
+    border-bottom: solid 1px var(--el-border-color-lighter);
+}
+.cell {
+  height: 30px;
+  width: 30px;
+  padding: 3px 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.cell .text1 {
+  height: 24px;
+  display: block;
+  margin: 0 auto;
+  line-height: 24px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
+.back-and-date{
+    display: flex;
+    flex-direction: row;
+    width: 250px;
+    @media only screen and (max-width: 1110px) {
+        margin: 0 auto;
+        width: 250px;
+    }
+}
 .clear{
     height: 30px;
 }
@@ -281,7 +331,7 @@ const clearSearch = () => {
     /* 垂直居中 */
     @media only screen and (max-width: 1110px) {
         flex-direction: column;
-        width: 360px;
+        width: 470px;
     }
 }
 
