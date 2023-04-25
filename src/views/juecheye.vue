@@ -57,9 +57,6 @@
         
     </div>
     <br>
-    <a-locale-provider :locale="zhCN">
-    <a-date-picker/>
-    </a-locale-provider>
 </template>
 
 <script setup lang="ts">
@@ -68,14 +65,7 @@ import unit from './juecheye-unit.vue'
 import zhCn from "element-plus/lib/locale/lang/zh-cn";
 import { getpage } from '../axios/OriginApi.js'
 import store from "../store/index.js";
-import { DatePicker } from 'ant-design-vue';
-import zhCN from 'ant-design-vue/es/locale/zh_CN'; // 导入中文语言包
-import 'ant-design-vue/dist/antd.css'
 
-// 将 DatePicker 组件定义为局部组件
-const components = {
-  'a-date-picker': DatePicker
-};
 
 
 
