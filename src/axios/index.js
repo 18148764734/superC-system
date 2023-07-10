@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ElMessage,ElLoading,ElNotification  } from 'element-plus'
 import Cookies from 'js-cookie'
 const service = axios.create({
-    baseURL:' http://chino.5gzvip.91tunnel.com'
+    baseURL:'https://tbbmvo.39nat.com'
 })
 
 let loading ;
@@ -12,13 +12,13 @@ service.interceptors.request.use(function (config) {
     let token = Cookies.get('token')
 
     if(token){
-      config.headers['token'] = token
+      config.headers['token'] = token;
     }
-    loading = ElLoading.service({
-      lock: true,
-      text: 'Loading',
-      background: 'rgba(0, 0, 0, 0.7)',
-    })
+    // loading = ElLoading.service({
+    //   lock: false,
+    //   text: 'Loading',
+    //   background: 'rgba(0, 0, 0, 0)',
+    // })
     return config;
   }, function (error) {
     // 对请求错误做些什么
@@ -30,10 +30,10 @@ service.interceptors.response.use(function (response) {
   
     // 2xx 范围内的状态码都会触发该函数。
     // 对响应数据做点什么
-    loading.close()
+    // loading.close()
     return response;
   }, function (error) {
-    loading.close()
+    // loading.close()
     // 超出 2xx 范围的状态码都会触发该函数。
     // 对响应错误做点什么
     ElNotification({

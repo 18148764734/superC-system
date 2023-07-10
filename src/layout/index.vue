@@ -160,7 +160,9 @@
 					<div class="navbar-end">
 						<div class="navbar-item has-dropdown is-right is-hoverable">
 							<a class="navbar-link">
-								个人中心
+								<router-link to="/personalIndex">
+									个人中心
+								</router-link>
 							</a>
 
 							<div class="navbar-dropdown is-right">

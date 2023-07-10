@@ -102,7 +102,7 @@ const routes = [{
         {
             path: 'result',
             name: 'result',
-            component: () => import("../views/originResult.vue"),
+            component: () => import( /* webpackChunkName: "quotation" */ "../views/originResult.vue"),
             beforeEnter: (to, from, next) => {
                 if (store.state.token) {
                     window.scrollTo(0, 0);
@@ -130,6 +130,94 @@ const routes = [{
                 window.scrollTo(0, 0);
                 next();
             }
+        },
+        {
+            path: 'personalIndex',
+            name: 'personalIndex',
+            component: () => import("../views/personalPage/index.vue"),
+            redirect: '/accountMessage',
+            children:[
+                {
+                    path: '/accountMessage',
+                    name: 'accountMessage',
+                    component: () => import("../views/personalPage/sonpage/accountMessage.vue"),
+                    redirect: '/index',
+                    children:[
+                        {
+                            path: '/repswd',
+                            name: 'repswd',
+                            component: () => import("../views/personalPage/sonpage/accountMessagePage/repswd.vue"),
+                            meta: {
+                                title: '重置密码'
+                            }
+                        },
+                        {
+                            path: '/updateAddress/:id/:exist',
+                            name: 'updateAddress',
+                            component: () => import("../views/personalPage/sonpage/accountMessagePage/updateAddress.vue"),
+                            meta: {
+                                title: '编辑地址信息'
+                            }
+                        },
+                        {
+                            path: '/rephone',
+                            name: 'rephone',
+                            component: () => import("../views/personalPage/sonpage/accountMessagePage/restphone.vue"),
+                            meta: {
+                                title: '重置手机号'
+                            }
+                        },
+                        {
+                            path: '/index',
+                            name: 'index',
+                            component: () => import("../views/personalPage/sonpage/accountMessagePage/index.vue"),
+                            meta: {
+                                title: '个人信息界面首页'
+                            }
+                        },
+                    ]
+                },
+                {
+                    path: '/account_logout',
+                    name: 'account_logout',
+                    component: () => import("../views/personalPage/sonpage/accountMessagePage/logout.vue"),
+                },
+                {
+                    path: '/account_logout2',
+                    name: 'account_logout2',
+                    component: () => import("../views/personalPage/sonpage/accountMessagePage/logout2.vue"),
+                },
+                {
+                    path: '/bills',
+                    name: 'bills',
+                    component: () => import("../views/personalPage/sonpage/bills.vue"),
+                },
+                {
+                    path: '/help',
+                    name: 'help',
+                    component: () => import("../views/personalPage/sonpage/help.vue"),
+                },
+                {
+                    path: '/identify',
+                    name: 'identify',
+                    component: () => import("../views/personalPage/sonpage/identify.vue"),
+                },
+                {
+                    path: '/identifyQuery',
+                    name: 'identifyQuery',
+                    component: () => import("../views/personalPage/sonpage/identifyQuery.vue")
+                },
+                {
+                    path: '/myEmail',
+                    name: 'myEmail',
+                    component: () => import("../views/personalPage/sonpage/myEmail.vue"),
+                },
+                {
+                    path: '/VIP',
+                    name: 'VIP',
+                    component: () => import("../views/personalPage/sonpage/VIP.vue"),
+                },
+            ]
         },
 
 

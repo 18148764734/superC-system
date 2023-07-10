@@ -3,8 +3,8 @@ const now = new Date();
 const store = createStore({
     state() {
         return {
+            showGetVIP : false,
             pdf: false,
-            
             watermark: true,
             user_name: '测试用户1',
             phone: '',

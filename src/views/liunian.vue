@@ -78,59 +78,6 @@
       </p>
       <br>
 
-      <!-- <p>
-  <span style="color: red;" >*</span>&nbsp;
-  <span>在母亲那边祖坟的什么方向居住工作（学习）：</span>
- <br>
-
-  <select name="qiqi_direction" id="qiqidirection" v-model="data.haha_direction"
-  style="font-size: 10px;"
-                >
-    <option selected>请选择</option>
-    <option v-for="item in tiemarr" :key="item.id" :value="item.title">{{item.title}}</option>
-  </select>
-</p>
-<p>
-  <span style="color: red;" >*</span>&nbsp;
-  <span>在父亲居住地的什么方向居住工作（学习）：</span>
- <br>
-  <select name="qiqi_direction" id="qiqidirection" v-model="data.qiqi_direction_home"
-  style="font-size: 10px;" placeholder="请选择"
-                >
-    <option selected>请选择</option>
-    <option v-for="item in tiemarr" :key="item.id" :value="item.title">{{item.title}}</option>
-  </select>
-</p>
-<p>
-  <span style="color: red;" >*</span>&nbsp;
-  <span>在母亲居住地的什么方向居住工作（学习）：</span>
- <br>
-  <select name="qiqi_direction" id="qiqidirection" v-model="data.haha_direction_home">
-    <option value="default">请选择</option>
-    <option v-for="item in tiemarr" :key="item.id" :value="item.title">{{item.title}}</option>
-
-  </select>
-</p>
-<p>
-  <span style="color: red;" >*</span>&nbsp;
-  <span>在自己居住点的什么方向工作（学习）：</span>
-  <br>
-  <select name="qiqi_direction" id="qiqidirection" v-model="data.boku_direction_home">
-    <option value="default">请选择</option>
-    <option v-for="item in tiemarr" :key="item.id" :value="item.title">{{item.title}}</option>
-
-  </select>
-</p>
-<p>
-  <span style="color: red;" >*</span>&nbsp;
-  <span>常去自己居住点的什么方向休闲娱乐：</span>
-  <br>
-  <select name="qiqi_direction" id="qiqidirection" v-model="data.boku_direction_wan">
-    <option value="default">请选择</option>
-    <option v-for="item in tiemarr" :key="item.id" :value="item.title">{{item.title}}</option>
- 
-  </select>
-</p> -->
 
 <p class="help is-info is-marginless"
 style="padding-bottom: 10px;">

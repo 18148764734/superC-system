@@ -85,7 +85,7 @@ import {ref,onMounted} from 'vue'
 import { ElMessage,ElLoading } from 'element-plus'
 import {GetCode,resetpassword} from '../axios/api.js'
 import {useRouter,onBeforeRouteLeave } from 'vue-router'
-    const steps = ref('1') 
+    const steps = ref('5') 
     const phone = ref('') 
     const code = ref('') 
     const pwd = ref('') 
@@ -113,10 +113,11 @@ import {useRouter,onBeforeRouteLeave } from 'vue-router'
                     ElMessage.error('两次输入的密码不同')
                     
                 }else{
-                  resetpassword({"phone":phone.value,"code":code.value,"password":pwds.value}).then((res)=>{
+                  resetpassword({phone:phone.value,code:code.value,password:pwds.value}).then((res)=>{
+					  console.log(res);
                     if(res.data.code == '0'){
-                        ElMessage.success('修改成功')
-                        router.push('/login')
+                        ElMessage.success('修改成功');
+                        router.push('/login');
                     }else{
                         ElMessage.error(res.data.msg)
                     }

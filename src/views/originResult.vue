@@ -297,8 +297,8 @@ import { computed, ref, watch, reactive } from 'vue'
 import MyItem from './MyItem.vue'
 import { toRefs } from 'vue'
 import store from "../store/index.js";
-import { getmark } from "../util/watermark";
 import { onMounted } from 'vue';
+import { getmark } from "../util/watermark";
 
 const { watermark } = getmark();
     

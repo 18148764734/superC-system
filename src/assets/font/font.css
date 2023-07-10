@@ -13,3 +13,18 @@
     /* 重命名字体名 */
     src: url('SHHT_Heavy.otf');
 }
+@font-face {
+    font-family: 'heavy';
+    /* 重命名字体名 */
+    src: url('SHHT_Heavy.otf');
+}
+@font-face {
+    font-family: 'medium';
+    /* 重命名字体名 */
+    src: url('SYHT_medium.otf');
+}
+@font-face {
+    font-family: 'alimama';
+    /* 重命名字体名 */
+    src: url('alimama.ttf');
+}
