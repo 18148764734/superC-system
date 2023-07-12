@@ -13,7 +13,6 @@ const props = defineProps(["bill"]);
       </template>
       <span class="bill-content">
         <div class="content-line">
-            <a href="" class="content-a">取消订单</a>
         </div>
         <div class="content-line">
           <span class="content-title">产品名称:</span>
@@ -29,7 +28,6 @@ const props = defineProps(["bill"]);
           <span class="content-title">支付方式:</span>
           <span class="content-value" style="color:#4d65b9;width: 200px;">
             {{ bill.payMethodType }}
-            <a class="content-a" style="margin-left: 10px;"> 点击更换支付方式</a>
         </span>
         </div>
         <div class="content-line">
@@ -39,6 +37,7 @@ const props = defineProps(["bill"]);
           <span class="content-title">购买天数:</span>
           <span class="content-value">{{ bill.dayTimeType }}</span>
         </div>
+        <a class="continueVIP">续费会员</a>
       </span>
     </el-collapse-item>
   </div>
@@ -57,6 +56,11 @@ const props = defineProps(["bill"]);
   font-family: medium;
   width: 800px;
   .bill-content {
+    .continueVIP{
+      position: absolute;
+      right: 70px;
+      color: #4b63b8;
+    }
     .content-line {
       flex-basis: 100%; /* 独占一行 */
       line-height: 30px;

@@ -11,7 +11,7 @@
         </div>
       </el-header>
       <el-main class="bills-list">
-        <el-collapse style="height: 550px">
+        <el-collapse style="height: 780px">
           <billsUnit
             v-for="bill in billsList"
             :key="bill.orderId"
@@ -19,6 +19,9 @@
           />
         </el-collapse>
       </el-main>
+      <div class="bottom">
+        
+      </div>
     </el-container>
   </div>
 </template>
@@ -30,7 +33,7 @@ import billsUnit from "./bills-unit.vue";
 const billsList = ref();
 const billsCondition = reactive({
   pageNum: 1,
-  phone: 18148764734,
+  phone: localStorage.getItem("superUserPhone"),
   pageSize: 10,
 });
 onMounted(async () => {
@@ -66,7 +69,14 @@ onMounted(async () => {
       font-family: medium;
     }
   }
-
+  .bottom {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+  }
   .bills-list {
     /* 隐藏默认滚动栏 */
     scrollbar-width: none;

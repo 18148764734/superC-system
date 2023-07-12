@@ -1,5 +1,5 @@
 <template>
-    <div class='myContainer'>
+    <div class='myContainer' @click="goto('/identify')">
         <div class="unit">
             <img src="./../../../assets/img/identify/unit-icon.png" alt="">
             <font class="blue">{{ data.whatDo }} </font>
@@ -10,6 +10,9 @@
 
 <script setup>
 import { identifyQuery } from "../../../axios/api"
+
+let router = useRouter();
+const goto = (path) => router.push(path);
 const data = ref(
     {
         whatDo:'',
@@ -31,6 +34,7 @@ const data = ref(
 </script>
 <style lang="scss" scoped>
     .myContainer {
+        cursor: pointer;
         display: flex;
         justify-content: center;
         align-items:flex-start;

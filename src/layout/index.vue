@@ -171,6 +171,9 @@
 										决策结果
 									</a>
 								</router-link>
+									<router-link class="navbar-item" to="/calendar">
+									复圆日历
+								</router-link>
 								<a class="navbar-item " href="https://www.baidu.com">
 									个人档案
 								</a>

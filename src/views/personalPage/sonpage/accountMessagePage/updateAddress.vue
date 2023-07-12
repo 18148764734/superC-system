@@ -1,7 +1,8 @@
 <template>
     <div class="myContainer">
-        <img class="back" src="./../../../../assets/img/personalPage/accountMessage/login_out/back.png" @click="goto('/accountMessage')">
-            
+        <img class="back" src="./../../../../assets/img/personalPage/accountMessage/login_out/back.png"
+            @click="goto('/accountMessage')">
+
         <div class="top">
             <img src="./../../../../assets/img/personalPage/accountMessage/address.png">
             编辑收货地址
@@ -15,14 +16,14 @@
             <FormItem class="region" label="手机号码" name="addressPhone" :rules="[{ required: true, message: '请输入手机号码!' }]">
                 <Input v-model:value="formState.addressPhone" />
             </FormItem>
-            <FormItem class="region" label="邮政编码" name="postalCode" :rules="[{ required: true, message: '请输入正确的邮政编码!' }]">
+            <FormItem class="region" label="邮政编码" name="postalCode" :rules="[{ required: false, message: '请输入正确的邮政编码!' }]">
                 <Input v-model:value="formState.postalCode" />
             </FormItem>
             <FormItem class="region" label="选择区域" name="area" :rules="[{ required: true, message: '请输入地区!' }]">
                 <Cascader v-model:value="formState.area" placeholder="Please select" size="large" :options="options" />
             </FormItem>
 
-            <FormItem  class="region" label="详细地址" name="specificAddress" :rules="[{ required: true, message: '请输入详细地址!' }]">
+            <FormItem class="region" label="详细地址" name="specificAddress" :rules="[{ required: true, message: '请输入详细地址!' }]">
                 <Textarea v-model:value="formState.specificAddress" />
             </FormItem>
 
@@ -33,15 +34,15 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { onMounted, reactive,ref } from 'vue';
-import { Button, Input,Textarea, InputPassword, Form, FormItem,Cascader,message } from 'ant-design-vue'
-import  options  from '../../../../util/address'
-import { useRoute,useRouter } from 'vue-router'
+import { onMounted, reactive, ref } from 'vue';
+import { Button, Input, Textarea, InputPassword, Form, FormItem, Cascader, message } from 'ant-design-vue'
+import options from '../../../../util/address'
+import { useRoute, useRouter } from 'vue-router'
 import type { CascaderProps } from 'ant-design-vue';
 import { insertAddress, updateAddress } from '../../../../axios/api';
 const route = useRoute();
 let router = useRouter();
-const goto = (path:String) => router.push(path);
+const goto = (path: String) => router.push(path);
 interface FormState {
     consigneeName: string;
     addressPhone: string;
@@ -51,42 +52,8 @@ interface FormState {
     userId: string;
 }
 
-const options1: CascaderProps['options'] = [
-    {
-        value: 'zhejiang',
-        label: 'Zhejiang',
-        children: [
-            {
-                value: 'hangzhou',
-                label: 'Hangzhou',
-                children: [
-                    {
-                        value: 'xihu',
-                        label: 'West Lake',
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        value: 'jiangsu',
-        label: 'Jiangsu',
-        children: [
-            {
-                value: 'nanjing',
-                label: 'Nanjing',
-                children: [
-                    {
-                        value: 'zhonghuamen',
-                        label: 'Zhong Hua Men',
-                    },
-                ],
-            },
-        ],
-    },
-];
-const isNull = ref(route.params.exist==''||route.params.exist==null)
-onMounted(async ()=>{
+const isNull = ref(route.params.exist == '' || route.params.exist == null)
+onMounted(async () => {
     console.log(isNull.value);
 })
 const value = ref<string[]>([]);
@@ -99,19 +66,20 @@ const formState = reactive<FormState>({
     userId: route.params.id,
 });
 const onFinish = async (values: any) => {
-    if(Array.isArray(formState.area))
-    formState.area = formState.area.join(' / ');
+    if (Array.isArray(formState.area))
+        formState.area = formState.area.join(' / ');
 
     const res = ref();
-    if(isNull.value)
-    {res.value = await insertAddress(formState);}
-    else
-    {res.value = await updateAddress(formState);}
+    if (isNull.value) { res.value = await insertAddress(formState); }
+    else { res.value = await updateAddress(formState); }
     console.log(res.value.data.code);
-    
-    if(res.value.data.code==0){
-        message.success('更新成功');
-    }else{
+
+    if (res.value.data.code == 0) {
+        message.success('更新成功,2s后返回个人中心');
+        setTimeout(()=>{
+            goto("/index");
+        },2000)
+    } else {
         message.error(res.value.data.msg);
     }
     console.log(res.value);
@@ -126,42 +94,46 @@ const onFinishFailed = (errorInfo: any) => {
 
 <style lang="scss" scoped>
 .myContainer {
-        .back{
-            position: absolute;
-            left: 5%;
-            top: 5%;
-        }
-        .top{
-            font-family: 'alimama';
-            margin-bottom: 200px;
-            font-size: 25px;
-            color: #73c4ff;
-            font-weight:bolder;
-        }
-        FormItem{
-            width: 100px;
-        }
-        .region{
-            width: 500px;
-            margin-right: 100px;
-            margin-bottom: 40px;
-        }
-        .submit{
-            color: white;
-            background: #ff9393;
-            width: 100px;
-            height: 50px;
-            font-size: 18px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 30px;
-        }
+    .back {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+    }
+
+    .top {
+        font-family: 'alimama';
+        margin-bottom: 200px;
+        font-size: 25px;
+        color: #73c4ff;
+        font-weight: bolder;
+    }
+
+    FormItem {
+        width: 100px;
+    }
+
+    .region {
+        width: 500px;
+        margin-right: 100px;
+        margin-bottom: 40px;
+    }
+
+    .submit {
+        color: white;
+        background: #ff9393;
+        width: 100px;
+        height: 50px;
+        font-size: 18px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+    }
+
     position: relative;
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-</style>
+}</style>

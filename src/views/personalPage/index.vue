@@ -53,7 +53,7 @@
               <img :src="isActiveImg('/bills')">
               订单记录
             </div>
-            <div class="unit" @click="goto('identify')" :style="isActive('/identify')">
+            <div class="unit" @click="goto('/identifyQuery')" :style="isActive('/identify')">
               <img :src="isActiveImg('/identify')">
               信息认证
             </div>
@@ -75,18 +75,26 @@
 <!-- 终端快捷键位CTRL + E -->
 <style lang="scss" scoped>
 @import "./../../assets/font/font.css";
-.container {
+@media screen and (max-width: 2800px) {
+  /* 在宽度大于等于1024像素时应用的样式 */
+  /* 添加你的电脑样式代码 */
+  .container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 30px;
+  margin-bottom: 30px;
+  transform: scale(0.68);
     .card {
     height: 970px;
     width: 1250px;
     background-color: white;
-    box-shadow: 0 0 30px 5px #a3dfff;
+    box-shadow: 0 0 30px 5px #dbdfff;
     border-radius: 50px;
-    border: 3px solid #2e9cfe;
+    border: 1px solid #53dff1;
+    
+    margin-left: 60px;
+    margin-right: 60px;
     display: flex;
       .left {
         width: 345px;
@@ -94,8 +102,8 @@
         padding-top: 5%;
         padding-bottom: 15%;
         background: linear-gradient(#c0fdec, #57e9f4);
-        border-top-left-radius: 47px;
         border-bottom-left-radius: 47px;
+        border-top-left-radius: 47px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -134,4 +142,6 @@
     }
     
 }
+}
+
 </style>

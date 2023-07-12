@@ -2,20 +2,23 @@
 import { ref, watchEffect, onMounted, reactive } from 'vue'
 import { getBillState, getProductList, payApi } from '../axios/api';
 import store from "./../store/index.js";
-import { QRCode,message,Modal } from 'ant-design-vue'
+import { QRCode,message,Modal } from 'ant-design-vue';
 const isVIP = ref(true);
 const backgroundSrc = ref('src/assets/img/getVIP/superC经典支付页面UI/superC支付切图/VIP会员已选择.png');
 const gotoVIP = (v) => {
   isVIP.value = v;
   if (v) backgroundSrc.value = 'src/assets/img/getVIP/superC经典支付页面UI/superC支付切图/VIP会员已选择.png'
-  else backgroundSrc.value = 'src/assets/img/getVIP/superC经典支付页面UI/superC支付切图/购买次卡（已选择）.png'
+  else {
+    backgroundSrc.value = 'src/assets/img/getVIP/superC经典支付页面UI/superC支付切图/购买次卡（已选择）.png'
+    setCurrentVIP(50,4)
+  }
 }
 const currentVIP = ref(1888);
 const displayPrice = ref(2560);
 watchEffect(() => {
   // displayPrice.value = currentVIP.value;
 
-  var targetValue = 599;
+  var targetValue = 1580;
   switch (currentVIP.value) {
     case 2588:
       targetValue = 1580;
@@ -103,7 +106,7 @@ const data = reactive(
       productId: 6,
       payMethod: 2,
       money: 0.01,
-      phone: 18148764734
+      phone: localStorage.getItem("superUserPhone")
     }
   )
 const reloadPay = async () => {
@@ -118,6 +121,7 @@ const reloadPay = async () => {
 }
 let billState = null;
 onMounted(async () => {
+  setCurrentVIP(2588,1);
   setTimeout(() => {
     showDiscount.value = true;
     // 这里设置定时器是因为。这个showDiscount是一个全屏遮罩,得等他父组件加载完再显示，不然就会位置错乱
@@ -157,6 +161,8 @@ const handleOk = (e) => {
 
 <template>
   <div class="VIP-get-container">
+    <img class="vip-close" src="./../assets/img/getVIP/superC经典支付页面UI/superC支付切图/关闭 2.png"
+      @click="store.state.showGetVIP=false">
     <div class="top">
 
       <img class="title-background" src="./../assets/img/getVIP/superC经典支付页面UI/superC支付切图/上部标题.png">
@@ -204,7 +210,7 @@ const handleOk = (e) => {
         </span>
         <span class="selected-background" :style="getVIPbackground(5160)">
           <span class="selected-text">
-            90%用户的选择
+            
           </span>
           <span class="white-card" @click="setCurrentVIP(5160,2)">
             <div class="one">个人VIP·2年卡</div>
@@ -231,7 +237,7 @@ const handleOk = (e) => {
         </span>
         <span class="selected-background" :style="getVIPbackground(2580)">
           <span class="selected-text">
-            90%用户的选择
+            
           </span>
           <span class="white-card" @click="setCurrentVIP(2580,3)">
             <div class="one">个人VIP·连续包年</div>
@@ -379,6 +385,7 @@ const handleOk = (e) => {
         </router-link>
 
       </span>
+      
     </div>
     <div class="discount-card" v-if="showDiscount">
       <img class="discount-img-close" src="./../assets/img/getVIP/superC经典支付页面UI/superC支付切图/关闭 1.png"
@@ -466,7 +473,12 @@ const handleOk = (e) => {
       color: #fff;
     }
   }
-
+  .vip-close{
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    z-index: 15;
+  }
   .VIP-content {
     top: 152px;
     position: absolute;
@@ -605,10 +617,11 @@ const handleOk = (e) => {
 
         .wx {
           width: 100px;
-          padding-top: 10px;
+          padding-top: 5px;
         }
 
         .ali {
+          // padding: 10px;
           width: 100px;
         }
 

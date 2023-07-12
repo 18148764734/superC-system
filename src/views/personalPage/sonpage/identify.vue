@@ -70,6 +70,7 @@ const handleSuccess = (res) => {
     IDcard.front = res.data.idNumberUrl;
     console.log(fileList.value[0]);
     isGreen.value = true;
+    goto("/identifyQuery");
   } else {
     message.error(res.msg);
   }
@@ -91,7 +92,7 @@ const submit = async () =>{
     return;
   }
   const res = await idCardSubmit(userdata);
-   goto('/identifyQuery');
+  goto('/identifyQuery');
   console.log(res);
 }
 </script>

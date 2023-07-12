@@ -131,6 +131,7 @@ const routes = [{
                 next();
             }
         },
+        // 个人页面
         {
             path: 'personalIndex',
             name: 'personalIndex',

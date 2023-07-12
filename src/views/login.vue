@@ -253,10 +253,14 @@ const submint = () => {
             Cookies.set("username", res.data.username);
             Cookies.set("userdata", JSON.stringify(res.data.data));
             store.dispatch("loginok", res.data.data);
-            auths({
-              newPassword: res.data.data,
-              phone: "15119380977",
-            });
+            // auths({
+            //   newPassword: res.data.data,
+            //   phone: "15119380977",
+            // });
+            localStorage.setItem("superUserPhone", res.data.phone);
+            localStorage.setItem("superUserToken", res.data.token);
+            open(res.data);
+
             router.push("/main");
           } else {
             alert(res.data.msg);
