@@ -2,11 +2,19 @@
   <div class="email-Container">
       <unit v-for="unit in emailListData.list" :key="unit.id"
       :data="unit"/>
+      <div class="bottom">
+        <img src="./../../../assets/img/personalPage/bills/上一页.png" @click="query.pageNum>1?query.pageNum--:haha()">
+        <span class="page"  v-for="(page,index) in pageArr" :key="index" @click="query.pageNum = page">
+          {{page}}
+        </span>
+        <img src="./../../../assets/img/personalPage/bills/下一页.png" @click="query.pageNum<pageArr.length?query.pageNum++:haha()">
+      </div>
   </div>
 </template>
 
 <script setup>
 import { reactive } from "vue";
+import { message } from 'ant-design-vue'
 import { getEmaiList } from "../../../axios/api";
 import unit from "./myEmail-unit.vue";
 const query = reactive(
@@ -14,6 +22,8 @@ const query = reactive(
     pageNum:1
   }
 );
+const pageArr = ref([]);
+
 const emailListData = ref(
     {
       list: []
@@ -22,16 +32,48 @@ const emailListData = ref(
   onMounted(
     async ()=>{
       const res = await getEmaiList(query);
-      console.log(res.data.data);
       emailListData.value = res.data.data;
+      pageArr.value.length = res.data.data.pages;
+      for(var i = 0; i < pageArr.value.length;i++){
+        pageArr.value[i]=i+1;
+      }
     }
   )
+  watch(
+    query,
+  async ()=>{
+    const res = await getEmaiList(query);
+    emailListData.value = res.data.data;
+  }
+)
+const haha = () => {
+  message.error("不能再翻页了！")
+}
 </script>
 
 
 <style lang="scss" scoped>
 @import "./../../../assets/font/font.css";
 .email-Container {
+  .bottom {
+    position: absolute;
+    bottom: 30px;
+    left: 60%;
+    display: flex;
+    .page{
+      color: #4b63b8;
+      font-size: 18px ;
+      font-family: "medium";
+      display: flex;
+      align-items: center;
+      margin: 5px;
+      cursor: pointer;
+    }
+    img{
+      cursor: pointer;
+
+    }
+  }
   padding: 45px;
   display: flex;
   flex-direction: column;

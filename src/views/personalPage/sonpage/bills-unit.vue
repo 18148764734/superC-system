@@ -23,7 +23,9 @@ const props = defineProps(["bill"]);
         </div>
         <div class="content-line">
           <span class="content-title">订单号码:</span>
-          <span class="content-value">{{ bill.orderId }}</span>
+          <span class="content-value" style="">
+            {{ bill.tradeNo.slice(0,23) }}
+          </span>
 
           <span class="content-title">支付方式:</span>
           <span class="content-value" style="color:#4d65b9;width: 200px;">
@@ -64,13 +66,9 @@ const props = defineProps(["bill"]);
     .content-line {
       flex-basis: 100%; /* 独占一行 */
       line-height: 30px;
-        .content-a{
-            color: red;
-            font-size: 14px;
-        }
       .content-title {
         display:inline-block;
-        width: 100px;
+        width: 90px;
       }
       .content-value{
         display:inline-block;

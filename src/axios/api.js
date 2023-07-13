@@ -1,6 +1,23 @@
 import { message } from "ant-design-vue";
 import axios from "./index";
 
+// 注销
+export const deleteUser = async (id) => {
+    try {
+        const res = await axios.delete(
+            '/api/deleteUser',
+            {
+                params: {
+                    sdid: id,
+                    phone: localStorage.getItem('superUserPhone')
+                }
+            }
+        )
+        return res;
+    } catch (e) {
+        console.log(e);
+    }
+}
 // 轮询查看支付状态
 export const getBillState = async (v) => {
     try {

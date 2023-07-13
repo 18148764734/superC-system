@@ -6,6 +6,7 @@
     <img  class = "right-top" src="./../../../assets/img/personalPage/VIP/右上角打折.png">
     <img  class = "right-bottom" src="./../../../assets/img/personalPage/VIP/右下角活动名额.png">
     <img  class = "left-top" src="./../../../assets/img/personalPage/VIP/左上决策次数.png">
+    <span class="count"> 3 </span>
     <img  class = "left-bottom" src="./../../../assets/img/personalPage/VIP/左下角实体资料打折.png">
   </div>
 </template>
@@ -25,11 +26,17 @@
     img{
       transform: scale(1.2);
     }
+    .count{
+      position: absolute;
+      top: 383px;
+      left: 177px;
+      font-family: "medium";
+      color: white;
+    }
     .title{
       position: absolute;
       left: 280px;
       top: 50px;
-      
     }
     .getVIP{
       position: absolute;
@@ -52,6 +59,7 @@
       top: 180px;
       left: 80px;
     }
+    
     .right-top{
       position: absolute;
       right: 80px;

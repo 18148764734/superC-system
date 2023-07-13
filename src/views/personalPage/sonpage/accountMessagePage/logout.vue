@@ -2,7 +2,7 @@
 	<div class="container">
 		<img class="back" src="./../../../../assets/img/personalPage/accountMessage/login_out/back.png"
 			@click="goto('/accountMessage')">
-		<img class="logout-img" src="./../../../../assets/img/personalPage/accountMessage/login_out/告别.png">
+		<img class="logout-img" src="./../../../../assets/img/personalPage/accountMessage/login_out/告别.gif">
 		<div>
 			<span class="title">真的要告别善音同学了吗？</span>
 			<br>
@@ -18,9 +18,16 @@
 <script setup>
 
 import { useRoute, useRouter } from 'vue-router'
+import { deleteUser } from '../../../../axios/api';
 const route = useRoute();
 let router = useRouter();
-const goto = (path) => router.push(path);
+const goto = async (path) => {
+	if (path == '/account_logout2') {
+		await deleteUser(route.params.id);
+	}
+	router.push(path)
+
+};
 </script>
 
 <style lang="scss" scoped>

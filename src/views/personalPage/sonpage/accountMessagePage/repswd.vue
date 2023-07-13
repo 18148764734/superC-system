@@ -1,5 +1,7 @@
 <template>
     <div class="repswd-container">
+        <img class="back" src="./../../../../assets/img/personalPage/accountMessage/login_out/back.png"
+			@click="goto('/accountMessage')">
         <div class="content-wrap" style="
     text-align: center;
 ">
@@ -92,6 +94,7 @@ const pwd = ref('')
 const pwds = ref('')
 const btntext = ref('重新发送')
 const router = useRouter()
+const goto = (path) => router.push(path);
 
 onMounted(() => {
     console.log('onMounted')
@@ -184,10 +187,14 @@ const step2 = () => {
 </script>
 
 
-<style>
+<style lang="scss">
 .repswd-container{
     padding-top: 150px;
-
+    .back {
+        position: absolute;
+        top: 40px;
+        left: 400px;
+    }
 }
 @media screen and (max-width:998px) {
     .bottomtext {

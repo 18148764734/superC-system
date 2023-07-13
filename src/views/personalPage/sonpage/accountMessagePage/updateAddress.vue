@@ -52,9 +52,9 @@ interface FormState {
     userId: string;
 }
 
-const isNull = ref(route.params.exist == '' || route.params.exist == null)
+const isExist = ref(route.params.exist)
 onMounted(async () => {
-    console.log(isNull.value);
+    console.log(isExist.value);
 })
 const value = ref<string[]>([]);
 const formState = reactive<FormState>({
@@ -70,8 +70,9 @@ const onFinish = async (values: any) => {
         formState.area = formState.area.join(' / ');
 
     const res = ref();
-    if (isNull.value) { res.value = await insertAddress(formState); }
-    else { res.value = await updateAddress(formState); }
+    if (isExist.value) { 
+        res.value = await updateAddress(formState);}
+    else { res.value = await insertAddress(formState);  }
     console.log(res.value.data.code);
 
     if (res.value.data.code == 0) {
@@ -102,7 +103,7 @@ const onFinishFailed = (errorInfo: any) => {
 
     .top {
         font-family: 'alimama';
-        margin-bottom: 200px;
+        margin-bottom: 50px;
         font-size: 25px;
         color: #73c4ff;
         font-weight: bolder;
@@ -129,6 +130,7 @@ const onFinishFailed = (errorInfo: any) => {
         justify-content: center;
         align-items: center;
         border-radius: 30px;
+        margin-left: 50px;
     }
 
     position: relative;

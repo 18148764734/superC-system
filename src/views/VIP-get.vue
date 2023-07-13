@@ -7,7 +7,10 @@ const isVIP = ref(true);
 const backgroundSrc = ref('src/assets/img/getVIP/superC经典支付页面UI/superC支付切图/VIP会员已选择.png');
 const gotoVIP = (v) => {
   isVIP.value = v;
-  if (v) backgroundSrc.value = 'src/assets/img/getVIP/superC经典支付页面UI/superC支付切图/VIP会员已选择.png'
+  if (v) {
+    backgroundSrc.value = 'src/assets/img/getVIP/superC经典支付页面UI/superC支付切图/VIP会员已选择.png';
+    setCurrentVIP(2588,1)
+  }
   else {
     backgroundSrc.value = 'src/assets/img/getVIP/superC经典支付页面UI/superC支付切图/购买次卡（已选择）.png'
     setCurrentVIP(50,4)
@@ -409,8 +412,8 @@ const handleOk = (e) => {
 
 .VIP-get-container {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 20%;
+  left: 10%;
   transform: translate(-50%, -50%);
   display: flex;
   width: 1250px;
@@ -419,6 +422,7 @@ const handleOk = (e) => {
   border-radius: 30px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   font-family: 'alimama';
+  transform: scale(0.68);
 
   .discount-card {
     position: absolute;

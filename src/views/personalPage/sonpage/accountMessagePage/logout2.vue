@@ -17,7 +17,8 @@ let router = useRouter();
 const goto = (path) => router.push(path);
 onMounted(() => {
   setTimeout(() => {
-    goto('main');
+    
+    goto('login');
 
   }, 5000);
 })

@@ -52,7 +52,7 @@ const IDcard = reactive({
   front: "src/assets/img/personalPage/identify/def_idCard.png",
   back: "",
 });
-const url = ref('http://superc.vipgz4.91tunnel.com/api/OCRVerification?phone='+localStorage.getItem('superUserPhone'))
+const url = ref('http://chino.39nat.com/api/OCRVerification?phone='+localStorage.getItem('superUserPhone'))
 const handleChange = (info) => {
   if (info.file.status !== "uploading") {
     message.success(`正在解析身份证`);

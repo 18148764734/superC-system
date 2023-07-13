@@ -179,7 +179,7 @@ const routes = [{
                     ]
                 },
                 {
-                    path: '/account_logout',
+                    path: '/account_logout/:id',
                     name: 'account_logout',
                     component: () => import("../views/personalPage/sonpage/accountMessagePage/logout.vue"),
                 },

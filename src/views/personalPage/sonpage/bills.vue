@@ -20,17 +20,23 @@
         </el-collapse>
       </el-main>
       <div class="bottom">
-        
+        <img src="./../../../assets/img/personalPage/bills/上一页.png" @click="billsCondition.pageNum>1?billsCondition.pageNum--:haha()">
+        <span class="page"  v-for="(page,index) in pageArr" :key="index" @click="billsCondition.pageNum = page">
+          {{page}}
+        </span>
+        <img src="./../../../assets/img/personalPage/bills/下一页.png" @click="billsCondition.pageNum<pageArr.length?billsCondition.pageNum++:haha()">
       </div>
     </el-container>
   </div>
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { reactive, ref, watch } from "vue";
+import { message } from 'ant-design-vue'
 import { getBills } from "../../../axios/api";
 import billsUnit from "./bills-unit.vue";
 const billsList = ref();
+const pageArr = ref([]);
 const billsCondition = reactive({
   pageNum: 1,
   phone: localStorage.getItem("superUserPhone"),
@@ -39,8 +45,21 @@ const billsCondition = reactive({
 onMounted(async () => {
   const res = await getBills(billsCondition);
   billsList.value = res.data.data.data;
-  console.log(billsList.value);
+  pageArr.value.length = res.data.data.pageSizes;
+  for(var i = 0; i < res.data.data.pageSizes;i++){
+    pageArr.value[i]=i+1;
+  }
 });
+watch(
+  billsCondition,
+  async ()=>{
+    const res = await getBills(billsCondition);
+    billsList.value = res.data.data.data;
+  }
+)
+const haha = () => {
+  message.error("不能再翻页了！")
+}
 </script>
 
 <style lang="scss" scoped>
@@ -54,6 +73,7 @@ onMounted(async () => {
   padding-left: 30px;
   line-height: 10px;
   align-items: center;
+  transform: scale(1);
   .top {
     border: 3px solid #89fef6;
     border-radius: 20px;
@@ -72,10 +92,22 @@ onMounted(async () => {
   .bottom {
     position: absolute;
     bottom: 30px;
-    left: 50%;
-    margin: 0 auto;
-    width: 50px;
-    height: 50px;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    .page{
+      color: #4b63b8;
+      font-size: 18px ;
+      font-family: "medium";
+      display: flex;
+      align-items: center;
+      margin: 5px;
+      cursor: pointer;
+    }
+    img{
+      cursor: pointer;
+
+    }
   }
   .bills-list {
     /* 隐藏默认滚动栏 */
