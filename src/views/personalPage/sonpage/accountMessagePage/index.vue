@@ -7,7 +7,8 @@ import {
 	message,
 	TimePicker,
 	Upload,
-	Button
+	Button,
+	SelectOption
 } from 'ant-design-vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
@@ -202,7 +203,7 @@ const submitUpdate = (type) => {
 		} else {
 			ElNotification.success({
 				title: '修改成功！',
-				message: '',
+				message: type=='userName'?"用户名一年仅可修改3次":"",
 				showClose: false,
 			})
 		}
@@ -243,6 +244,7 @@ const passwordStyle = ref({
 	fontSize: "15px",
 })
 const addressExist = ref(false);
+const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 </script>
 <template>
 	<div class="account-message-index-container">
@@ -266,7 +268,7 @@ const addressExist = ref(false);
 			<img v-show="!nameActive" :src="getHoverSrc('name')" @mouseover="currentUpdate = 'name'"
 				@mouseout="currentUpdate = ''" @click="updateUserName()">
 			<el-input v-show="nameActive" v-model="updateData.userName" class="elInput" />
-			<img v-show="nameActive" src="./../../../../assets/img/personalPage/accountMessage/yes.png" @click="submitUpdate()">
+			<img v-show="nameActive" src="./../../../../assets/img/personalPage/accountMessage/yes.png" @click="submitUpdate('userName')">
 			<img v-show="nameActive" src="./../../../../assets/img/personalPage/accountMessage/no.png"
 				@click="nameActive = false">
 
@@ -347,7 +349,16 @@ const addressExist = ref(false);
 				@mouseout="currentUpdate = ''" @click="updateDate()">
 			<DatePicker v-show="birthActive" v-model:value="birth" class="elInput" style="width: 200px;" :format="dateFormat"
 				placeholder="请输入您的生日日期" valueFormat="YYYY-MM-DD-" :locale="locale" />
-			<TimePicker v-show="birthActive" v-model:value="birth_hour" format="HH时" valueFormat="HH" :locale="locale" />
+			<!-- <TimePicker v-show="birthActive" v-model:value="birth_hour" format="HH时" valueFormat="HH" :locale="locale" /> -->
+			
+			<el-select v-model="birth_hour" v-show="birthActive" class="elInput" placeholder="请选择你的生辰">
+				<el-option
+					v-for="item in options"
+					:key="item.value"
+					:label="item.label"
+					:value="item.value"
+				/>
+  		</el-select>
 			<img v-show="birthActive" src="./../../../../assets/img/personalPage/accountMessage/yes.png"
 				@click="submitUpdate('birth')">
 			<img v-show="birthActive" src="./../../../../assets/img/personalPage/accountMessage/no.png"
