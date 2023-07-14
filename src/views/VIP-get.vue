@@ -124,6 +124,9 @@ const reloadPay = async () => {
 }
 let billState = null;
 onMounted(async () => {
+  
+  // 在组件挂载时添加滚动事件监听
+  window.addEventListener('scroll', handleScroll);
   setCurrentVIP(2588,1);
   setTimeout(() => {
     showDiscount.value = true;
@@ -159,6 +162,19 @@ const visible = ref(false);
 const handleOk = (e) => {
   console.log(e);
   visible.value = false;
+};
+
+onUnmounted(() => {
+  // 在组件卸载时移除滚动事件监听
+  window.removeEventListener('scroll', handleScroll);
+});
+const handleScroll = () => {
+  const container = document.querySelector('.VIP-get-container');
+  const windowHeight = window.innerHeight;
+  const containerHeight = container.offsetHeight;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const top = (windowHeight / 2) + scrollTop - 150 + 'px';
+  container.style.top = top;
 };
 </script>
 
@@ -411,10 +427,10 @@ const handleOk = (e) => {
 @import "./..../../../assets/font/font.css";
 
 .VIP-get-container {
-  position: absolute;
-  top: 20%;
-  left: 10%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.68);
   display: flex;
   width: 1250px;
   height: 850px;
@@ -422,7 +438,6 @@ const handleOk = (e) => {
   border-radius: 30px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   font-family: 'alimama';
-  transform: scale(0.68);
 
   .discount-card {
     position: absolute;

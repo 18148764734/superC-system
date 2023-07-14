@@ -58,7 +58,8 @@ const haha = () => {
   .bottom {
     position: absolute;
     bottom: 30px;
-    left: 60%;
+    transform: translate(-50%, -50%);
+    left: 50%;
     display: flex;
     .page{
       color: #4b63b8;

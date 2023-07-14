@@ -189,6 +189,7 @@ const step2 = () => {
 
 <style lang="scss">
 .repswd-container{
+    
     padding-top: 150px;
     .back {
         position: absolute;

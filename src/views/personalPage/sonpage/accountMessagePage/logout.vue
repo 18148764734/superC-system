@@ -41,7 +41,7 @@ const goto = async (path) => {
 	flex-direction: column;
 	padding-left: 30px;
 	line-height: 10px;
-
+	transform: scale(1.2);
 	.logout-button {
 		margin: 20px;
 		padding-top: 100px;

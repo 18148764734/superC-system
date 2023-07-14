@@ -3,13 +3,13 @@
         <img class="back" src="./../../../../assets/img/personalPage/accountMessage/login_out/back.png"
             @click="goto('/accountMessage')">
 
-        <div class="top">
+        <div class="top" style="transform: scale(1.3);">
             <img src="./../../../../assets/img/personalPage/accountMessage/address.png">
             编辑收货地址
         </div>
 
         <Form :model="formState" name="basic" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }" autocomplete="off"
-            @finish="onFinish" @finishFailed="onFinishFailed">
+            @finish="onFinish" @finishFailed="onFinishFailed" style="transform: scale(1.3);">
             <FormItem class="region" label="收货人" name="consigneeName" :rules="[{ required: true, message: '请输入收货人信息' }]">
                 <Input v-model:value="formState.consigneeName" />
             </FormItem>
@@ -95,6 +95,7 @@ const onFinishFailed = (errorInfo: any) => {
 
 <style lang="scss" scoped>
 .myContainer {
+    transform: scale(1);
     .back {
         position: absolute;
         top: 40px;
@@ -103,7 +104,7 @@ const onFinishFailed = (errorInfo: any) => {
 
     .top {
         font-family: 'alimama';
-        margin-bottom: 50px;
+        margin-bottom: 130px;
         font-size: 25px;
         color: #73c4ff;
         font-weight: bolder;
@@ -138,4 +139,5 @@ const onFinishFailed = (errorInfo: any) => {
     display: flex;
     justify-content: center;
     align-items: center;
-}</style>
+}
+</style>

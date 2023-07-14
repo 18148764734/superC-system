@@ -18,17 +18,19 @@
   position: relative;
   display: flex;
   justify-content: center;
-  padding-top: 30px;
   flex-direction: column;
   padding-left: 30px;
-  line-height: 10px;
     .title{
       font-size: 30px;
       color: #546bbc;
       font-family: medium;
       font-weight: 100;
+      margin-bottom: 90px;
+      transform: scale(1.2);
     }
     .card {
+      
+  transform: scale(1.2);
       margin-top: 20px;
       width: 563px;
       height: 549px;

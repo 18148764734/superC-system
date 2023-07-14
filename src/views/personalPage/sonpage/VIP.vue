@@ -23,6 +23,7 @@
   position: relative;
   display: flex;
   justify-content: center;
+
     img{
       transform: scale(1.2);
     }
@@ -35,18 +36,22 @@
     }
     .title{
       position: absolute;
-      left: 280px;
+      
+      transform: translate(-50%, -0%);
+      left: 50%;
       top: 50px;
     }
     .getVIP{
       position: absolute;
-      left: 380px;
+      transform: translate(-50%, -0%);
+      left: 50%;
       top: 160px;
     }
 
     .center{
       position: absolute;
-      left: 210px;
+      transform: translate(-50%, -0%) scale(1.2);
+      left: 50%;
       top: 310px;
     }
     .left-bottom{

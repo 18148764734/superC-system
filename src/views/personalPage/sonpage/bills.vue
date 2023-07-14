@@ -70,7 +70,7 @@ const haha = () => {
   justify-content: center;
   padding-top: 30px;
   flex-direction: column;
-  padding-left: 30px;
+  padding-left: 0px;
   line-height: 10px;
   align-items: center;
   transform: scale(1);
@@ -92,7 +92,7 @@ const haha = () => {
   .bottom {
     position: absolute;
     bottom: 30px;
-    left: 45%;
+    left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     .page{

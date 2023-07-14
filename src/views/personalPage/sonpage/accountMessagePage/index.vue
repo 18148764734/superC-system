@@ -103,7 +103,7 @@ const reloadUserData = () => {
 			}else{
 				addressExist.value = true;
 				const addressRes = aRes.data.data;
-				const addressInfo = addressRes.consigneeName + ' ' + addressRes.addressPhone + ' ' + addressRes.area + ' ' +
+				const addressInfo = addressRes.consigneeName + ' ' + addressRes.addressPhone + ' '+ addressRes.postalCode?addressRes.postalCode:'' + ' ' + addressRes.area + ' ' +
 				addressRes.specificAddress
 				user_info.value.address = addressInfo;
 			}
@@ -252,7 +252,7 @@ const addressExist = ref(false);
 		<span class="icon">
 			<!-- <img src="./../../../../assets/img/personalPage/accountMessage/def_icon.png" style=""> -->
 			<img :src="user_info.userPhoto" style="">
-			<Upload v-model:file-list="fileList" action="http://chino.39nat.com" :showUploadList="false" :headers="headers" @change="handleChange" :on-success="handleSuccess"
+			<Upload v-model:file-list="fileList" action="http://chino.39nat.com/api/upload" :showUploadList="false" :headers="headers" @change="handleChange" :on-success="handleSuccess"
 				:before-upload="beforeUpload">
 				<img class="update" :src="getHoverSrc('icon')" @mouseover="currentUpdate = 'icon'" @mouseout="currentUpdate = ''">
 			</Upload>

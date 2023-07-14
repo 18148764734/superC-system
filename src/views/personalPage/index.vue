@@ -39,7 +39,7 @@ const getBackgroundStyle = () => {
 </script>
 <template>
   <div class="top-title">
-    <span class="title" style="width:100px">个人中心</span>
+    <span class="title" style="width:100px;margin-bottom: -30px;">个人中心</span>
   </div>
   <div class="container">
     <div class="card">
@@ -86,6 +86,7 @@ const getBackgroundStyle = () => {
     position: relative;
     text-align: center;
     margin-top: 10px;
+    margin-bottom: -100px;
     .title{
       font-size: 23px;
       color: #495bb5;
@@ -180,6 +181,8 @@ const getBackgroundStyle = () => {
         height: 100%;
         border-top-right-radius: 47px;
         border-bottom-right-radius: 47px;
+    transform: scale(1);
+
       }
 
       ;
