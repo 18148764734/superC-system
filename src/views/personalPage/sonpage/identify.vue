@@ -106,7 +106,6 @@ const submit = async () =>{
   justify-content: center;
   padding-top: 30px;
   flex-direction: column;
-  padding-left: 30px;
   line-height: 10px;
   .id-card-submit-button {
     margin-top: 20px;

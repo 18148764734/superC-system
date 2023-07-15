@@ -19,7 +19,6 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-left: 30px;
     .title{
       font-size: 30px;
       color: #546bbc;

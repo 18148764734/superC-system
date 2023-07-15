@@ -53,8 +53,7 @@ const props = defineProps(["bill"]);
   align-items: center;
   padding-top: 30px;
   flex-direction: column;
-  padding-left: 50px;
-  line-height: 10px;
+  padding-left: 30px;
   font-family: medium;
   width: 800px;
   .bill-content {
@@ -86,6 +85,10 @@ const props = defineProps(["bill"]);
     font-size: 14px;
     font-weight: 100;
   }
+  font{
+    width: 150px;
+    text-align: center;
+  }
   .name {
     font-size: 16px;
     font-weight: 800;
@@ -95,27 +98,20 @@ const props = defineProps(["bill"]);
     font-size: 14px;
     font-weight: 800;
     color: #5068ba;
-    padding-left: 85px;
   }
   .type {
     font-size: 14px;
     font-weight: 800;
-    padding-left: 95px;
-    padding-right: 30px;
     color: #5068ba;
   }
   .time {
     font-size: 14px;
     font-weight: 800;
-    padding-left: 35px;
-    padding-right: 30px;
     color: #060606;
   }
   .state {
     font-size: 16px;
     font-weight: 800;
-    padding-left: 45px;
-    padding-right: 45px;
     color: #48d970;
   }
 }

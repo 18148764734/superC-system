@@ -104,8 +104,9 @@ const reloadUserData = () => {
 			}else{
 				addressExist.value = true;
 				const addressRes = aRes.data.data;
-				const addressInfo = addressRes.consigneeName + ' ' + addressRes.addressPhone + ' '+ addressRes.postalCode?addressRes.postalCode:'' + ' ' + addressRes.area + ' ' +
-				addressRes.specificAddress
+				const addressInfo = addressRes.consigneeName + ' ' + addressRes.addressPhone + ' '+ (addressRes.postalCode?addressRes.postalCode+' ': + '') + addressRes.area + ' ' +
+				addressRes.specificAddress;
+				console.log(addressInfo);
 				user_info.value.address = addressInfo;
 			}
 			console.log(user_info.value.address);
@@ -281,7 +282,7 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 			SSID
 			<font v-show="!idActive" class="contentInput" style="color: #8da1ff;">{{ user_info.sdid }}</font>
 			<img src="./../../../../assets/img/personalPage/accountMessage/copy.png" @click="copy()">
-			<font v-show="!idActive" class="contentInput" style="color: #979eff;font-size: 15px;font-weight:300;">
+			<font v-show="!idActive" class="contentInput" style="color: #979eff;font-size: 15px;font-weight:300;padding-top: 10px;">
 				这是您唯一的ID号，请妥善保存</font>
 		</div>
 		<div class='divider'></div>
@@ -406,8 +407,8 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 
 	.icon {
 		position: absolute;
-		top: 50px;
-		right: 90px;
+		top: 40px;
+		right: 80px;
 		width: 178px;
 		height: 178px;
 		overflow: hidden;

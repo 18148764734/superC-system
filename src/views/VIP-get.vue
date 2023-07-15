@@ -142,6 +142,7 @@ onMounted(async () => {
         if(billState.data.data!=null){
           message.success("支付成功！")
           visible.value = true;
+          reloadPay();
           clearInterval(timer);
         }
       }

@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router'
 const route = useRoute();
 let router = useRouter();
@@ -36,6 +36,9 @@ const getBackgroundStyle = () => {
   if (route.path === '/VIP') { return VIPbackgroundStyle.value }
   if (route.path === '/myEmail') { return EmailbackgroundStyle.value }
 }
+onMounted(()=>{
+  goto('accountMessage');
+})
 </script>
 <template>
   <div class="top-title">
@@ -44,7 +47,7 @@ const getBackgroundStyle = () => {
   <div class="container">
     <div class="card">
       <div class="left" :style="getBackgroundStyle()">
-        <div class="unit" @click="goto('accountMessage')" :style="isActive('/accountMessage')">
+        <div class="unit" @click="goto('accountMessage')" :style="isActive('/index')">
           <img :src="isActiveImg('/accountMessage')">
           账号信息
         </div>
@@ -87,10 +90,12 @@ const getBackgroundStyle = () => {
     text-align: center;
     margin-top: 10px;
     margin-bottom: -100px;
-    .title{
+
+    .title {
       font-size: 23px;
       color: #495bb5;
     }
+
     .title::before,
     .title::after {
       content: "";
@@ -124,6 +129,7 @@ const getBackgroundStyle = () => {
     justify-content: center;
     align-items: center;
     transform: scale(0.68);
+
     .card {
       height: 970px;
       width: 1250px;
@@ -181,7 +187,7 @@ const getBackgroundStyle = () => {
         height: 100%;
         border-top-right-radius: 47px;
         border-bottom-right-radius: 47px;
-    transform: scale(1);
+        transform: scale(1);
 
       }
 

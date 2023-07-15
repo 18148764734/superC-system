@@ -136,7 +136,7 @@ const routes = [{
             path: 'personalIndex',
             name: 'personalIndex',
             component: () => import("../views/personalPage/index.vue"),
-            redirect: '/accountMessage',
+            
             children:[
                 {
                     path: '/accountMessage',
