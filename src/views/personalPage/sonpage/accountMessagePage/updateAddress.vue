@@ -30,6 +30,10 @@
             <FormItem :wrapper-col="{ offset: 8, span: 16 }">
                 <Button class="submit" type="primary" html-type="submit">保存</Button>
             </FormItem>
+
+            <FormItem :wrapper-col="{ offset: 8, span: 16 }" class="phone-fix" style="min-height: 200px;">
+                <div></div>
+            </FormItem>
         </Form>
     </div>
 </template>
@@ -70,16 +74,17 @@ const onFinish = async (values: any) => {
         formState.area = formState.area.join(' / ');
 
     const res = ref();
-    if (isExist.value) { 
-        res.value = await updateAddress(formState);}
-    else { res.value = await insertAddress(formState);  }
+    if (isExist.value) {
+        res.value = await updateAddress(formState);
+    }
+    else { res.value = await insertAddress(formState); }
     console.log(res.value.data.code);
 
     if (res.value.data.code == 0) {
         message.success('更新成功,2s后返回个人中心');
-        setTimeout(()=>{
+        setTimeout(() => {
             goto("/index");
-        },2000)
+        }, 2000)
     } else {
         message.error(res.value.data.msg);
     }
@@ -96,6 +101,7 @@ const onFinishFailed = (errorInfo: any) => {
 <style lang="scss" scoped>
 .myContainer {
     transform: scale(1);
+
     .back {
         position: absolute;
         top: 40px;
@@ -139,5 +145,83 @@ const onFinishFailed = (errorInfo: any) => {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .phone-fix{
+        display: none;
+    }
 }
-</style>
+
+@media only screen and (max-width: 1024px) {
+    .myContainer {
+        transform: scale(1);
+        width: 100%;
+        height: 1120px;
+
+        .back {
+            width: 40px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .top {
+            width: 170px;
+            white-space: nowrap;
+            font-family: 'alimama';
+            margin-top: 60px;
+            margin-bottom: 160px;
+            font-size: 16px;
+            color: #73c4ff;
+            font-weight: bolder;
+            display: flex;
+            align-items: center;
+
+            img{
+                width: 60px;
+            }
+        }
+
+        .ant-form{
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           margin-top: 30px;
+        }
+
+        FormItem {
+            width: 100px;
+        }
+
+        .region {
+            width: 80%;
+            margin-bottom: 24px;
+            margin-right: 0;
+        }
+
+        .submit {
+            color: white;
+            background: #ff9393;
+            width: 100px;
+            height: 50px;
+            font-size: 18px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+            transform: translate(-80%,50%)scale(0.7);
+        }
+
+        position: relative;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .phone-fix{
+            display: block;
+        }
+
+    }
+}</style>

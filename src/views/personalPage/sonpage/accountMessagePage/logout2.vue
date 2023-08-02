@@ -78,4 +78,59 @@ onMounted(() => {
 
 
 }
+
+@media only screen and (max-width: 1024px) {
+  .container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  flex-direction: column;
+  padding-left: 30px;
+  line-height: 10px;
+
+  .logout-button {
+    margin: 20px;
+    padding-top: 100px;
+  }
+
+  .logout-img {
+    margin-bottom: 40px;
+  }
+
+  .back {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  .text {
+    font-size: 30px;
+    color: #546bbc;
+    font-family: medium;
+    font-weight: 100;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    line-height: 100px;
+
+    .one {}
+
+    .two {
+      color: #50ff74;
+    }
+
+    .three {
+      color: #ff7be4;
+      font-size: 18px;
+      margin-top: 60px;
+    }
+  }
+
+
+}
+}
 </style>
