@@ -590,13 +590,22 @@ const handleScroll = () => {
               <img :src="getSelectedSRC(true)" @click="setAliPay(true)">
 
             </span>
-            <span class="QRcode" v-show="data.payMethod == 2">
-              <QRCode :value="wxUrl"></QRCode>
-            </span>
+            
           </div>
 
-          <!-- 手机底部价格 -->
-          <div class="bottom-price-times">
+          <span class="QRcode" v-show="data.payMethod == 2">
+              <QRCode :value="wxUrl"></QRCode>
+            </span>
+
+          
+
+          <span class="QRcode" v-show="data.payMethod == 1">
+            <iframe id="myiFrame" class="QRcode-ali" :srcdoc="html"></iframe>
+          </span>
+
+        </span>
+        <!-- 手机底部价格 -->
+        <div class="bottom-price-times">
             <div class="price-text">
               <div class="one">￥</div>
               <div class="two">{{ currentVIP }}</div>
@@ -605,12 +614,6 @@ const handleScroll = () => {
               {{ !isAliPay ? '截图微信扫码' : '确认支付' }}
             </div>
           </div>
-
-          <span class="QRcode" v-show="data.payMethod == 1">
-            <iframe id="myiFrame" class="QRcode-ali" :srcdoc="html"></iframe>
-          </span>
-
-        </span>
         <!-- 手机支付界面 -->
         <!-- <span class="pay-card-phone">
           <span class="wx" @click="isAliPay = false">
@@ -1199,6 +1202,7 @@ const handleScroll = () => {
 
         justify-content: center;
         align-items: center;
+        
 
         .vip-price {
           width: 100%;
@@ -1412,11 +1416,12 @@ const handleScroll = () => {
           }
 
           .QRcode {
-            height: 160px;
+            height: 164px;
             width: 90%;
             display: flex;
             justify-content: center;
-            // transform: translate(50%,0);
+            transform: scale(0.83);
+
           }
 
           .QRcode-ali {
@@ -1684,14 +1689,14 @@ const handleScroll = () => {
 
       .bottom-price-times {
         position: fixed;
-        bottom: 0;
+        top: 95%;
         height: 70px;
         width: 100%;
         margin-top: 16px;
         padding: 8px 16px 8px 16px;
         background-color: white;
         // position: fixed;
-        // z-index: 9999;
+        z-index: 9999;
         // bottom: 0;
         // left: 0;
         display: flex;

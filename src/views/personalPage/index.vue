@@ -84,37 +84,37 @@ onMounted(() => {
       <img :src="isActiveImg('/accountMessage')">
       <span class="text">
         账号信息
-      </span> 
+      </span>
     </span>
     <span class="unit" @click="goto('VIP')" :style="isActive('/VIP')">
       <img :src="isActiveImg('/VIP')">
       <span class="text">
         会员中心
-      </span> 
+      </span>
     </span>
     <span class="unit" @click="goto('bills')" :style="isActive('/bills')">
       <img :src="isActiveImg('/bills')">
       <span class="text">
         订单记录
-      </span> 
+      </span>
     </span>
     <span class="unit" @click="goto('/identifyQuery')" :style="isActive('/identifyQuery')">
       <img :src="isActiveImg('/identify')">
       <span class="text">
         信息认证
-      </span> 
+      </span>
     </span>
     <span class="unit" @click="goto('help')" :style="isActive('/help')">
       <img :src="isActiveImg('/help')">
       <span class="text">
         人工客服
-      </span> 
+      </span>
     </span>
     <span class="unit" @click="goto('myEmail')" :style="isActive('/myEmail')">
       <img :src="isActiveImg('/myEmail')">
       <span class="text">
         我的信箱
-      </span> 
+      </span>
     </span>
   </div>
 </template>
@@ -245,6 +245,13 @@ onMounted(() => {
   display: none;
 }
 
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 1260px;
+  }
+}
+
+
 // 手机样式
 @media screen and (max-width: 1024px) {
   .top-title {
@@ -254,10 +261,11 @@ onMounted(() => {
     background: linear-gradient(to bottom, #a3ebda, #4ae0ed);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    
+
     // position: fixed;
     width: 100%;
     background-color: #ff0000;
+
     .title {
       color: white;
       position: relative;
@@ -289,7 +297,7 @@ onMounted(() => {
     // }
   }
 
-  .bottom-phone {    
+  .bottom-phone {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -301,7 +309,8 @@ onMounted(() => {
     flex-wrap: wrap;
     padding: 16px;
     gap: 10px;
-    .unit{
+
+    .unit {
       transform: scale(0.9);
       display: flex;
       justify-content: center;
@@ -310,15 +319,16 @@ onMounted(() => {
       width: 30%;
       height: 80px;
       border-radius: 10px;
-      img{
+
+      img {
         width: 40px;
       }
-      .text{
+
+      .text {
         align-content: center;
         text-align: center;
         width: 70px;
       }
     }
   }
-}
-</style>
+}</style>

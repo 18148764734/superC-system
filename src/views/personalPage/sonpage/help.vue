@@ -2,8 +2,9 @@
   <div class="container">
     <div class="title">扫码企业微信 在线问询</div>
     <div class="card">
-      <img class="pic" src="./../../../assets/img/personalPage/help/人工客服比心.png" alt="">
+      <img class="pic" src="./../../../assets/img/personalPage/help/人工客服比心.gif" alt="">
       <img class="qr-code" src="./../../../assets/img/personalPage/help/微信客服.png" alt="">
+      <div class="phone-tips">请将二维码截图保存于手机 在微信扫码</div>
     </div>
   </div>
 </template>
@@ -45,7 +46,24 @@
     border-radius: 40px;
     padding: 10px;
     box-sizing: border-box;
+
     /* 其他样式 */
+    .pic {
+      width: 200;
+      height: 200px;
+      margin-bottom: 16px;
+      margin-top: 16px;
+    }
+
+    .qr-code {
+      width: 256px;
+      height: 256px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .phone-tips {
+    display: none;
   }
 }
 
@@ -82,19 +100,27 @@
       border-radius: 40px;
       padding: 10px;
       box-sizing: border-box;
+
       /* 其他样式 */
-      .pic{
+      .pic {
         width: 112px;
         height: 112px;
-        margin-bottom: 16px;
-        margin-top: 16px;
+        margin-bottom: 8px;
+        margin-top: -8px;
       }
-      .qr-code{
+
+      .qr-code {
         width: 200px;
         height: 200px;
-        margin-bottom: 16px;
+        margin-bottom: 4px;
       }
     }
+
+    .phone-tips {
+      display: block;
+      color: #f3a7a7;
+    }
   }
+
 
 }</style>

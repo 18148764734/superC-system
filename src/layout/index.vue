@@ -35,8 +35,8 @@
 									<a class="navbar-item" href="https://www.baidu.com">
 									实用工具箱
 								</a></el-dropdown-item> -->
-									<el-dropdown-item command="b">
-										<router-link class="navbar-item" to="/personalIndex">
+									<el-dropdown-item>
+										<router-link class="navbar-item" to="/index">
 											个人中心
 										</router-link>
 									</el-dropdown-item>
@@ -83,6 +83,11 @@
 									<el-dropdown-item>
 										<a class="navbar-item" href="">
 											企业规划咨询
+										</a>
+									</el-dropdown-item>
+									<el-dropdown-item>
+										<a class="navbar-item" @click="startLogout()">
+											安全退出
 										</a>
 									</el-dropdown-item>
 									<!-- <el-dropdown-item>
@@ -262,6 +267,17 @@ const submit = () => {
 		router.push('/login')
 	})
 }
+
+//登出
+function startLogout() {
+	logout({ "newPassword": Cookies.get('token'), "phone": Cookies.get('phone') }).finally(() => {
+		store.dispatch('loginok', '')
+		Cookies.remove('token')
+		router.push('/login')
+	})
+}
+
+
 </script>
 
 
@@ -282,8 +298,7 @@ const submit = () => {
 		display: none;
 	}
 }
-
-.isDisplay {
+.isDisplay{
 	@media only screen and (max-width: 1024px) {
 		display: none;
 	}

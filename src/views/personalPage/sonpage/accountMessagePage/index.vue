@@ -168,6 +168,12 @@ const address = ref('');
 const dateFormat = 'YYYY年MM月DD日';
 const birth = ref('');
 const birth_hour = ref("");;
+const birthOne = ()=>{
+	return window.innerWidth>1024?'请输入您的生日日期':'生日'
+}
+const birthTwo = ()=>{
+	return window.innerWidth>1024?'请选择你的生辰':'时'
+}
 
 const nameActive = ref(false);
 const resumeActive = ref(false);
@@ -357,10 +363,10 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 			<img class="update" v-show="!birthActive" :src="getHoverSrc('birth')" @mouseover="currentUpdate = 'birth'"
 				@mouseout="currentUpdate = ''" @click="updateDate()">
 			<DatePicker v-show="birthActive" v-model:value="birth" class="elInput" style="width: 200px;" :format="dateFormat"
-				placeholder="请输入您的生日日期" valueFormat="YYYY-MM-DD-" :locale="locale" />
+				:placeholder="birthOne()" valueFormat="YYYY-MM-DD-" :locale="locale" />
 			<!-- <TimePicker v-show="birthActive" v-model:value="birth_hour" format="HH时" valueFormat="HH" :locale="locale" /> -->
 			
-			<el-select v-model="birth_hour" v-show="birthActive" class="elInput" placeholder="请选择你的生辰">
+			<el-select v-model="birth_hour" v-show="birthActive" class="elInput birth-hour" :placeholder="birthTwo()">
 				<el-option
 					v-for="item in options"
 					:key="item.value"
@@ -528,11 +534,15 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 					right: 0px;
 				}
 				.elInput {
-					width: 150px;
+					min-width: 80px;
+				}
+
+				.birth-hour{
+					min-width: 64px;
 				}
 
 				.contentInput {
-					min-width: 56px;
+					min-width: 87px;
 					max-width: 160px;
 					height: 24px;
 					line-height: 24px;
@@ -567,10 +577,10 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 				.blue{
 					padding-left: 0;
 					font-size: 14px;
-					width: 100px;
-					line-height: 50px;
+					width: auto;
+					line-height: 16px;
 					scale: 0.8;
-					white-space: nowrap;
+					// white-space: nowrap;
 					overflow-x: visible;
 				}
 			}

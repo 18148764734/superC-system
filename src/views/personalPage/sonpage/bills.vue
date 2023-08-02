@@ -82,16 +82,17 @@ const haha = () => {
   .top {
     border: 3px solid #89fef6;
     border-radius: 20px;
-    width: 800px;
+    width: 100%;
     height: 65px;
     display: flex;
     justify-content: center;
     align-items: center;
+    white-space: nowrap;
 
     .font {
       color: #3dccff;
       font-size: 23px;
-      padding: 30px;
+      padding: 24px;
       font-family: medium;
     }
   }
@@ -125,12 +126,13 @@ const haha = () => {
     /* 隐藏默认滚动栏 */
     scrollbar-width: none;
     -ms-overflow-style: none;
-    width: 810px;
+    width: 100%;
     margin-top: 30px;
     margin-bottom: 0px;
 
     .el-collapse {
       height: 780px;
+      border-bottom: none;
     }
 
     /* 定义滚动栏样式 */
@@ -156,7 +158,7 @@ const haha = () => {
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 648px) {
   .container {
     position: relative;
     display: flex;

@@ -128,6 +128,13 @@ import { getEmaiDetail } from "../../../axios/api";
                 right: -10px;
                 bottom: -20px;
             }
+
+            .back{
+                width: 50px;
+                height: 50px;
+                right: 0px;
+                bottom: 20px;
+            }
     }
 }
 

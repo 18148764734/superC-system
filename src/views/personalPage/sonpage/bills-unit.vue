@@ -130,7 +130,7 @@ const props = defineProps(["bill"]);
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 648px) {
   .bills-unit {
     position: relative;
     display: flex;
