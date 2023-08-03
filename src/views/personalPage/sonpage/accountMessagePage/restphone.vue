@@ -464,7 +464,7 @@ button {
     margin: 40px auto;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 940px) {
     .repswd-container {
         transform: scale(1);
         padding-top: 150px;

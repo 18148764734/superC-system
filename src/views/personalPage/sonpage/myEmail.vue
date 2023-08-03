@@ -120,7 +120,7 @@ const haha = () => {
     
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 648px) {
   .email-Container {
     width: 100%;
     height: auto;

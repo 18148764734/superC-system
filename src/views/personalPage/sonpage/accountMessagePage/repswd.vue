@@ -195,7 +195,7 @@ const step2 = () => {
     .back {
         position: absolute;
         top: 40px;
-        left: 400px;
+        left: 32px;
     }
 }
 
@@ -381,7 +381,7 @@ button {
     margin: 40px auto;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 940px) {
     .repswd-container {
 
         padding-top: 150px;

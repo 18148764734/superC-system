@@ -130,7 +130,112 @@ const props = defineProps(["bill"]);
   }
 }
 
-@media only screen and (max-width: 648px) {
+@media only screen and (max-width: 940px) {
+  .bills-unit {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px;
+    flex-direction: column;
+    padding-left: 30px;
+    font-family: medium;
+    width: 100%;
+
+    .bill-content {
+      width: 100%;
+      padding-left: 0px;
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 14px;
+      font-weight: 100;
+
+      .continueVIP {
+        font-size: 14px;
+        transform: scale(0.8);
+        position: absolute;
+        right: 0px;
+        color: #4b63b8;
+      }
+
+      .content-line {
+        flex-basis: 100%;
+        /* 独占一行 */
+        line-height: 24px;
+        display: flex;
+        width: 500px;
+        .content-title {
+          text-align: left;
+          display: inline-block;
+          width: 10%;
+          white-space: nowrap;
+          transform: scale(0.8);
+        }
+
+        .content-value {
+          text-align: left;
+          display: inline-block;
+          width: 200px;
+          overflow: scroll;
+          margin-left: 0px;
+          margin-right: 0px;
+          white-space: nowrap;
+          transform: scale(0.8);
+        }
+      }
+
+      
+    }
+
+    font {
+      width: 140px;
+      text-align: center;
+      transform: scale(1.0);
+      white-space: nowrap;
+    }
+
+    .name {
+      font-size: 14px;
+      font-weight: 800;
+      color: #060606;
+    }
+
+    .total {
+      width: 50px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #5068ba;
+      margin-left: 16px;
+    }
+
+    .type {
+      width: 50px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #5068ba;
+    }
+
+    .time {
+      font-size: 14px;
+      font-weight: 800;
+      color: #060606;
+      transform: scale(0.8);
+    }
+
+    .state {
+      font-size: 14px;
+      font-weight: 800;
+      color: #48d970;
+      padding-left: 24px;
+      transform: scale(0.8);
+    }
+  }
+}
+
+@media only screen and (max-width: 750px) {
   .bills-unit {
     position: relative;
     display: flex;
@@ -233,4 +338,5 @@ const props = defineProps(["bill"]);
       transform: scale(0.6);
     }
   }
-}</style>
+}
+</style>

@@ -151,7 +151,7 @@ const onFinishFailed = (errorInfo: any) => {
     }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 940px) {
     .myContainer {
         transform: scale(1);
         width: 100%;

@@ -60,13 +60,13 @@ const data = ref(
         }
     }
 
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 940px) {
         .myContainer {
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items:flex-start;
-        padding-top: 0px;
+        padding-top: 16px;
         width: 100%;
         .unit{
             display: flex;

@@ -138,7 +138,7 @@ import { getEmaiDetail } from "../../../axios/api";
     }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 940px) {
     .email-unit {
     position: relative;
     display: flex;

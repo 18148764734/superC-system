@@ -493,7 +493,7 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 
 
 }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 940px) {
 	.account-message-index-container{
 		// 这里面一个都不能删
 		padding-top: 400px;

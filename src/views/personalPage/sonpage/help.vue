@@ -67,7 +67,7 @@
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 940px) {
   .container {
     position: relative;
     display: flex;
@@ -87,9 +87,9 @@
 
     .card {
 
-      transform: scale(1.2);
+      transform: scale(1.0);
       margin-top: 0px;
-      width: 563px;
+      width: 90%;
       height: 549px;
       display: flex;
       justify-content: center;

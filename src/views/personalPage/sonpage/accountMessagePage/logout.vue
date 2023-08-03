@@ -70,7 +70,7 @@ const goto = async (path) => {
 
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 940px) {
 	.container {
 	width: 100%;
 	height: 1000px;

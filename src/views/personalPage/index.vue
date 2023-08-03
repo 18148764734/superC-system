@@ -169,7 +169,7 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: scale(0.68);
+  transform: translate(0)scale(0.68);
 
   .card {
     height: 970px;
@@ -245,15 +245,37 @@ onMounted(() => {
   display: none;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 648px) {
   .container {
-    max-width: 1260px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 100%;
+    transform: translate(0)scale(0.68);
+  }
+}
+
+@media screen and (max-width: 940px) {
+  .container {
+    max-width: 100%;
+    overflow: hidden;
+    transform: translate(0)scale(0.68);
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .container {
+    width: 100%;
+    transform: translate(0)scale(0.68);
   }
 }
 
 
 // 手机样式
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 648px) {
   .top-title {
     top: 0px;
     width: 100%;
@@ -280,6 +302,7 @@ onMounted(() => {
 
   .container {
     display: none;
+    overflow: visible;
   }
 
   .container-phone {
