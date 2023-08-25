@@ -1,7 +1,7 @@
 <template>
     <div class="repswd-container">
         <img class="back" src="./../../../../assets/img/personalPage/accountMessage/login_out/back.png"
-			@click="goto('/accountMessage')">
+            @click="goto('/accountMessage')">
         <div class="content-wrap" style="
     text-align: center;
 ">
@@ -261,15 +261,17 @@ const step2 = () => {
 
 
 <style scoped lang="scss">
-.repswd-container{
+.repswd-container {
     transform: scale(1);
     padding-top: 150px;
+
     .back {
         position: absolute;
         top: 40px;
         left: 400px;
     }
 }
+
 @media screen and (max-width:998px) {
     .bottomtext {
         margin-left: 0 !important;
@@ -460,4 +462,189 @@ button {
     border-radius: 10px;
     border: 0px;
     margin: 40px auto;
+}
+
+@media only screen and (max-width: 940px) {
+    .repswd-container {
+        transform: scale(1);
+        padding-top: 150px;
+        width: 100%;
+
+        .back {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+    }
+
+    .codebtn {
+        width: auto !important;
+    }
+
+    .step-3-wrap button {
+        width: auto;
+    }
+
+    .step-3-wrap {
+        width: 100%;
+        text-align: center !important;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    .step-5-wrap .item input {
+        border: 1px solid #ccc;
+        padding: 5px;
+        outline: none;
+        width: 250px;
+    }
+
+    .step-5-wrap .item {
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .step-5-wrap {
+        text-align: left;
+        display: inline-block;
+
+    }
+
+    .step-5-wrap .item div {
+        color: #8C5BFF;
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 5px;
+        text-align: right;
+        width: 120px;
+    }
+
+    .step-5-wrap .item * {
+        display: inline-block;
+    }
+
+    .step-3-wrap>div {
+        display: inline-block;
+    }
+
+    .step-5-wrap button {
+        border: 0px;
+        background-color: #FFB0B0;
+        font-size: 14px;
+        color: #fff;
+        margin-left: 10px;
+        padding: 5px 35px;
+        box-sizing: border-box;
+        border-radius: 10px;
+
+    }
+
+    .step-3-wrap .l-text {
+        color: #8C5BFF;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .step-3-wrap .c-wrap input {
+        border: 1px solid #ccc;
+        padding: 5px;
+        outline: none;
+    }
+
+    .step-2-wrap .r-wrap input {
+        display: inline-block;
+        width: 180px;
+        height: 100%;
+        border: 0px;
+        outline: none;
+        padding-left: 5px;
+    }
+
+    .step-2-wrap .r-wrap .leftbox {
+        text-align: center;
+        font-weight: bold;
+        color: #000;
+        padding-right: 10px;
+        border-right: 1px solid #ccc;
+        display: inline-block;
+    }
+
+    .step-2-wrap>div {
+        display: inline-block;
+    }
+
+    .step-2-wrap .l-text {
+        font-size: 16px;
+        color: #8C5BFF;
+        font-weight: bold;
+    }
+
+    .step-2-wrap .r-wrap {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-left: 10px;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+
+    .bottomtext {
+        color: #000;
+        font-weight: bold;
+        font-size: 16px;
+        display: inline-block;
+        margin-left: -290px;
+    }
+
+    .bottomtext span {
+        color: #8C5BFF;
+    }
+
+    .content-wrap {
+        position: absolute;
+        width: 100%;
+        height: 900px;
+    }
+
+    .content-wrap h1 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #4470FF;
+        text-align: center;
+        border-bottom: 3px solid #4470FF;
+        display: inline-block;
+        width: 215px;
+        margin: 0 auto;
+        font-family: 微软雅黑;
+    }
+
+    .content-wrap>span {
+        font-size: 16px;
+        color: #3200DA;
+        font-family: 微软雅黑;
+        font-weight: regular;
+        display: inline-block;
+        margin: 10px auto;
+    }
+
+    .content-wrap img {
+        width: 240px;
+        height: 240px;
+        display: inline-block;
+        margin-bottom: 40px;
+    }
+
+    .content-wrap>button {
+        background-color: #89A5FF;
+        color: #fff;
+        width: 113px;
+        height: 54px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 10px;
+        border: 0px;
+        margin: 40px auto;
+    }
 }</style>

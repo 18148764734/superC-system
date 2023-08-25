@@ -10,6 +10,16 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
+      "/schedule": {
+        target: "http://chino.39nat.com/schedule",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/schedule/, ""),
+      },
+      "/ipJson.jsp": {//IP获取接口跨域
+        target: "http://whois.pconline.com.cn/ipJson.jsp",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/ipJson.jsp/, ""),
+      },
     },
   },
   plugins: [

@@ -37,7 +37,8 @@ import { getEmaiDetail } from "../../../axios/api";
         <div class="content" :style="getStyle()">
             <div class="content-title">{{ details.title }}</div>
             <div class="content-text">{{ details.content }}</div>
-            <img @click="getDetails(details.id)" src="./../../../assets/img/personalPage/myEmailUnit/detail.png">
+            <img class="active-img" v-show="!currentActive" @click="getDetails(details.id)" src="./../../../assets/img/personalPage/myEmailUnit/detail.png">
+            <img class="active-img back" v-show="currentActive" @click="getDetails(details.id)" src="./../../../assets/img/personalPage/accountMessage/login_out/back.png">
             <img class="sendImg" :src="details.sendPhoto" v-show="currentActive">
         </div>
 
@@ -119,6 +120,7 @@ import { getEmaiDetail } from "../../../axios/api";
                 padding-bottom: 10px;
                 text-align: left;
                 font-size: 14px;
+                line-height: 20px;
                 color: #7c8dcb;
             }
             img{
@@ -126,5 +128,116 @@ import { getEmaiDetail } from "../../../axios/api";
                 right: -10px;
                 bottom: -20px;
             }
+
+            .back{
+                width: 50px;
+                height: 50px;
+                right: 0px;
+                bottom: 20px;
+            }
     }
-}</style>
+}
+
+@media only screen and (max-width: 940px) {
+    .email-unit {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: medium;
+    line-height: 10px;
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 0 30px 5px #9ed7fd;
+    background: white;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+    .title {
+        padding-left: 16px;
+        padding-right: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 54px;
+        margin-bottom: 5px;
+
+        .flex-grow {
+            flex-grow: 1;
+        }
+
+        .titleText {
+            margin-left: 8px;
+            font-size: 14px;
+            color: #5068ba;
+            white-space: nowrap;
+            scale: 0.9;
+        }
+
+        .titleTime {
+            white-space: nowrap;
+            margin-left: 20px;
+            font-size: 14px;
+            color: #5068ba;
+            scale: 0.9;
+        }
+
+        .titleState {
+            margin-left: 8px;
+            font-size: 14px;
+            color: #ff8a71;
+        }
+        img{
+            width: 24px;
+        }
+    }
+
+    .divider {
+        border-top: 1px solid #dce6ff;
+        width: 100%;
+    }
+
+    .content{
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: 10px;
+            .sendImg{
+                position: relative;
+            }
+            .content-title{
+                padding-left: 10px;
+                padding-top: 8px;
+                text-align: left;
+                font-size: 16px;
+                font-weight: 100;
+            }
+            .content-text{
+                padding-left: 10px;
+                padding-top: 16px;
+                padding-bottom: 10px;
+                text-align: left;
+                font-size: 14px;
+                scale: 0.8;
+                line-height: 20px;
+                color: #7c8dcb;
+            }
+            .active-img{
+                width: 80px;
+                height: 80px;
+                position: absolute;
+                right: -10px;
+                bottom: 20px;
+            }
+            .back{
+                width: 50px;
+                height: 50px;
+                right: 0px;
+                bottom: 20px;
+            }
+    }
+}
+}
+</style>

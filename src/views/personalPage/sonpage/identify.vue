@@ -35,7 +35,9 @@
       您的身份证件照片与信息不匹配，请检查后再提交！
     </div>
     <div class="submit-button" @click="submit()">确认提交</div>
+    
   </div>
+  
 </template>
 
 <script setup>
@@ -217,5 +219,130 @@ const submit = async () =>{
     color: #ff3232;
     font-family: medium;
   }
+}
+
+@media only screen and (max-width: 940px) {
+  .container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  line-height: 10px;
+  width: 100%;
+  height: 600px;
+  top: -128px;
+  scale: 0.85;
+  .id-card-submit-button {
+    margin-top: 20px;
+    display: flex;
+    border-radius: 10px;
+    background-color: #3dccff;
+    color: #fff;
+    text-align: center;
+    width: 100px;
+    font-size: 18px;
+    height: 40px;
+    text-decoration: none;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  .submit-button {
+    margin-top: 20px;
+    display: flex;
+    border-radius: 20px;
+    background-color: #4b63b8;
+    color: #fff;
+    text-align: center;
+    width: 170px;
+    font-size: 23px;
+    min-height: 50px;
+    text-decoration: none;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  .identify-title {
+    font-size: 30px;
+    color: #546bbc;
+    font-family: medium;
+    font-weight: 100;
+    margin-bottom: 64px;
+  }
+
+  .introduction {
+    text-align: center;
+    font-size: 16px;
+    white-space: nowrap;
+    width: 100%;
+    height: 20px;
+    color: #7c7c7c;
+  }
+
+  .divider {
+    border-top: 1px solid #dee2f2;
+    width: 80%;
+  }
+
+  .identify-card {
+    margin-top: 20px;
+    width: 470px;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    border: 3px solid #dbdbdb;
+    border-radius: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    .idImg{
+      width: 290px;
+      height: 177px;
+    }
+    .card-title {
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .green-alert {
+    color: #1cd95d;
+    height: 18px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-align: left;
+    width: 90%;
+  }
+
+  .form {
+    flex-wrap: row;
+    position: relative;
+    display: flex;
+    font-family: medium;
+    font-weight: 100;
+    margin-bottom: 20px;
+    font-size: 18px;
+    .input-label {
+      width: 100px;
+      display: flex;
+      align-items: center;
+      color: #4c64b8;
+    }
+    .input-text {
+      width: 240px;
+    }
+  }
+  .red-alert {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: #ff3232;
+    font-family: medium;
+  }
+}
 }
 </style>

@@ -5,6 +5,9 @@ import {
 import layOut from "../layout/index.vue";
 import store from "../store/index.js";
 
+import phoneCalendar from "../views/calendar/mobile/index.vue"
+import pcCalendar from "../views/calendar/pc/index.vue"
+
 const routes = [{
     path: '/',
     redirect: '/main',
@@ -136,7 +139,7 @@ const routes = [{
             path: 'personalIndex',
             name: 'personalIndex',
             component: () => import("../views/personalPage/index.vue"),
-            
+            redirect: '/accountMessage',
             children:[
                 {
                     path: '/accountMessage',
@@ -224,15 +227,44 @@ const routes = [{
 
     ]
 },
+// {
+//     path: '/calendar',
+//     name: 'calendar',
+//     component: () => import( /* webpackChunkName: "quotation" */ "../views/calendar.vue"),
+//     meta: {
+//         title: 'calendar'
+//     }
+// },
 {
     path: '/calendar',
     name: 'calendar',
-    component: () => import( /* webpackChunkName: "quotation" */ "../views/calendar.vue"),
+    component: pcCalendar,
     meta: {
         title: 'calendar'
+    },
+    beforeEnter: (to, from, next) => {
+        if(window.innerWidth<1024){
+            next('/mcalendar')
+        }
+        next();
+    }
+},
+{
+    path: '/mcalendar',
+    name: 'mcalendar',
+    component: phoneCalendar,
+    meta: {
+        title: 'mcalendar'
+    },
+    beforeEnter: (to, from, next) => {
+        if(window.innerWidth>1024){
+            next('/calendar')
+        }
+        next();
     }
 },
 ]
+
 
 let router = createRouter({
     history: createWebHashHistory(), //process.env.BASE_URL

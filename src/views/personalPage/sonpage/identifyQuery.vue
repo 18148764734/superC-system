@@ -59,4 +59,44 @@ const data = ref(
             color: #1cd95d; 
         }
     }
+
+    @media only screen and (max-width: 940px) {
+        .myContainer {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items:flex-start;
+        padding-top: 16px;
+        width: 100%;
+        .unit{
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #a4a4a4;
+            border-radius: 20px;
+            width: 80%;
+            height: 100px;
+            // font-size: 19px;
+            font-weight:bold ;
+        }
+        .blue{
+            color: #4b63b8;
+            margin-left: 10px;
+            white-space: nowrap;
+            margin-right: 16px;
+            font-size: 16px;
+        }
+        .green{
+            color: #1cd95d; 
+            white-space: nowrap;
+            font-size: 14px;
+            margin-right: 16px;
+        }
+
+        img{
+            width: 88px;
+        }
+    }
+    }
 </style>

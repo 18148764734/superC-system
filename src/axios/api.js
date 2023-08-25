@@ -1,5 +1,6 @@
 import { message } from "ant-design-vue";
 import axios from "./index";
+import originAxios from 'axios'
 
 // 注销
 export const deleteUser = async (id) => {
@@ -62,6 +63,20 @@ export const payApi = async (v) => {
     } catch (e) {
         console.log(e);
     }
+}
+//手机支付接口
+export const payApiPhone = async (v) => {
+    try {
+        const res = await axios.post('/api/payForOrderH5',v)
+        return res;
+    } catch (e) {
+        console.log(e);
+    }
+}
+//获取用户IP
+export const getIP = async () => {
+    const res = await originAxios.get("/ipJson.jsp?json=true")
+    return res.data.ip
 }
 export const getEmaiDetail = async (id) =>{
     try{

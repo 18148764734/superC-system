@@ -2,7 +2,8 @@
   <div class="VIP-container">
     <img  class = "title" src="./../../../assets/img/personalPage/VIP/会员标题.png">
     <img  class = "getVIP" src="./../../../assets/img/personalPage/VIP/开通会员按钮.png" @click="store.state.showGetVIP=true">
-    <img  class = "center" src="./../../../assets/img/personalPage/VIP/中间电路板框.png">
+    <img  class = "center pc-center" src="./../../../assets/img/personalPage/VIP/中间电路板框.png">
+    <img  class = "center phone-center" src="./../../../assets/img/getVIP/superC手机会员支付UI/手机会员/手机VIP公众号.png">
     <img  class = "right-top" src="./../../../assets/img/personalPage/VIP/右上角打折.png">
     <img  class = "right-bottom" src="./../../../assets/img/personalPage/VIP/右下角活动名额.png">
     <img  class = "left-top" src="./../../../assets/img/personalPage/VIP/左上决策次数.png">
@@ -48,6 +49,13 @@
       top: 160px;
     }
 
+    .pc-center{
+      display: block;
+    }
+    .phone-center{
+      display: none;
+    }
+
     .center{
       position: absolute;
       transform: translate(-50%, -0%) scale(1.2);
@@ -75,5 +83,85 @@
       bottom: 100px;
       right: 80px;
     }
+}
+
+@media only screen and (max-width: 940px) {
+  .VIP-container {
+  width: 100%;
+  height: 1100px;
+  position: relative;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+
+    img{
+      transform: scale(1.2);
+    }
+    .count{
+      position: absolute;
+      top: 309px;
+      left: 97px;
+      font-family: "medium";
+      font-size: 13px;
+      color: white;
+    }
+    .title{
+      position: absolute;
+      padding: 0px 20% 0px 20%;
+      transform: translate(-50%, -0%);
+      left: 50%;
+      top: 32px;
+    }
+    .getVIP{
+      position: absolute;
+      transform: translate(-50%, -0%);
+      left: 50%;
+      top: 104px;
+    }
+
+    .pc-center{
+      display: none;
+    }
+    .phone-center{
+      display: block;
+    }
+
+    .center{
+      position: absolute;
+      width: 40%;
+      transform: translate(-50%, -0%) scale(1.2);
+      left: 50%;
+      top: 636px;
+    }
+    .left-bottom{
+      position: absolute;
+      width: 128px;
+      height: 180px;
+      top: 396px;
+      left: 32px;
+    }
+    .left-top{
+      position: absolute;
+      width: 128px;
+      height: 180px;
+      top: 176px;
+      left: 32px;
+    }
+    
+    .right-top{
+      position: absolute;
+      width: 128px;
+      height: 180px;
+      right: 32px;
+      top: 176px;
+    }
+    .right-bottom{
+      position: absolute;
+      width: 128px;
+      height: 180px;
+      top: 396px;
+      right: 32px;
+    }
+}
 }
 </style>

@@ -11,8 +11,10 @@
 			<img class="logout-button" src="./../../../../assets/img/personalPage/accountMessage/login_out/确认注销.png"
 				@click="goto('/account_logout2')">
 		</div>
+		
 
 	</div>
+	
 </template>
 
 <script setup>
@@ -66,5 +68,48 @@ const goto = async (path) => {
 	}
 
 
+}
+
+@media only screen and (max-width: 940px) {
+	.container {
+	width: 100%;
+	height: 1000px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	line-height: 10px;
+	padding-top: 0px;
+	margin-top: -300px;
+	transform: scale(0.8);
+	.logout-button {
+		margin: 0px;
+		padding-top: 24px;
+		scale: 0.7;
+	}
+
+	.logout-img {
+		width: 50%;
+		margin-bottom: 16px;
+	}
+
+	.back {
+		position: absolute;
+		width: 32px;
+		top: 0px;
+		display: none;
+		left: 0px;
+	}
+
+	.title {
+		margin: 0;
+		font-size: 16px;
+		color: #546bbc;
+		font-family: medium;
+		font-weight: 100;
+	}
+
+
+}
 }
 </style>

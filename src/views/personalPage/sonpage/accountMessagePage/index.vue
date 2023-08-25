@@ -95,6 +95,12 @@ const reloadUserData = () => {
 			user_info.value.userDate = `${year}年${month}月${day}日${hour}时`;
 			passwordStyle.value.color = user_info.value.passwordLevel;
 
+			//优化黄色等级的密码显示
+			if (passwordStyle.value.color == 'yellow') {
+				passwordStyle.value.color = '#fbc02d'
+			}
+
+
 			// 获取地址
 			const aRes = await getAddress(
 				{ userId: user_info.value.sdid }
@@ -162,6 +168,12 @@ const address = ref('');
 const dateFormat = 'YYYY年MM月DD日';
 const birth = ref('');
 const birth_hour = ref("");;
+const birthOne = ()=>{
+	return window.innerWidth>1024?'请输入您的生日日期':'生日'
+}
+const birthTwo = ()=>{
+	return window.innerWidth>1024?'请选择你的生辰':'时'
+}
 
 const nameActive = ref(false);
 const resumeActive = ref(false);
@@ -242,7 +254,7 @@ const copy = () => {
 }
 const passwordStyle = ref({
 	color: "#ff9898",
-	fontSize: "15px",
+	fontSize: "13px",
 })
 const addressExist = ref(false);
 const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
@@ -261,12 +273,14 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 			</Upload>
 		</span>
 
+		<div class='divider'></div>
+
 		<!-- 用户名 -->
 		<div class="unit">
 			<img src="./../../../../assets/img/personalPage/accountMessage/name.png">
-			预测专家
+			<span class="key">预测专家</span> 
 			<font v-show="!nameActive" class="contentInput" style="color: #8f8f8f;">{{ user_info.userName }}</font>
-			<img v-show="!nameActive" :src="getHoverSrc('name')" @mouseover="currentUpdate = 'name'"
+			<img class="update" v-show="!nameActive" :src="getHoverSrc('name')" @mouseover="currentUpdate = 'name'"
 				@mouseout="currentUpdate = ''" @click="updateUserName()">
 			<el-input v-show="nameActive" v-model="updateData.userName" class="elInput" />
 			<img v-show="nameActive" src="./../../../../assets/img/personalPage/accountMessage/yes.png" @click="submitUpdate('userName')">
@@ -279,10 +293,10 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 		<!-- id -->
 		<div class="unit">
 			<img src="./../../../../assets/img/personalPage/accountMessage/id.png">
-			SSID
+			<span class="key">SSID</span> 
 			<font v-show="!idActive" class="contentInput" style="color: #8da1ff;">{{ user_info.sdid }}</font>
 			<img src="./../../../../assets/img/personalPage/accountMessage/copy.png" @click="copy()">
-			<font v-show="!idActive" class="contentInput" style="color: #979eff;font-size: 15px;font-weight:300;padding-top: 10px;">
+			<font v-show="!idActive" class="blue">
 				这是您唯一的ID号，请妥善保存</font>
 		</div>
 		<div class='divider'></div>
@@ -290,11 +304,11 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 		<!-- 密码 -->
 		<div class="unit">
 			<img src="./../../../../assets/img/personalPage/accountMessage/password.png">
-			密码
+			<span class="key">密码</span> 
 			<font v-show="!passwordActive" class="contentInput" :style="passwordStyle">
 			{{user_info.password }}
 				</font>
-			<img v-show="!passwordActive" :src="getHoverSrc('password')" @mouseover="currentUpdate = 'password'"
+			<img class="update" v-show="!passwordActive" :src="getHoverSrc('password')" @mouseover="currentUpdate = 'password'"
 				@mouseout="currentUpdate = ''" @click="goto('repswd')">
 		</div>
 		<div class='divider'></div>
@@ -302,9 +316,9 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 		<!-- 手机 -->
 		<div class="unit">
 			<img src="./../../../../assets/img/personalPage/accountMessage/phone.png">
-			手机
+			<span class="key">手机</span> 
 			<font v-show="!phoneActive" class="contentInput" style="color: #8f8f8f;">{{ getHiddenPhone() }}</font>
-			<img v-show="!phoneActive" :src="getHoverSrc('phone')" @mouseover="currentUpdate = 'phone'"
+			<img class="update" v-show="!phoneActive" :src="getHoverSrc('phone')" @mouseover="currentUpdate = 'phone'"
 				@mouseout="currentUpdate = ''" @click="goto('rephone')">
 		</div>
 		<div class='divider'></div>
@@ -312,11 +326,11 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 		<!-- 简介 -->
 		<div class="unit" style="height: 100px;">
 			<img src="./../../../../assets/img/personalPage/accountMessage/resume.png">
-			个人简介
+			<span class="key">个人简介</span> 
 			<font v-show="!resumeActive" class="contentInput" style="color: #8f8f8f; width: 350px; line-height: 30px; text-align: left;">
 				{{ user_info.userInfo.length>38?user_info.userInfo.slice(0,38):user_info.userInfo }}
 			</font>
-			<img v-show="!resumeActive" :src="getHoverSrc('resume')" @mouseover="currentUpdate = 'resume'"
+			<img class="update" v-show="!resumeActive" :src="getHoverSrc('resume')" @mouseover="currentUpdate = 'resume'"
 				@mouseout="currentUpdate = ''" @click="updateInfo()">
 			<el-input v-show="resumeActive" style="width: 350px; line-height: 30px; text-align: left;" v-model="updateData.userInfo" class="elInput" />
 			<img v-show="resumeActive" src="./../../../../assets/img/personalPage/accountMessage/yes.png"
@@ -329,9 +343,9 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 		<!-- 邮箱 -->
 		<div class="unit">
 			<img src="./../../../../assets/img/personalPage/accountMessage/email.png">
-			邮箱
+			<span class="key">邮箱</span> 
 			<font v-show="!emailActive" class="contentInput" style="color: #8f8f8f;">{{ maskedEmail() }}</font>
-			<img v-show="!emailActive" :src="getHoverSrc('email')" @mouseover="currentUpdate = 'email'"
+			<img class="update" v-show="!emailActive" :src="getHoverSrc('email')" @mouseover="currentUpdate = 'email'"
 				@mouseout="currentUpdate = ''" @click="updateEmail()">
 			<el-input v-show="emailActive" v-model="updateData.email" class="elInput" />
 			<img v-show="emailActive" src="./../../../../assets/img/personalPage/accountMessage/yes.png"
@@ -344,15 +358,15 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 		<!-- 生日 -->
 		<div class="unit">
 			<img src="./../../../../assets/img/personalPage/accountMessage/birth.png">
-			阳历生日
+			<span class="key">阳历生日</span> 
 			<font v-show="!birthActive" class="contentInput" style="color: #8f8f8f;">{{ user_info.userDate }}</font>
-			<img v-show="!birthActive" :src="getHoverSrc('birth')" @mouseover="currentUpdate = 'birth'"
+			<img class="update" v-show="!birthActive" :src="getHoverSrc('birth')" @mouseover="currentUpdate = 'birth'"
 				@mouseout="currentUpdate = ''" @click="updateDate()">
 			<DatePicker v-show="birthActive" v-model:value="birth" class="elInput" style="width: 200px;" :format="dateFormat"
-				placeholder="请输入您的生日日期" valueFormat="YYYY-MM-DD-" :locale="locale" />
+				:placeholder="birthOne()" valueFormat="YYYY-MM-DD-" :locale="locale" />
 			<!-- <TimePicker v-show="birthActive" v-model:value="birth_hour" format="HH时" valueFormat="HH" :locale="locale" /> -->
 			
-			<el-select v-model="birth_hour" v-show="birthActive" class="elInput" placeholder="请选择你的生辰">
+			<el-select v-model="birth_hour" v-show="birthActive" class="elInput birth-hour" :placeholder="birthTwo()">
 				<el-option
 					v-for="item in options"
 					:key="item.value"
@@ -370,7 +384,8 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 		<!-- 地址 -->
 		<div class="unit" style="height: 100px;">
 			<img src="./../../../../assets/img/personalPage/accountMessage/address.png">
-			地址管理
+			<span class="key">地址管理</span> 
+
 			<font v-show="!addressActive" class="contentInput"
 				style="color: #8f8f8f;width: 430px; line-height: 30px; text-align: left;">
 				{{ user_info.address!=null&&user_info.address.length>60?user_info.address.slice(0,60):user_info.address }}
@@ -379,7 +394,7 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 			v-show="!addressActive" 
 			:src="getHoverSrc('address')" 
 			@mouseover="currentUpdate = 'address'"
-			@mouseout="currentUpdate = ''" 
+			@mouseout="currentUpdate = ''" class="update"
 			@click="goto('/updateAddress/' + user_info.sdid
 					+ '/' + addressExist)">
 		</div>
@@ -388,8 +403,8 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 		<!-- 注销 -->
 		<div class="unit">
 			<img src="./../../../../assets/img/personalPage/accountMessage/out.png">
-			账号注销
-			<a @click="goto('/account_logout/'+user_info.sdid)" class="contentInput" style="color: #ffbc4d;font-size:18px">立即注销</a>
+			<span class="key">账号注销</span>
+			<a @click="goto('/account_logout/'+user_info.sdid)" class="logout">立即注销</a>
 		</div>
 	</div>
 </template>
@@ -408,7 +423,7 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 	.icon {
 		position: absolute;
 		top: 40px;
-		right: 80px;
+		right: 50px;
 		width: 178px;
 		height: 178px;
 		overflow: hidden;
@@ -448,6 +463,23 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 		img {
 			margin-right: 20px;
 		}
+		
+		.blue{
+					color: #979eff;
+					font-size: 15px;
+					padding-left: 20px;
+					padding-right: 30px;
+					text-align: center;
+					font-weight:300;
+					padding-top: 10px;
+				}
+		.logout{
+			padding-left: 20px;
+			padding-right: 30px;
+			text-align: center;
+			color: #ffbc4d;
+			font-size:18px
+		}
 	}
 
 	.divider {
@@ -460,5 +492,101 @@ const options = ref([...Array(12)].map((_, i) => ({ value:  i })))
 
 
 
+}
+@media only screen and (max-width: 940px) {
+	.account-message-index-container{
+		// 这里面一个都不能删
+		padding-top: 400px;
+		flex-direction: column;
+		padding-left: 0px;
+		padding-bottom: 520px;
+		line-height: 10px;
+		width: 100%;
+			.icon {
+				top: 0px;
+				right: 50%;
+				width: 128px;
+				height: 128px;
+				display: flex;
+				overflow: hidden;
+				transform: translate(50%,0)scale(0.7);
+				img {
+					border-radius: 178px;
+				}
+
+				.update {
+					position: absolute;
+					top: 5px;
+					right: 2px;
+				}
+			}
+			.unit {
+				width: 100%;
+				text-align: left;
+				height:36px;
+				display: flex;
+				align-items: center;
+				color: #000000;
+				font-size: 14px;
+				font-family: medium;
+				.update{
+					position: absolute;
+					right: 0px;
+				}
+				.elInput {
+					min-width: 80px;
+				}
+
+				.birth-hour{
+					min-width: 64px;
+				}
+
+				.contentInput {
+					min-width: 87px;
+					max-width: 160px;
+					height: 24px;
+					line-height: 24px;
+					text-align: left;
+					padding-left: 8px;
+					padding-right: 8px;
+					color: #8f8f8f;
+					white-space: nowrap;
+					overflow-x: scroll;
+					overflow-y: hidden;
+				}
+				.key{
+					display: flex;
+					transform: scale(1);
+					font-weight: 100;
+					padding-top: 0px;
+					margin-left: -30px;
+					min-width: 64px;
+					height: 10px;
+				}
+
+				img {
+					transform: scale(0.5);
+					margin-right: 20px;
+				}
+
+				.logout{
+					font-size: 10px;
+					color: #ef9090;
+					padding-left: 0;
+				}
+				.blue{
+					padding-left: 0;
+					font-size: 14px;
+					width: auto;
+					line-height: 16px;
+					scale: 0.8;
+					// white-space: nowrap;
+					overflow-x: visible;
+				}
+			}
+			.divider {
+				width: 100%;
+			}
+	}
 }
 </style>
