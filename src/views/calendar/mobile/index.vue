@@ -6,12 +6,12 @@
 
 
       <van-popup v-model:show="showDatePicker" position="bottom">
-        <van-date-picker :value="currentDate" @confirm="onDatePickConfirm" title="选择年月日" :min-date="new Date(1900, 0, 1)"
+        <van-date-picker :value="currentDate" @confirm="onDatePickConfirm" @cancel="onDatePickCancel" title="选择年月日" :min-date="new Date(1900, 0, 1)"
           :max-date="new Date(2035, 12, 31)" :columns-type="columnsType" />
       </van-popup>
 
       <van-popup v-model:show="showTimePicker" position="bottom">
-        <van-time-picker :value="currentTime" @confirm="onTimePickConfirm" title="选择时辰" :min-hour="1"
+        <van-time-picker :value="currentTime" @confirm="onTimePickConfirm" @cancel="onDatePickCancel" title="选择时辰" :min-hour="1"
           :max-hour="24" :columns-type="columnsTimeType" />
       </van-popup>
 
@@ -308,6 +308,11 @@ export default {
     onTimePickConfirm(e) {
       let timeVal = e.selectedValues.join().replace(/,/g, "-")
       this.birthDay = this.birthDay+"-"+timeVal
+      this.showDatePicker = false
+      this.showTimePicker = false
+    },
+    //时间选择器关闭回调
+    onDatePickCancel() {
       this.showDatePicker = false
       this.showTimePicker = false
     },
