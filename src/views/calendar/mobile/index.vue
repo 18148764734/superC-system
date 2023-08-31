@@ -1132,6 +1132,7 @@ export default {
               height: 40px;
               left: 0;
               top: -4px;
+              display: none;
             }
 
             .dataTitle {

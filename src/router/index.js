@@ -243,10 +243,17 @@ const routes = [{
         title: 'calendar'
     },
     beforeEnter: (to, from, next) => {
-        if(window.innerWidth<1024){
-            next('/mcalendar')
+        if (store.state.token) {
+            window.scrollTo(0, 0);
+            if(window.innerWidth<1024){
+                next('/mcalendar')
+            }
+            next();
+        } else {
+            alert("您还未登录，请先登录！")
+            next("/login")
         }
-        next();
+        
     }
 },
 {
@@ -257,10 +264,16 @@ const routes = [{
         title: 'mcalendar'
     },
     beforeEnter: (to, from, next) => {
-        if(window.innerWidth>1024){
-            next('/calendar')
+        if (store.state.token) {
+            if(window.innerWidth>1024){
+                next('/calendar')
+            }
+            next();
+        } else {
+            alert("您还未登录，请先登录！")
+            next("/login")
         }
-        next();
+        
     }
 },
 ]

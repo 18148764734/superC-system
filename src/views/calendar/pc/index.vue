@@ -2086,6 +2086,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
               .edit {
                 height: 2.4vh;
+                margin-left: 0.8vh;
               }
 
               .delete {
@@ -2094,6 +2095,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
               }
 
               .diarylist-messag-text {
+                display: flex;
+                align-items: center;
                 margin-left: 2vh;
                 line-height: 4vh;
               }
