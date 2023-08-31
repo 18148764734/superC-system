@@ -33,7 +33,7 @@ export function delAllSchedule (params) {
 // 删除单个日程
 export function delSingleSchedule (params) {
   return axios({
-    method: 'GET',
+    method: 'DELETE',
     url: `${publicUrl}/schedule/delSchedule`,
     params
   })

@@ -1,5 +1,7 @@
 <template>
   <div class="pc" @scroll.prevent>
+    <img class="pc-back" @click="router.go(-1)"
+      src="../../../assets/img/personalPage/accountMessage/login_out/back.png" />
     <!-- 宜忌弹窗 -->
     <div class="pc-dialog" v-if="isDialog">
       <img :src="publicUrl + 'static/pc/dialog.png'" alt="" />
@@ -171,7 +173,7 @@
                 alt=""
               /> -->
               <img v-if="item.day" class="imgUrl" :src="item.holiday || item.jieQi ? `${publicUrl}static/pc/red.png`
-                  : item.weekend ? `${publicUrl}static/pc/yellow.png` : `${publicUrl}static/pc/blue.png`
+                : item.weekend ? `${publicUrl}static/pc/yellow.png` : `${publicUrl}static/pc/blue.png`
 
 
                 " alt="" />
@@ -179,8 +181,8 @@
                 alt="" />
               <img v-if="item.daily" :src="publicUrl + 'static/pc/gantan.png'" alt="" class="recordImg" />
               <div @mousemove="date = item.day" @mouseleave="date = null" @mousedown="getCurrentDate(item)" :style="item.jieQi || item.holiday
-                  ? { fontSize: '2vh', whiteSpace: 'nowrap' }
-                  : ''
+                ? { fontSize: '2vh', whiteSpace: 'nowrap' }
+                : ''
                 " class="dataTitle">
                 <span style="
                     fontSize: '2.0vh' 
@@ -210,7 +212,8 @@
         <div class="pc-content-search-top">
           <img :src="publicUrl + 'static/pc/search-input.png'" alt="" />
           <img @click="getSearchData" :src="publicUrl + 'static/pc/search-btn.png'" alt="" />
-          <input type="date" v-model="birthDay" @change="isHour = true" class="pc-content-search-top-input" />
+          <input :type="searchInputType" placeholder="输入阳历生日：年/月/日" v-model="birthDay" @mouseout="searchInputType = 'text'" @mouseenter="searchInputType = 'date'" @change="isHour = true" class="pc-content-search-top-input" />
+          <!-- <el-date-picker v-model="elDate" type="datetime" placeholder="输入：年/月/日" format="YYYY-MM-DD HH" value-format="YYYY-MM-DD HH"/> -->
           <span class="pc-content-search-top-input-hour"> {{ hour }} </span>
           <span v-show="isHour" class="pc-content-search-top-hour">
             <div style="text-align: center;">请选择时辰：</div>
@@ -255,10 +258,16 @@ import {
 import "../../../assets/font/calendarfont/font.css";
 // import "lib-flexible/flexible";
 import common from "../../../utils/global.js";
+import { useRouter } from 'vue-router'
 
 export default {
+  setup() {
+    const router = useRouter()
+    return { router }
+  },
   data() {
     return {
+      elDate: "",
       params: {},
       shengxiao: "",
       lunarYear: [],
@@ -296,7 +305,9 @@ export default {
       monthDate: [],
       messageList: [],
       resJson: [],
-      publicUrl: "https://supercalender.oss-cn-beijing.aliyuncs.com/"
+      publicUrl: "https://supercalender.oss-cn-beijing.aliyuncs.com/",
+      searchInputType: "text",//搜索框类型切换
+      setElDatePickClass: 'pc-content-search-top-input'
     };
   },
   methods: {
@@ -1747,6 +1758,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
 
+  &-back {
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    left: 6vh;
+    top: 1vh;
+    margin-top: 2vh;
+    margin-left: -3vh;
+    z-index: 10000;
+  }
+
   &-richeng {
     width: 100%;
     height: 100%;
@@ -1954,18 +1976,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
             .jieriContent-date {
               font-size: 12vh;
               position: absolute;
-              left: 1vh;
+              left: 0.5vh;
               width: 19vh;
               text-align: center;
-              top: -4vh;
+              top: -5vh;
               text-shadow: 0 0 2vh #a3cad3;
             }
 
             .jieriContent-jieri {
               font-size: 6vh;
               position: absolute;
-              left: 4.5vh;
-              bottom: 4vh;
+              left: 4.0vh;
+              // top: 1vh;
+              bottom: 2vh;
               text-shadow: 0 0 2vh #a3cad3;
             }
           }
@@ -2430,14 +2453,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
           display: flex;
           flex-wrap: nowrap;
           // justify-content: space-between;
-          margin-top: 1vh ;
+          margin-top: 1vh;
 
           li {
             width: calc((100%) / 7);
             display: flex;
             justify-content: center;
           }
-          
+
 
           .work {
             width: 5vh;
@@ -2577,7 +2600,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
           &::-webkit-input-placeholder {
             color: #fff;
-            font-size: 16px;
+            font-size: 14px;
           }
 
           &::-moz-placeholder {
@@ -2733,8 +2756,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
       }
     }
   }
-}</style>
-<style>.el-input__inner {
+}
+</style>
+<style>
+.el-input__inner {
   padding-left: 7px;
   width: 20vh;
   height: 4vh;
@@ -2747,7 +2772,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-radius: 6px;
 }
 
+.el-input__wrapper{
+  width: 20vh;
+          background: none;
+          position: absolute;
+          left: 6vh;
+          border: none;
+          color: #fff;
+          outline: none;
+}
+
 .el-input__icon {
   line-height: initial !important;
   display: none;
-}</style>
+}
+</style>

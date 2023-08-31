@@ -59,6 +59,7 @@ const handleCheck = () => {
     font-size: 12px;
     padding-left: 30px;
     width: 260px;
+    white-space: nowrap;
     @media only screen and (max-width: 1110px) {
         padding-left: 0px;
         padding-top: 10px;

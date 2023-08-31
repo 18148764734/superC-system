@@ -254,7 +254,7 @@ const copy = () => {
 }
 const passwordStyle = ref({
 	color: "#ff9898",
-	fontSize: "13px",
+	fontSize: "18px",
 })
 const addressExist = ref(false);
 const options = ref([...Array(12)].map((_, i) => ({ value:  i })))

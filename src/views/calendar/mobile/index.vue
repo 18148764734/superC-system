@@ -3,21 +3,27 @@
     <img class="mobile-bgimg" :src="publicUrl + 'static/mobile/bg.png'" alt="" />
     <!-- 移动端主体内容 -->
     <div class="mobile-main">
+
+
+      <van-popup v-model:show="showDatePicker" position="bottom">
+        <van-date-picker :value="currentDate" @confirm="onDatePickConfirm" title="选择年月日" :min-date="new Date(1900, 0, 1)"
+          :max-date="new Date(2035, 12, 31)" :columns-type="columnsType" />
+      </van-popup>
+
+      <van-popup v-model:show="showTimePicker" position="bottom">
+        <van-time-picker :value="currentTime" @confirm="onTimePickConfirm" title="选择时辰" :min-hour="1"
+          :max-hour="24" :columns-type="columnsTimeType" />
+      </van-popup>
+
+
       <div class="mobile-main-search">
-        <div class="mobile-main-search-inputImg">
+        <img class="mobile-main-search-back" @click="router.go(-1)" src="../../../assets/img/personalPage/accountMessage/login_out/back.png" />
+        <div class="mobile-main-search-inputImg" @click="showDatePicker = true">
           <img :src="publicUrl + 'static/mobile/search.png'" alt="" />
-          <van-field
-            v-model="birthDay"
-            class="mobile-main-search-inputImg-input"
-            placeholder="请写下阳历生日 例：1990-03-05-12"
-          />
+          <van-field v-model="birthDay" class="mobile-main-search-inputImg-input" placeholder="请写下阳历生日 例：1990-03-05-12" />
         </div>
-        <img
-          class="mobile-main-search-click"
-          :src="publicUrl + 'static/mobile/input.png'"
-          @click="getSearchData"
-          alt=""
-        />
+        <img class="mobile-main-search-click" :src="publicUrl + 'static/mobile/input.png'" @click="getSearchData"
+          alt="" />
       </div>
       <div class="mobile-main-date">
         <div class="mobile-main-date-left">
@@ -48,28 +54,16 @@
         <div class="mobile-main-calendar-bg">
           <div class="mobile-main-calendar-bg-shengxiao">{{ shengxiao }}</div>
         </div>
-        <img
-          class="mobile-main-calendar-bannerTop"
-          :src="publicUrl + 'static/mobile/blue.png'"
-          alt=""
-        />
+        <img class="mobile-main-calendar-bannerTop" :src="publicUrl + 'static/mobile/blue.png'" alt="" />
         <div class="mobile-main-calendar-yinyang" @click="isYin = !isYin">
           <img :src="publicUrl + 'static/mobile/yinyang.png'" alt="" />
           <div class="yinyang-content">
             <div class="yinyang-content-left">
-              <img
-                :src="publicUrl + 'static/pc/yin.png'"
-                v-if="!isYin"
-                alt=""
-              />
+              <img :src="publicUrl + 'static/pc/yin.png'" v-if="!isYin" alt="" />
               <span>阴</span>
             </div>
             <div class="yinyang-content-right">
-              <img
-                :src="publicUrl + 'static/pc/yang.png'"
-                v-if="isYin"
-                alt=""
-              />
+              <img :src="publicUrl + 'static/pc/yang.png'" v-if="isYin" alt="" />
               <span>阳</span>
             </div>
           </div>
@@ -93,12 +87,8 @@
           <img :src="publicUrl + 'static/mobile/year.png'" alt="" />
           <div class="yearSelection-main">
             <ul>
-              <li
-                v-for="(item, index) in yearList"
-                @click="getSelectYear(item)"
-                :key="index"
-                :class="{ yearActive: item == year }"
-              >
+              <li v-for="(item, index) in yearList" @click="getSelectYear(item)" :key="index"
+                :class="{ yearActive: item == year }">
                 {{ item }}
               </li>
             </ul>
@@ -110,12 +100,8 @@
           <img :src="publicUrl + 'static/mobile/month.png'" alt="" />
           <div class="monthSelection-main">
             <ul>
-              <li
-                v-for="(item, index) in monthList"
-                @click="getSelectMonth(item)"
-                :key="index"
-                :class="{ ulactive: item == month }"
-              >
+              <li v-for="(item, index) in monthList" @click="getSelectMonth(item)" :key="index"
+                :class="{ ulactive: item == month }">
                 {{ item }}月
               </li>
             </ul>
@@ -126,7 +112,7 @@
         <div class="weekSelection">
           <ul>
             <li v-for="(item, index) in weekDate" :key="index">
-              <div :class="item.isWork ? 'work' : 'nowork'" >{{ item.name }}</div>
+              <div :class="item.isWork ? 'work' : 'nowork'">{{ item.name }}</div>
             </li>
           </ul>
         </div>
@@ -135,56 +121,27 @@
         <div class="dateSelection">
           <ul>
             <li v-for="(item, index) in monthDate" :key="index" @click="">
-              <img
-                v-if="item.day"
-                class="imgUrl"
-                :src="
-                  item.weekend
-                    ? item.daily
-                      ? `${publicUrl}static/pc/red.png`
-                      : `${publicUrl}static/pc/yellow.png`
-                    : `${publicUrl}static/pc/blue.png`
-                "
-                alt=""
-              />
-              <img
-                v-if="item.day == date && date"
-                class="currentImg"
-                :src="publicUrl + 'static/pc/selected.png'"
-                alt=""
-              />
-              <img
-                v-if="item.daily"
-                :src="publicUrl + 'static/pc/gantan.png'"
-                alt=""
-                class="recordImg"
-              />
-              <div
-                @mousemove="date = item.day"
-                @mouseleave="date = null"
-                @mousedown="getCurrentDate(item)"
-                :class="item.jieQi || item.holiday ? 'recordImgText' : ''"
-                class="dataTitle"
-              >
-                <span
-                  :class="
-                    item.jieQi != null || item.holiday != null || !isYin
-                      ? 'hanziTitle'
-                      : ''
-                  "
-                  v-if="!isYin"
-                  >{{
-                    item.jieQi
-                      ? item.jieQi
-                      : item.holiday
-                      ? item.holiday
-                      : item.yinLi
-                  }}</span
-                >
+              <img v-if="item.day" class="imgUrl" :src="item.holiday || item.jieQi ? `${publicUrl}static/pc/red.png`
+                : item.weekend ? `${publicUrl}static/pc/yellow.png` : `${publicUrl}static/pc/blue.png`" alt="" />
+              <img v-if="item.day == date && date" class="currentImg" :src="publicUrl + 'static/pc/selected.png'"
+                alt="" />
+              <img v-if="item.daily" :src="publicUrl + 'static/pc/gantan.png'" alt="" class="recordImg" />
+              <div @mousemove="date = item.day" @mouseleave="date = null" @mousedown="getCurrentDate(item)"
+                :class="item.jieQi || item.holiday ? 'recordImgText' : ''" class="dataTitle">
+                <span :class="item.jieQi != null || item.holiday != null || !isYin
+                  ? 'hanziTitle'
+                  : ''
+                  " v-if="!isYin">{{
+    item.jieQi
+    ? item.jieQi
+    : item.holiday
+      ? item.holiday
+      : item.yinLi
+  }}</span>
                 <span v-else>{{
                   item.jieQi
-                    ? item.jieQi
-                    : item.holiday
+                  ? item.jieQi
+                  : item.holiday
                     ? item.holiday
                     : item.day
                 }}</span>
@@ -208,10 +165,7 @@
           <div class="yiji-yi">
             <img :src="publicUrl + 'static/pc/yi.png'" alt="" />
             <ul>
-              <li
-                v-for="(item, index) in this.getNewList(currentDate.suitable)"
-                :key="index"
-              >
+              <li v-for="(item, index) in this.getNewList(currentDate.suitable)" :key="index">
                 {{ item }}
               </li>
             </ul>
@@ -224,10 +178,7 @@
           <div class="yiji-ji">
             <img :src="publicUrl + 'static/pc/ji.png'" alt="" />
             <ul>
-              <li
-                v-for="(item, index) in this.getNewList(currentDate.fear)"
-                :key="index"
-              >
+              <li v-for="(item, index) in this.getNewList(currentDate.fear)" :key="index">
                 {{ item }}
               </li>
             </ul>
@@ -242,49 +193,24 @@
           <div class="mobile-dialog-content-list-content">
             <ul>
               <li v-for="(item, index) in messageList" :key="index">
-                <img
-                  @click="isEditDel = !isEditDel"
-                  :src="publicUrl + 'static/pc/message.png'"
-                  alt=""
-                  class="diarylist-message-bg"
-                />
+                <img @click="isEditDel = !isEditDel" :src="publicUrl + 'static/pc/message.png'" alt=""
+                  class="diarylist-message-bg" />
                 <div class="diarylist-messag-text">
                   <span>{{ item.message }}</span>
-                  <img
-                    v-if="isEditDel"
-                    title="编辑"
-                    :src="publicUrl + 'static/pc/edit.png'"
-                    alt=""
-                    class="edit"
-                    @click="editComment(item)"
-                  />
-                  <img
-                    v-if="isEditDel"
-                    title="删除"
-                    :src="publicUrl + 'static/pc/delete.png'"
-                    alt=""
-                    class="delete"
-                    @click="delComment(item)"
-                  />
+                  <img v-if="isEditDel" title="编辑" :src="publicUrl + 'static/pc/edit.png'" alt="" class="edit"
+                    @click="editComment(item)" />
+                  <img v-if="isEditDel" title="删除" :src="publicUrl + 'static/pc/delete.png'" alt="" class="delete"
+                    @click="delComment(item)" />
                 </div>
               </li>
             </ul>
           </div>
         </div>
         <div class="mobile-dialog-content-add">
-          <img
-            :src="publicUrl + 'static/mobile/add.png'"
-            @click="isInput = true"
-            alt=""
-          />
+          <img :src="publicUrl + 'static/mobile/add.png'" @click="isInput = true" alt="" />
         </div>
         <div class="mobile-dialog-content-del">
-          <img
-            @click="scheduleDialog"
-            class="windowClose"
-            :src="publicUrl + 'static/pc/close.png'"
-            alt=""
-          />
+          <img @click="scheduleDialog" class="windowClose" :src="publicUrl + 'static/pc/close.png'" alt="" />
         </div>
       </div>
     </div>
@@ -294,26 +220,10 @@
       <img :src="publicUrl + 'static/mobile/shuru.png'" alt="" />
       <div class="mobile-schedule-content">
         <div class="mobile-schedule-content-input">
-          <textarea
-            placeholder="输入您的日程"
-            v-model="textarea"
-            cols="30"
-            rows="10"
-            >{{ textarea }}</textarea
-          >
-          <img
-            @click="closeInput"
-            class="windowclose"
-            :src="publicUrl + 'static/pc/windowclose.png'"
-            alt=""
-          />
+          <textarea placeholder="输入您的日程" v-model="textarea" cols="30" rows="10">{{ textarea }}</textarea>
+          <img @click="closeInput" class="windowclose" :src="publicUrl + 'static/pc/windowclose.png'" alt="" />
         </div>
-        <img
-          @click="confirm"
-          class="mobile-richeng-confirm"
-          :src="publicUrl + 'static/pc/confirm.png'"
-          alt=""
-        />
+        <img @click="confirm" class="mobile-richeng-confirm" :src="publicUrl + 'static/pc/confirm.png'" alt="" />
       </div>
     </div>
   </div>
@@ -335,7 +245,23 @@ import "../../../assets/font/calendarfont/font.css";
 // import "lib-flexible/flexible";
 // import "../../../utils/rem.js";
 import common from "../../../utils/global.js";
+import { getCurrentInstance } from 'vue'
+import {useRouter} from 'vue-router'
 export default {
+  setup() {
+    const router = useRouter()
+    const currentDate = [];
+    const columnsType = ['year', 'month', 'day'];
+    const currentTime = [];
+    const columnsTimeType = ['hour'];
+    return {
+      currentDate,
+      columnsType,
+      currentTime,
+      columnsTimeType,
+      router
+    };
+  },
   data() {
     return {
       year: "",
@@ -365,10 +291,27 @@ export default {
       phone: "15119380977",
       publicUrl: "https://supercalender.oss-cn-beijing.aliyuncs.com/",
       currentDate: "",
+      showDatePicker: false,
+      showTimePicker: false,
       birthDay: ""
     };
   },
   methods: {
+    //日期选择器回调
+    onDatePickConfirm(e) {
+      let timeVal = e.selectedValues.join().replace(/,/g, "-")
+      this.birthDay = timeVal
+      this.showDatePicker = false
+      this.showTimePicker = true
+    },
+    //时间选择器回调
+    onTimePickConfirm(e) {
+      let timeVal = e.selectedValues.join().replace(/,/g, "-")
+      this.birthDay = this.birthDay+"-"+timeVal
+      this.showDatePicker = false
+      this.showTimePicker = false
+    },
+
     // 点击获取当前数据
     getCurrentDate(item) {
       const message = this.allJieQiAndCurrentAnimal.find(
@@ -622,9 +565,8 @@ export default {
     // 获取当前时间
     getScheduleTime() {
       const { year, month, day } = this.currentDate;
-      return `${year}-${month < 10 ? "0" + month : month}-${
-        day < 10 ? "0" + day : day
-      }`;
+      return `${year}-${month < 10 ? "0" + month : month}-${day < 10 ? "0" + day : day
+        }`;
     }
   },
   created() {
@@ -641,35 +583,47 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
+
   &-bgimg {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   &-main {
     width: 100%;
     height: 100%;
     position: absolute;
     padding: 10px 10px;
     box-sizing: border-box;
+
     &-search {
       display: flex;
       justify-content: space-between;
       position: relative;
       z-index: 6;
+
+      &-back{
+        width: 32px;
+        height: 32px;
+      }
+
       &-vant {
         position: absolute;
         left: 0;
         top: 30px;
         width: 100%;
       }
+
       &-inputImg {
         height: 38px;
         z-index: 5;
         position: relative;
-        > img {
+
+        >img {
           width: 100%;
         }
+
         &-input {
           position: absolute;
           left: 0;
@@ -684,89 +638,107 @@ export default {
           box-sizing: border-box;
           background: none;
           font-size: 14px;
+
           &::-webkit-input-placeholder {
             color: #fff;
             font-size: 14px;
           }
+
           &:-moz-placeholder {
             color: #fff;
             font-size: 14px;
             opacity: 1;
           }
+
           &::-moz-placeholder {
             color: #fff;
             font-size: 14px;
             opacity: 1;
           }
+
           &:-ms-input-placeholder {
             color: #fff;
             font-size: 14px;
           }
         }
       }
+
       &-click {
         height: 33px;
         z-index: 2;
-        > img {
+
+        >img {
           width: 100%;
         }
       }
     }
+
     &-date {
       display: flex;
       justify-content: center;
+
       &-left {
         width: 50%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         margin-top: -8px;
+
         .shengchen {
           font-family: "xique";
           display: flex;
           color: #374556;
           align-items: center;
           text-shadow: 0 0 2vh #9b82ae;
+
           .shengqiao-title {
             font-size: 72px;
           }
+
           .shengqiao-list {
             font-size: 24px;
             font-weight: 600;
+
             ul {
               display: flex;
+
               li {
                 writing-mode: tb-rl;
               }
             }
           }
         }
+
         .date {
           color: #fff;
           font-size: 48px;
           font-family: "xique";
           text-shadow: 0 0 8px #b896c7;
           margin-top: -18px;
-            position: relative;
+          position: relative;
           left: 1vh;
         }
+
         .jieri {
           color: #fff;
           font-size: 32px;
           font-family: "xique";
           text-shadow: 0 0 12px #b0a1ca;
-            position: relative;
+          position: relative;
           margin-top: -8px;
           left: 1vh;
         }
+
         .bazi {
           color: #e45872;
           position: relative;
           margin-top: 6px;
           margin-bottom: 8px;
-          > img {
+
+          >img {
             width: 100%;
           }
+
           ul {
             position: absolute;
             left: 0;
@@ -777,6 +749,7 @@ export default {
             justify-content: center;
             align-items: center;
             padding-bottom: 16px;
+
             li {
               writing-mode: tb-rl;
               font-size: 21px;
@@ -792,12 +765,14 @@ export default {
           }
         }
       }
+
       &-right {
         width: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
-        > img {
+
+        >img {
           width: 230px;
           position: absolute;
           right: -20px;
@@ -806,11 +781,13 @@ export default {
         }
       }
     }
+
     &-calendar {
       z-index: 2;
       position: relative;
       width: 100%;
       padding-bottom: 10px;
+
       &-bg {
         width: 100%;
         height: 100%;
@@ -821,6 +798,7 @@ export default {
         background-color: #c1f0ee;
         box-shadow: 2px 2px 5px #aac4df;
         overflow: hidden;
+
         &-shengxiao {
           font-family: "xique";
           font-size: 240px;
@@ -830,6 +808,7 @@ export default {
           color: #b8dfe9;
         }
       }
+
       &-bannerTop {
         position: absolute;
         right: 3px;
@@ -837,13 +816,16 @@ export default {
         height: 40px;
         z-index: -1;
       }
+
       &-yinyang {
         position: absolute;
         right: 30px;
         top: -34px;
-        > img {
+
+        >img {
           height: 30px;
         }
+
         .yinyang-content {
           width: 100%;
           height: 100%;
@@ -851,15 +833,18 @@ export default {
           left: 0;
           top: 0;
           display: flex;
+
           .yinyang-content-left {
             position: relative;
             width: 50%;
             height: 100%;
-            > img {
+
+            >img {
               height: 30px;
               margin-left: 2px;
             }
-            > span {
+
+            >span {
               position: absolute;
               left: 6px;
               top: 0px;
@@ -868,15 +853,18 @@ export default {
               color: #fff;
             }
           }
+
           .yinyang-content-right {
             position: relative;
             width: 50%;
             height: 100%;
-            > img {
+
+            >img {
               margin-left: -3px;
               height: 30px;
             }
-            > span {
+
+            >span {
               position: absolute;
               left: 4px;
               top: 0px;
@@ -887,16 +875,19 @@ export default {
           }
         }
       }
+
       &-yearSelect {
         position: relative;
         height: 30px;
-        > img {
+
+        >img {
           height: 100%;
           width: 100%;
           padding-left: 8px;
           padding-right: 8px;
           object-fit: cover;
         }
+
         .yearSelect-year {
           width: 50%;
           height: 30px;
@@ -907,15 +898,18 @@ export default {
           align-items: center;
           padding-left: 10px;
           line-height: 30px;
-          > img {
+
+          >img {
             height: 10px;
             margin-left: 2px;
           }
+
           .title {
             color: #fff;
             font-family: "xique";
             font-size: 22px;
           }
+
           .name {
             color: #fff;
             font-family: "xique";
@@ -926,6 +920,7 @@ export default {
             line-height: 18px;
           }
         }
+
         .yearSelect-month {
           width: 50%;
           height: 30px;
@@ -937,17 +932,20 @@ export default {
           justify-content: flex-end;
           padding-right: 8px;
           line-height: 30px;
-          > img {
+
+          >img {
             height: 10px;
             margin-right: 4px;
             transform: rotate(180deg);
           }
+
           .title {
             color: #fff;
             font-family: "xique";
             font-size: 22px;
             margin-bottom: 0;
           }
+
           .name {
             color: #fff;
             font-family: "xique";
@@ -959,14 +957,17 @@ export default {
           }
         }
       }
+
       .yearSelection {
         position: absolute;
         top: 20px;
         left: 0;
         z-index: 1;
-        > img {
+
+        >img {
           height: 280px;
         }
+
         .yearSelection-main {
           position: absolute;
           left: 0;
@@ -976,6 +977,7 @@ export default {
           overflow: hidden;
           display: flex;
           justify-content: center;
+
           ul {
             display: flex;
             width: 60px;
@@ -989,16 +991,20 @@ export default {
               sans-serif;
             box-sizing: border-box;
             overflow-y: scroll;
+
             .yearActive {
               color: #67768c;
             }
+
             li {
               cursor: pointer;
               line-height: 24px;
             }
+
             &::-webkit-scrollbar {
               width: 4px;
             }
+
             &::-webkit-scrollbar-thumb {
               border-radius: 2vh;
               background: #87ff9a;
@@ -1006,14 +1012,17 @@ export default {
           }
         }
       }
+
       .monthSelection {
         position: absolute;
         top: 20px;
         right: 0;
         z-index: 1;
-        > img {
+
+        >img {
           height: 280px;
         }
+
         .monthSelection-main {
           position: absolute;
           left: 0;
@@ -1021,6 +1030,7 @@ export default {
           width: 100%;
           height: 100%;
           overflow: hidden;
+
           ul {
             display: flex;
             flex-direction: column;
@@ -1033,9 +1043,11 @@ export default {
             box-sizing: border-box;
             height: 100%;
             overflow: hidden;
+
             .ulactive {
               color: #67768c;
             }
+
             li {
               cursor: pointer;
               line-height: 20px;
@@ -1043,10 +1055,12 @@ export default {
           }
         }
       }
+
       .weekSelection {
         width: 100%;
         // padding: 0 14px;
         box-sizing: border-box;
+
         ul {
           position: relative;
           font-size: 12px;
@@ -1071,6 +1085,7 @@ export default {
             text-align: center;
             background-color: #9fcbf3;
           }
+
           .nowork {
             width: 26px;
             height: 26px;
@@ -1082,12 +1097,15 @@ export default {
           }
         }
       }
+
       .dateSelection {
         width: 100%;
+
         ul {
           width: 100%;
           display: flex;
           flex-wrap: wrap;
+
           li {
             width: calc((100%) / 7);
             height: 42px;
@@ -1098,25 +1116,30 @@ export default {
             justify-content: center;
             align-items: center;
             position: relative;
+
             &:nth-child(7n + 7) {
               margin-right: 0;
             }
+
             .imgUrl {
-            position: relative;
+              position: relative;
               top: 0.3vh;
               height: 42px;
             }
+
             .currentImg {
               position: absolute;
               height: 40px;
               left: 0;
               top: -4px;
             }
+
             .dataTitle {
               position: absolute;
               font-size: 13px;
               width: 100%;
               cursor: pointer;
+
               .hanziTitle {
                 font-size: 13px;
                 font-weight: normal;
@@ -1124,12 +1147,14 @@ export default {
                 justify-content: center;
               }
             }
+
             .recordImg {
               height: 12px;
               position: absolute;
               right: 8px;
               top: 4px;
             }
+
             .recordImgText {
               font-size: 13px;
               white-space: nowrap;
@@ -1139,6 +1164,7 @@ export default {
       }
     }
   }
+
   &-dialog {
     width: 100%;
     height: 100%;
@@ -1149,7 +1175,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    > img {
+
+    >img {
       width: 333px;
       height: 477px;
       position: absolute;
@@ -1157,6 +1184,7 @@ export default {
       top: 50%;
       transform: translate(-50%, -50%);
     }
+
     &-content {
       width: 333px;
       height: 440px;
@@ -1166,6 +1194,7 @@ export default {
       flex-direction: column;
       z-index: 7;
       position: relative;
+
       &-time {
         display: flex;
         width: 100%;
@@ -1174,7 +1203,8 @@ export default {
         color: #fff;
         position: relative;
         line-height: 24px;
-        > img {
+
+        >img {
           height: 24px;
           width: 80%;
           position: absolute;
@@ -1182,6 +1212,7 @@ export default {
           top: 50%;
           transform: translate(-50%, -50%);
         }
+
         .taitou-month {
           flex: 1;
           text-align: right;
@@ -1190,6 +1221,7 @@ export default {
           font-size: 14px;
           z-index: 1;
         }
+
         .taitou-year {
           flex: 1;
           height: 100%;
@@ -1201,6 +1233,7 @@ export default {
           z-index: 1;
           line-height: 18px;
         }
+
         .taitou-week {
           flex: 1;
           text-align: left;
@@ -1210,6 +1243,7 @@ export default {
           z-index: 1;
         }
       }
+
       &-yiji {
         display: flex;
         justify-content: space-around;
@@ -1218,6 +1252,7 @@ export default {
         margin: 10px 0;
         padding-left: 5px;
         padding-right: 5px;
+
         .yiji-yi {
           flex: 1;
           height: 100%;
@@ -1227,14 +1262,17 @@ export default {
           align-items: center;
           color: #df8080;
           font-weight: bold;
-          > img {
+
+          >img {
             width: 30px;
           }
+
           ul {
             display: flex;
             flex-wrap: wrap;
-            padding: 0 22px;
+            padding: 0 16px;
             box-sizing: border-box;
+
             li {
               flex: 0 0 50%;
               text-align: center;
@@ -1242,6 +1280,7 @@ export default {
             }
           }
         }
+
         .yiji-jieqi {
           flex: 1;
           font-family: "xique";
@@ -1250,9 +1289,11 @@ export default {
           display: flex;
           align-items: center;
           justify-content: center;
-          > img {
+
+          >img {
             width: 88px;
           }
+
           .jieriContent-date {
             font-size: 40px;
             position: absolute;
@@ -1262,6 +1303,7 @@ export default {
             width: 100%;
             text-shadow: 0 0 20px #a3cad3;
           }
+
           .jieriContent-jieri {
             font-size: 24px;
             position: absolute;
@@ -1272,6 +1314,7 @@ export default {
             text-shadow: 0 0 20px #a3cad3;
           }
         }
+
         .yiji-ji {
           flex: 1;
           height: 100%;
@@ -1281,14 +1324,17 @@ export default {
           color: #747d9c;
           align-items: center;
           font-weight: bold;
-          > img {
+
+          >img {
             width: 30px;
           }
+
           ul {
             display: flex;
             flex-wrap: wrap;
-            padding: 0 22px;
+            padding: 0 16px;
             box-sizing: border-box;
+
             li {
               flex: 0 0 50%;
               text-align: center;
@@ -1297,6 +1343,7 @@ export default {
           }
         }
       }
+
       &-nongli {
         width: 100%;
         margin-bottom: 10px;
@@ -1304,10 +1351,12 @@ export default {
         justify-content: center;
         align-items: center;
         position: relative;
-        > img {
+
+        >img {
           width: 85%;
         }
-        > span {
+
+        >span {
           width: 100%;
           color: #fff;
           font-family: "xique";
@@ -1319,15 +1368,18 @@ export default {
           line-height: 12px;
         }
       }
+
       &-list {
         width: 100%;
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-        > img {
+
+        >img {
           width: 90%;
         }
+
         &-content {
           width: 90%;
           height: 99%;
@@ -1340,32 +1392,47 @@ export default {
           box-sizing: border-box;
           font-size: 16px;
           color: #fff;
+
           &::-webkit-scrollbar {
             width: 4px;
           }
+
           &::-webkit-scrollbar-thumb {
             border-radius: 2vh;
             background: #87ff9a;
           }
+
           ul {
             display: flex;
             flex-direction: column;
+
             li {
               display: flex;
               margin-bottom: 6px;
               line-height: 20px;
               cursor: pointer;
+
               .diarylist-message-bg {
                 height: 18px;
                 cursor: pointer;
               }
+
               .edit {
-                height: 10px;
+                height: 12px;
+                margin-left: 4px;
+                margin-bottom: 3px;
               }
+
               .delete {
-                height: 10px;
+                max-height: 14px;
+                max-width: 14px;
+                min-height: 8px;
+                min-width: 8px;
+                object-fit: cover;
+                // margin-top: 2px;
                 margin-left: 5px;
               }
+
               .diarylist-messag-text {
                 text-align: left;
                 margin-left: 6px;
@@ -1375,6 +1442,7 @@ export default {
           }
         }
       }
+
       &-add {
         margin-top: 0px;
         width: 100%;
@@ -1382,21 +1450,25 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        > img {
+
+        >img {
           height: 40px;
         }
       }
+
       &-del {
         position: absolute;
         right: 16px;
         top: -10px;
         z-index: 1000;
-        > img {
+
+        >img {
           width: 20px;
         }
       }
     }
   }
+
   &-schedule {
     width: 100%;
     height: 100%;
@@ -1407,9 +1479,11 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    > img {
+
+    >img {
       width: 260px;
     }
+
     &-content {
       position: absolute;
       width: 240px;
@@ -1424,11 +1498,13 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
+
       &-input {
         position: relative;
         display: flex;
         width: 100%;
         height: 60%;
+
         .windowclose {
           position: absolute;
           right: -6px;
@@ -1436,6 +1512,7 @@ export default {
           width: 20px;
           cursor: pointer;
         }
+
         textarea {
           width: 98%;
           height: 100%;
@@ -1448,29 +1525,36 @@ export default {
           line-height: 14px;
           padding: 6px;
           box-sizing: border-box;
+
           &::-webkit-scrollbar {
             width: 4px;
           }
+
           &::-webkit-scrollbar-thumb {
             border-radius: 2vh;
             background: #87ff9a;
           }
+
           &::-webkit-input-placeholder {
             color: #fff;
           }
+
           &:-moz-placeholder {
             color: #fff;
             opacity: 1;
           }
+
           &::-moz-placeholder {
             color: #fff;
             opacity: 1;
           }
+
           &:-ms-input-placeholder {
             color: #fff;
           }
         }
       }
+
       .mobile-richeng-confirm {
         width: 46px;
         cursor: pointer;

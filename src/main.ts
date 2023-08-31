@@ -9,7 +9,7 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import 'ant-design-vue/dist/reset.css';
 
-import { Field, Lazyload } from "vant";
+import { Field, Lazyload, Popup, DatePicker, TimePicker } from "vant";
 import "vant/lib/index.css";
 
 //覆盖组件样式
@@ -17,5 +17,5 @@ import './style.css'
 
 const app = createApp(App);
 app.config.warnHandler = () => null
-app.use(router).use(ElementPlus).use(store).use(bulma).use(Field).use(Lazyload).mount('#app');
+app.use(router).use(ElementPlus).use(store).use(bulma).use(Field).use(Lazyload).use(Popup).use(DatePicker).use(TimePicker).mount('#app');
 
