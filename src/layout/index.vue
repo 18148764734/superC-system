@@ -186,9 +186,9 @@
 								<a class="navbar-item " @click="goto('/personalIndex')">
 									个人档案
 								</a>
-								<a class="navbar-item" href="https://www.baidu.com">
+								<!-- <a class="navbar-item" href="https://www.baidu.com">
 									时空留言板
-								</a>
+								</a> -->
 								<hr class="navbar-divider">
 								<div class="navbar-item">
 									Version 0.0.1
