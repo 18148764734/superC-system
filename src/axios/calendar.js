@@ -1,5 +1,6 @@
 import axios from '../utils/request'
-const publicUrl = 'https://chino.39nat.com'
+// const publicUrl = 'https://chino.39nat.com'
+const publicUrl = 'http://localhost:8081'
 // 查询八字
 export function getBazi (params) {
   return axios({

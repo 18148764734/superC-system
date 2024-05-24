@@ -2,7 +2,9 @@ import axios from 'axios'
 import { ElMessage,ElLoading,ElNotification  } from 'element-plus'
 import Cookies from 'js-cookie'
 const service = axios.create({
-    baseURL:'http://chino.39nat.com'
+  // baseURL:'http://chino.39nat.com'
+  baseURL:' http://127.0.0.1:8081'
+
 })
 
 let loading ;

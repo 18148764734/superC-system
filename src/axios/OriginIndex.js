@@ -2,8 +2,8 @@ import axios from 'axios'
 import { ElMessage,ElLoading,ElNotification  } from 'element-plus'
 import Cookies from 'js-cookie'
 const service = axios.create({
-    baseURL:'https://y3sops.39nat.com'
-    // baseURL:' http://127.0.0.1:8088'
+    // baseURL:'https://y3sops.39nat.com'
+    baseURL:' http://127.0.0.1:8081'
 
 })
 

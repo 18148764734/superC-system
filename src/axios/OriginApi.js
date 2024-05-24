@@ -2,10 +2,10 @@ import axios from "./OriginIndex";
 
 
 export const originall = (data) =>{
-    return axios.post('/primary/originall ',data)
+    return axios.post('/system/judge ',data)
 }
 export const getbazi = (data) =>{
-    return axios.get('/primary/getbazi?'+'nian='+data.nian+'&yue='+data.yue+'&ri='+data.ri+'&shi='+data.shi)
+    return axios.get('/schedule/getBaZi?'+'nian='+data.nian+'&yue='+data.yue+'&ri='+data.ri+'&shi='+data.shi)
 }
 export const getpage = (data) =>{
     return axios.get(

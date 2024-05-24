@@ -258,6 +258,7 @@ const submint = () => {
             //   phone: "15119380977",
             // });
             localStorage.setItem("superUserPhone", res.data.phone);
+            store.state.phone = res.data.phone;
             localStorage.setItem("superUserToken", res.data.token);
             open(res.data);
 
